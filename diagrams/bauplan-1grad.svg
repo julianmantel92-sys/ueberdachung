@@ -1,0 +1,598 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1060" width="100%" height="100%" style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Architectural Tick Markers for Dimension Lines -->
+    <marker id="tick" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <line x1="1" y1="9" x2="9" y2="1" stroke="#0f172a" stroke-width="2.5" />
+    </marker>
+    <marker id="tick-blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <line x1="1" y1="9" x2="9" y2="1" stroke="#0284c7" stroke-width="2.5" />
+    </marker>
+    <marker id="tick-green" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <line x1="1" y1="9" x2="9" y2="1" stroke="#059669" stroke-width="2.5" />
+    </marker>
+    <marker id="tick-amber" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <line x1="1" y1="9" x2="9" y2="1" stroke="#b45309" stroke-width="2.5" />
+    </marker>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#334155" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#059669" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#0284c7" />
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#d97706" />
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 2 L 8 5 L 1 8 z" fill="#dc2626" />
+    </marker>
+    <pattern id="hatch-wall" width="14" height="14" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="14" stroke="#94a3b8" stroke-width="1.5" opacity="0.6" />
+    </pattern>
+    <pattern id="hatch-concrete" width="18" height="18" patternUnits="userSpaceOnUse">
+      <rect width="18" height="18" fill="#f1f5f9" />
+      <circle cx="4" cy="4" r="1.2" fill="#475569" />
+      <circle cx="13" cy="7" r="1.4" fill="#475569" />
+      <circle cx="8" cy="14" r="1.2" fill="#475569" />
+    </pattern>
+  </defs>
+
+  <!-- ==================== HEADER BLOCK ==================== -->
+  <rect x="25" y="15" width="1390" height="92" rx="8" fill="#0f172a" />
+  <text x="50" y="48" font-size="24" font-weight="900" fill="#f8fafc" letter-spacing="0.5">AUSFÜHRUNGS- &amp; BEMAẞUNGSPLAN: 1,0° TERRASSENÜBERDACHUNG</text>
+  <text x="50" y="78" font-size="15" font-weight="600" fill="#93c5fd">Alle Konstruktions- &amp; Achsmaße | 4 Balkenschuhe | 2,80 m stützenfreie Front | RAL 7016 Anthrazit</text>
+  
+  <rect x="1080" y="28" width="315" height="66" rx="6" fill="#0369a1" stroke="#38bdf8" stroke-width="2" />
+  <text x="1237" y="54" font-size="15" font-weight="900" fill="#ffffff" text-anchor="middle">VOLL BEMAẞTE AUSFÜHRUNG</text>
+  <text x="1237" y="76" font-size="13" font-weight="700" fill="#bae6fd" text-anchor="middle">GERADES DACH &amp; BALKENSCHUHE</text>
+
+  <!-- ==================== LEFT PANEL: DRAUFSICHT (M 1:35) ==================== -->
+  <g id="grundriss" transform="translate(25, 122)">
+    <rect x="0" y="0" width="675" height="915" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+    <rect x="0" y="0" width="675" height="46" rx="8" fill="#f1f5f9" />
+    <text x="20" y="31" font-size="18" font-weight="800" fill="#0f172a">1. DRAUFSICHT MIT VOLLSTÄNDIGER BEMAẞUNG (M 1:35)</text>
+
+    <!-- ==================== BEMAẞUNGSKETTEN OBEN (BREITE) ==================== -->
+    <!-- Extension lines for width dimension on top (Structure from x=200 to x=540, center at x=370) -->
+    <line x1="200" y1="48" x2="200" y2="108" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,2" />
+    <line x1="370" y1="48" x2="370" y2="108" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,2" />
+    <line x1="540" y1="48" x2="540" y2="108" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,2" />
+
+    <!-- Teilmaßkette 1,40 m + 1,40 m (Achsmaße Pfetten) -->
+    <line x1="200" y1="58" x2="370" y2="58" marker-start="url(#tick-blue)" marker-end="url(#tick-blue)" stroke="#0284c7" stroke-width="1.8" />
+    <rect x="250" y="47" width="70" height="22" rx="3" fill="#ffffff" stroke="#0284c7" stroke-width="1" />
+    <text x="285" y="63" font-size="13" font-weight="900" fill="#0369a1" text-anchor="middle">1,40 m</text>
+
+    <line x1="370" y1="58" x2="540" y2="58" marker-start="url(#tick-blue)" marker-end="url(#tick-blue)" stroke="#0284c7" stroke-width="1.8" />
+    <rect x="420" y="47" width="70" height="22" rx="3" fill="#ffffff" stroke="#0284c7" stroke-width="1" />
+    <text x="455" y="63" font-size="13" font-weight="900" fill="#0369a1" text-anchor="middle">1,40 m</text>
+
+    <!-- Gesamtmaßkette oben: 2,80 m Gesamtbreite -->
+    <line x1="200" y1="82" x2="540" y2="82" marker-start="url(#tick)" marker-end="url(#tick)" stroke="#0f172a" stroke-width="2" />
+    <rect x="315" y="71" width="110" height="22" rx="4" fill="#0f172a" />
+    <text x="370" y="87" font-size="13" font-weight="900" fill="#ffffff" text-anchor="middle">2,80 m Breite</text>
+
+    <!-- Top wall under windows -->
+    <rect x="145" y="102" width="460" height="34" fill="url(#hatch-wall)" stroke="#475569" stroke-width="1.8" />
+    <rect x="225" y="106" width="290" height="26" rx="4" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" />
+    <text x="370" y="124" font-size="12.5" font-weight="800" fill="#1e293b" text-anchor="middle">Hauswand unter 3 Fenstern (+2,70 m)</text>
+
+    <!-- Wandholz Pos. 02 (8/14 Kantholz) -->
+    <rect x="190" y="138" width="356" height="18" fill="#475569" stroke="#0f172a" stroke-width="2" />
+    <text x="370" y="151" font-size="11" font-weight="800" fill="#f8fafc" text-anchor="middle">Wandholz Pos. 02 (8/14 cm KVH) mit 5x FIS V Ankern</text>
+
+    <!-- 5x Injektionsanker FIS V (Red Dots) -->
+    <circle cx="210" cy="147" r="4.5" fill="#ef4444" stroke="#0f172a" stroke-width="1.5" />
+    <circle cx="290" cy="147" r="4.5" fill="#ef4444" stroke="#0f172a" stroke-width="1.5" />
+    <circle cx="370" cy="147" r="4.5" fill="#ef4444" stroke="#0f172a" stroke-width="1.5" />
+    <circle cx="450" cy="147" r="4.5" fill="#ef4444" stroke="#0f172a" stroke-width="1.5" />
+    <circle cx="525" cy="147" r="4.5" fill="#ef4444" stroke="#0f172a" stroke-width="1.5" />
+
+    <!-- Right wall under balcony -->
+    <rect x="546" y="102" width="55" height="495" fill="url(#hatch-wall)" stroke="#475569" stroke-width="1.8" />
+    <g transform="translate(573, 340) rotate(90)">
+      <text x="0" y="0" font-size="15" font-weight="800" fill="#334155" text-anchor="middle">Rechte Hauswand (unter Balkon)</text>
+    </g>
+
+    <!-- Wandpfette rechts (8/14 cm an 3 Gewindestäben M16) -->
+    <rect x="532" y="146" width="16" height="435" rx="1" fill="#334155" stroke="#0f172a" stroke-width="2" />
+    <!-- M16 Stäbe G1, G2, G3 -->
+    <circle cx="540" cy="175" r="5.5" fill="#0284c7" stroke="#0f172a" stroke-width="1.5" />
+    <circle cx="540" cy="365" r="5.5" fill="#0284c7" stroke="#0f172a" stroke-width="1.5" />
+    <circle cx="540" cy="555" r="5.5" fill="#0284c7" stroke="#0f172a" stroke-width="1.5" />
+
+    <!-- Bemaßung M16 Stäbe rechts -->
+    <line x1="550" y1="175" x2="605" y2="175" stroke="#0284c7" stroke-width="1" stroke-dasharray="2,2" />
+    <line x1="550" y1="365" x2="605" y2="365" stroke="#0284c7" stroke-width="1" stroke-dasharray="2,2" />
+    <line x1="550" y1="555" x2="605" y2="555" stroke="#0284c7" stroke-width="1" stroke-dasharray="2,2" />
+    <line x1="602" y1="175" x2="602" y2="365" marker-start="url(#tick-blue)" marker-end="url(#tick-blue)" stroke="#0284c7" stroke-width="1.5" />
+    <rect x="610" y="260" width="55" height="20" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" />
+    <text x="637" y="274" font-size="11" font-weight="900" fill="#0369a1" text-anchor="middle">~1,90m</text>
+    <line x1="602" y1="365" x2="602" y2="555" marker-start="url(#tick-blue)" marker-end="url(#tick-blue)" stroke="#0284c7" stroke-width="1.5" />
+    <rect x="610" y="450" width="55" height="20" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" />
+    <text x="637" y="464" font-size="11" font-weight="900" fill="#0369a1" text-anchor="middle">~1,90m</text>
+
+    <!-- Linke Pfette (Fußpfette links 10/14 KVH) -->
+    <!-- Linke Pfette 2-teilig (10/10 KVH, 2,50 m + 1,50 m, gestoßen auf Pfosten FP-1) -->
+    <!-- Balken Teil 1: 2,50 m (Hauswand bis Pfosten FP-1) -->
+    <g id="svg-pfette-links-1">
+      <rect x="190" y="156" width="20" height="263" rx="1" fill="#334155" stroke="#0f172a" stroke-width="2" />
+      <g transform="translate(200, 285) rotate(-90)">
+        <text x="0" y="3.5" font-size="8.5" font-weight="900" fill="#94a3b8" letter-spacing="0.8" text-anchor="middle">TEIL 1: 2,50 m (10/10)</text>
+      </g>
+    </g>
+
+    <!-- Balken Teil 2: 1,50 m (Pfosten FP-1 bis Frontträger) -->
+    <g id="svg-pfette-links-2">
+      <rect x="190" y="423" width="20" height="158" rx="1" fill="#334155" stroke="#0f172a" stroke-width="2" />
+      <g transform="translate(200, 502) rotate(-90)">
+        <text x="0" y="3.5" font-size="8.5" font-weight="900" fill="#94a3b8" letter-spacing="0.8" text-anchor="middle">TEIL 2: 1,50 m (10/10)</text>
+      </g>
+    </g>
+
+    <!-- Sichtbare Stoßfuge mit 4px Trennfuge -->
+    <rect x="189" y="419" width="22" height="4" fill="#f59e0b" opacity="0.9" />
+    
+    <!-- Stoßlasche / Flachverbinder auf dem Pfostenkopf FP-1 -->
+    <rect x="192" y="413" width="16" height="16" rx="2" fill="#cbd5e1" stroke="#0f172a" stroke-width="1.4" />
+    <line x1="190" y1="421" x2="210" y2="421" stroke="#b45309" stroke-width="2" />
+    <circle cx="196" cy="417" r="1.4" fill="#0f172a" />
+    <circle cx="204" cy="417" r="1.4" fill="#0f172a" />
+    <circle cx="196" cy="425" r="1.4" fill="#0f172a" />
+    <circle cx="204" cy="425" r="1.4" fill="#0f172a" />
+
+    <!-- Callout Stoßverbindung Fußpfette auf FP-1 -->
+    <g>
+      <rect x="82" y="446" width="168" height="42" rx="5" fill="#fffbeb" stroke="#f59e0b" stroke-width="2" />
+      <text x="166" y="463" font-size="11" font-weight="900" fill="#b45309" text-anchor="middle">★ STOSS AUF PFONSTEN FP-1</text>
+      <text x="166" y="479" font-size="9.5" font-weight="800" fill="#78350f" text-anchor="middle">2,50 m + 1,50 m (je 5 cm Auflage)</text>
+      <path d="M 166 446 L 194 425" fill="none" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow-amber)" />
+    </g>
+    
+    <!-- BALKENSCHUH 1: Linke Pfette an Wandholz -->
+    <rect x="186" y="150" width="28" height="20" rx="2" fill="#f59e0b" stroke="#b45309" stroke-width="2.5" />
+    <line x1="190" y1="160" x2="210" y2="160" stroke="#78350f" stroke-width="2" />
+    
+    <!-- Callout Balkenschuh links -->
+    <rect x="100" y="165" width="130" height="46" rx="5" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8" />
+    <text x="165" y="184" font-size="12" font-weight="900" fill="#b45309" text-anchor="middle">★ BALKENSCHUH 1</text>
+    <text x="165" y="200" font-size="10.5" font-weight="700" fill="#92400e" text-anchor="middle">Pfette links (10/10)</text>
+
+    <!-- MITTELPFETTE (10/20 cm BSH, freitragend längs) -->
+    <rect x="359" y="156" width="22" height="425" rx="1" fill="#1e293b" stroke="#0f172a" stroke-width="2.2" />
+    
+    <!-- Callout Mittelpfette mittig horizontal -->
+    <rect x="263" y="325" width="215" height="52" rx="6" fill="#0f172a" stroke="#f8fafc" stroke-width="1.5" />
+    <text x="370" y="347" font-size="14" font-weight="900" fill="#f8fafc" text-anchor="middle">MITTELPFETTE 10/20 BSH</text>
+    <text x="370" y="367" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle">Freitragend 4,00 m Stützweite</text>
+
+    <!-- BALKENSCHUH 2: Mittelpfette an Wandholz -->
+    <rect x="355" y="150" width="30" height="22" rx="2" fill="#f59e0b" stroke="#b45309" stroke-width="2.5" />
+    <line x1="359" y1="161" x2="381" y2="161" stroke="#78350f" stroke-width="2" />
+
+    <!-- Callout Balkenschuh Mittelpfette -->
+    <rect x="285" y="172" width="170" height="42" rx="5" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8" />
+    <text x="370" y="190" font-size="13" font-weight="900" fill="#b45309" text-anchor="middle">★ BALKENSCHUH 2</text>
+    <text x="370" y="206" font-size="11" font-weight="800" fill="#92400e" text-anchor="middle">Mittelpfette BSI 100/200</text>
+
+    <!-- Vordere Querträger / Frontblende (2,80 m freitragend, 10/20 BSH) -->
+    <rect x="190" y="575" width="358" height="18" fill="#334155" stroke="#0f172a" stroke-width="2" />
+    <rect x="277" y="555" width="185" height="18" rx="3" fill="#1e293b" />
+    <text x="370" y="568" font-size="11.5" font-weight="800" fill="#f8fafc" text-anchor="middle">Frontträger 10/20 cm BSH</text>
+
+    <!-- BALKENSCHUH 4: Mittelpfette an vorderem Querträger (innenliegend verdeckt) -->
+    <rect x="355" y="566" width="30" height="22" rx="2" fill="#f59e0b" stroke="#b45309" stroke-width="2.5" />
+    <line x1="359" y1="575" x2="381" y2="575" stroke="#78350f" stroke-width="2" />
+    <circle cx="363" cy="571" r="2.2" fill="#78350f" />
+    <circle cx="377" cy="571" r="2.2" fill="#78350f" />
+    <circle cx="363" cy="581" r="2.2" fill="#78350f" />
+    <circle cx="377" cy="581" r="2.2" fill="#78350f" />
+
+    <!-- Callout Balkenschuh 4 vorne Mitte -->
+    <rect x="260" y="498" width="220" height="48" rx="5" fill="#fffbeb" stroke="#f59e0b" stroke-width="2" />
+    <text x="370" y="518" font-size="13" font-weight="900" fill="#b45309" text-anchor="middle">★ BALKENSCHUH 4 (100/140)</text>
+    <text x="370" y="535" font-size="11" font-weight="800" fill="#92400e" text-anchor="middle">Mittelpfette an Frontträger (innen verdeckt)</text>
+    <path d="M 370 546 L 370 564" fill="none" stroke="#f59e0b" stroke-width="2.2" marker-end="url(#arrow-amber)" />
+
+    <!-- BALKENSCHUH 3: Frontbalken an Wandpfette rechts (Verbindungsecke) -->
+    <rect x="520" y="567" width="28" height="32" rx="3" fill="#f59e0b" stroke="#b45309" stroke-width="2.5" />
+    <line x1="534" y1="569" x2="534" y2="597" stroke="#78350f" stroke-width="2" />
+    <circle cx="527" cy="575" r="2.5" fill="#78350f" />
+    <circle cx="527" cy="583" r="2.5" fill="#78350f" />
+    <circle cx="527" cy="591" r="2.5" fill="#78350f" />
+    <circle cx="541" cy="575" r="2.5" fill="#78350f" />
+    <circle cx="541" cy="583" r="2.5" fill="#78350f" />
+    <circle cx="541" cy="591" r="2.5" fill="#78350f" />
+
+    <!-- Callout Balkenschuh 3 vorne rechts -->
+    <rect x="470" y="612" width="200" height="54" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="2.5" />
+    <text x="570" y="633" font-size="13.5" font-weight="900" fill="#b45309" text-anchor="middle">★ BALKENSCHUH 3 (100/140)</text>
+    <text x="570" y="653" font-size="11.5" font-weight="800" fill="#92400e" text-anchor="middle">Frontbalken an Wandpfette</text>
+    <path d="M 540 612 L 535 598" fill="none" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrow-amber)" />
+
+    <!-- Pfosten FP-1 (mitte-links auf rotem Punkt am Randstein beim Busch, 2,50 m ab Hauswand) -->
+    <rect x="188" y="409" width="24" height="24" fill="#ef4444" stroke="#0f172a" stroke-width="2" />
+    <circle cx="200" cy="421" r="4" fill="#ffffff" />
+    <rect x="110" y="404" width="75" height="34" rx="5" fill="#fee2e2" stroke="#ef4444" stroke-width="1.8" />
+    <text x="147" y="426" font-size="12.5" font-weight="900" fill="#b91c1c" text-anchor="middle">● FP-1</text>
+
+    <!-- Pfosten FP-2 (vorne-links auf rotem Punkt am Randstein) -->
+    <rect x="188" y="573" width="24" height="24" fill="#ef4444" stroke="#0f172a" stroke-width="2" />
+    <circle cx="200" cy="585" r="4" fill="#ffffff" />
+    <rect x="110" y="570" width="75" height="34" rx="5" fill="#fee2e2" stroke="#ef4444" stroke-width="1.8" />
+    <text x="147" y="592" font-size="12.5" font-weight="900" fill="#b91c1c" text-anchor="middle">● FP-2</text>
+
+    <!-- SPARRENLAGE: 12 SPARREN (10/10 cm KVH), BÜNDIG MIT MITTELPFETTE -->
+    <!-- Linkes Feld: 6 Sparren von Fußpfette links (x=190) bis Mittelpfette (x=359), L=1,35 m -->
+    <g id="sparren-links" stroke="#0f172a" stroke-width="1.4" fill="#64748b" opacity="0.95">
+      <rect x="190" y="175" width="169" height="12" rx="1" />
+      <rect x="190" y="252" width="169" height="12" rx="1" />
+      <rect x="190" y="329" width="169" height="12" rx="1" />
+      <rect x="190" y="406" width="169" height="12" rx="1" />
+      <rect x="190" y="483" width="169" height="12" rx="1" />
+      <rect x="190" y="560" width="169" height="12" rx="1" />
+    </g>
+
+    <!-- Rechtes Feld: 6 Sparren von Mittelpfette (x=381) bis Wandpfette rechts (x=548), L=1,35 m -->
+    <g id="sparren-rechts" stroke="#0f172a" stroke-width="1.4" fill="#64748b" opacity="0.95">
+      <rect x="381" y="175" width="167" height="12" rx="1" />
+      <rect x="381" y="252" width="167" height="12" rx="1" />
+      <rect x="381" y="329" width="167" height="12" rx="1" />
+      <rect x="381" y="406" width="167" height="12" rx="1" />
+      <rect x="381" y="483" width="167" height="12" rx="1" />
+      <rect x="381" y="560" width="167" height="12" rx="1" />
+    </g>
+
+    <!-- SCHWERLAST-BALKENWINKEL MIT RIPPE AN DER MITTELPFETTE (24 Stk., beidseitig je Sparren) -->
+    <g id="sparren-winkel" fill="#f59e0b" stroke="#b45309" stroke-width="1.2">
+      <!-- Sparren 1 (y=175) -->
+      <polygon points="354,172 359,172 359,177 357,177 357,174 354,174" />
+      <polygon points="354,190 359,190 359,185 357,185 357,188 354,188" />
+      <polygon points="386,172 381,172 381,177 383,177 383,174 386,174" />
+      <polygon points="386,190 381,190 381,185 383,185 383,188 386,188" />
+
+      <!-- Sparren 2 (y=252) -->
+      <polygon points="354,249 359,249 359,254 357,254 357,251 354,251" />
+      <polygon points="354,267 359,267 359,262 357,262 357,265 354,265" />
+      <polygon points="386,249 381,249 381,254 383,254 383,251 386,251" />
+      <polygon points="386,267 381,267 381,262 383,262 383,265 386,265" />
+
+      <!-- Sparren 3 (y=329) -->
+      <polygon points="354,326 359,326 359,331 357,331 357,328 354,328" />
+      <polygon points="354,344 359,344 359,339 357,339 357,342 354,342" />
+      <polygon points="386,326 381,326 381,331 383,331 383,328 386,328" />
+      <polygon points="386,344 381,344 381,339 383,339 383,342 386,342" />
+
+      <!-- Sparren 4 (y=406) -->
+      <polygon points="354,403 359,403 359,408 357,408 357,405 354,405" />
+      <polygon points="354,421 359,421 359,416 357,416 357,419 354,419" />
+      <polygon points="386,403 381,403 381,408 383,408 383,405 386,405" />
+      <polygon points="386,421 381,421 381,416 383,416 383,419 386,419" />
+
+      <!-- Sparren 5 (y=483) -->
+      <polygon points="354,480 359,480 359,485 357,485 357,482 354,482" />
+      <polygon points="354,498 359,498 359,493 357,493 357,496 354,496" />
+      <polygon points="386,480 381,480 381,485 383,485 383,482 386,482" />
+      <polygon points="386,498 381,498 381,493 383,493 383,496 386,496" />
+
+      <!-- Sparren 6 (y=560) -->
+      <polygon points="354,557 359,557 359,562 357,562 357,559 354,559" />
+      <polygon points="354,575 359,575 359,570 357,570 357,573 354,573" />
+      <polygon points="386,557 381,557 381,562 383,562 383,559 386,559" />
+      <polygon points="386,575 381,575 381,570 383,570 383,573 386,573" />
+    </g>
+
+    <!-- Callout Schwerlastwinkel Draufsicht -->
+    <rect x="235" y="422" width="235" height="46" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="2" />
+    <text x="352" y="440" font-size="12" font-weight="900" fill="#b45309" text-anchor="middle">★ SCHWERLASTWINKEL MIT RIPPE</text>
+    <text x="352" y="456" font-size="10.5" font-weight="800" fill="#78350f" text-anchor="middle">Sparren bündig mit Mittelpfette (24 Winkel)</text>
+    <line x1="352" y1="468" x2="360" y2="480" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arrow-amber)" />
+
+    <!-- Sparren-Bemaßung (Achsabstand) -->
+    <line x1="235" y1="252" x2="235" y2="329" marker-start="url(#tick-blue)" marker-end="url(#tick-blue)" stroke="#0284c7" stroke-width="1.8" />
+    <rect x="240" y="278" width="118" height="20" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" />
+    <text x="299" y="292" font-size="11.5" font-weight="900" fill="#0369a1" text-anchor="middle">e = 80 cm (Sparren)</text>
+
+    <!-- FRONT CLEARANCE: KEIN MITTELPFOSTEN -->
+    <rect x="240" y="605" width="240" height="42" rx="6" fill="#ecfdf5" stroke="#059669" stroke-width="2.5" />
+    <text x="360" y="627" font-size="15" font-weight="900" fill="#065f46" text-anchor="middle">✓ KEIN MITTELPFOSTEN</text>
+    <text x="360" y="642" font-size="13" font-weight="700" fill="#047857" text-anchor="middle">Volle 2,80 m Einfahrt frei!</text>
+
+    <!-- Gefälle-Pfeil diagonal -->
+    <path d="M 505 170 L 220 555" fill="none" stroke="#0284c7" stroke-width="3.5" marker-end="url(#arrow-blue)" stroke-dasharray="6,4" />
+    <rect x="390" y="245" width="145" height="44" rx="6" fill="#ffffff" stroke="#0284c7" stroke-width="2" />
+    <text x="462" y="265" font-size="14" font-weight="900" fill="#0369a1" text-anchor="middle">1,0° Gefälle ↘</text>
+    <text x="462" y="282" font-size="12" font-weight="700" fill="#0284c7" text-anchor="middle">Ablauf vorne links</text>
+
+    <!-- Ablaufpunkt FP-2 -->
+    <circle cx="200" cy="585" r="18" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="4,3" />
+
+    <!-- ==================== BEMAẞUNGSKETTE LINKS (TIEFE) ==================== -->
+    <!-- Extension lines for depth dimension -->
+    <line x1="50" y1="147" x2="190" y2="147" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,2" />
+    <line x1="50" y1="421" x2="188" y2="421" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,2" />
+    <line x1="50" y1="585" x2="188" y2="585" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,2" />
+
+    <!-- Teilmaßkette 1: Hauswand bis FP-1 (2,50 m) -->
+    <line x1="78" y1="147" x2="78" y2="421" marker-start="url(#tick-blue)" marker-end="url(#tick-blue)" stroke="#0284c7" stroke-width="1.8" />
+    <g transform="translate(78, 284) rotate(-90)">
+      <rect x="-24" y="-11" width="48" height="22" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" />
+      <text x="0" y="4" font-size="12" font-weight="900" fill="#0369a1" text-anchor="middle">2,50 m</text>
+    </g>
+
+    <!-- Teilmaßkette 2: FP-1 bis FP-2 (1,50 m) -->
+    <line x1="78" y1="421" x2="78" y2="585" marker-start="url(#tick-blue)" marker-end="url(#tick-blue)" stroke="#0284c7" stroke-width="1.8" />
+    <g transform="translate(78, 503) rotate(-90)">
+      <rect x="-24" y="-11" width="48" height="22" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" />
+      <text x="0" y="4" font-size="12" font-weight="900" fill="#0369a1" text-anchor="middle">1,50 m</text>
+    </g>
+
+    <!-- Gesamtmaßkette außen: 4,00 m Gesamttiefe -->
+    <line x1="42" y1="147" x2="42" y2="585" marker-start="url(#tick)" marker-end="url(#tick)" stroke="#0f172a" stroke-width="2.2" />
+    <g transform="translate(42, 366) rotate(-90)">
+      <rect x="-68" y="-12" width="136" height="24" rx="4" fill="#0f172a" />
+      <text x="0" y="4" font-size="12.5" font-weight="900" fill="#ffffff" text-anchor="middle">4,00 m Gesamttiefe</text>
+    </g>
+
+    <!-- Dimension 2,80 m freie Front unten -->
+    <line x1="200" y1="675" x2="540" y2="675" marker-start="url(#tick-green)" marker-end="url(#tick-green)" stroke="#059669" stroke-width="2" />
+    <rect x="275" y="663" width="185" height="26" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.5" />
+    <text x="367" y="681" font-size="14" font-weight="900" fill="#065f46" text-anchor="middle">2,80 m freie Front</text>
+
+    <!-- Information box Draufsicht mit Maßtabelle -->
+    <rect x="15" y="715" width="645" height="185" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="715" width="645" height="34" rx="8" fill="#f1f5f9" />
+    <text x="30" y="738" font-size="15" font-weight="900" fill="#0f172a">Verbindliche Holz- &amp; Bauteilmaße (Ausführung 1,0°):</text>
+    <text x="30" y="768" font-size="13.5" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#0369a1">Mittelpfette (10/20 cm BSH):</tspan> L = 4,00 m freitragend mittig bei x = 1,40 m</text>
+    <text x="30" y="792" font-size="13.5" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#0369a1">Vorderer Querträger (10/20 cm BSH):</tspan> L = 2,80 m stützenfrei von FP-2 bis Balkenschuh 3</text>
+    <text x="30" y="816" font-size="13.5" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#0369a1">Fußpfette links (2 Hölzer 10/10 cm):</tspan> 1x 2,50 m + 1x 1,50 m (Stoß auf Pfostenkopf FP-1)</text>
+    <text x="30" y="840" font-size="13.5" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#0369a1">Wandpfette rechts (8/14 cm KVH):</tspan> L = 4,00 m an 3x M16-Gewindestangen (+2,70 m)</text>
+    <text x="30" y="864" font-size="13.5" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#0369a1">Sparren (12 Stk. 10/10 cm KVH):</tspan> L = 1,35 m bündig mit Mittelpfette | Beidseitig mit 24x Schwerlastwinkeln mit Rippe befestigt</text>
+    <text x="30" y="874" font-size="13.5" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#0369a1">Pfosten links (10/10 cm KVH):</tspan> 2 Stützen h = 2,33 m (+ 10 cm Bodenabstand H-Anker)</text>
+    <text x="30" y="888" font-size="13.5" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#b45309">Balkenschuhe (4 Stk., Typ BSI 100/140):</tspan> 2x Mittelpfette (vorne &amp; hinten), 1x Wandpfette rechts, 1x Pfette links</text>
+  </g>
+
+  <!-- ==================== RIGHT PANEL: DETAIL BALKENSCHUHE & FRONT ==================== -->
+  <g id="detail-balkenschuh" transform="translate(720, 122)">
+    <rect x="0" y="0" width="695" height="915" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+    <rect x="0" y="0" width="695" height="46" rx="8" fill="#f1f5f9" />
+    <text x="20" y="31" font-size="18" font-weight="800" fill="#0f172a">2. DETAIL: BALKENSCHUH-WANDANSCHLUSS &amp; FRONTANSICHT</text>
+
+    <!-- UPPER SUB-PANEL: DETAIL A BALKENSCHUH AN WANDHOLZ -->
+    <g transform="translate(20, 56)">
+      <rect x="0" y="0" width="655" height="305" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+      <rect x="0" y="0" width="655" height="32" rx="6" fill="#f1f5f9" />
+      <text x="15" y="22" font-size="14" font-weight="900" fill="#0f172a">DETAIL A: WANDANSCHLUSS MIT BALKENSCHUH (M 1:10) – BEMAẞT</text>
+
+      <!-- Concrete / Masonry Wall -->
+      <rect x="30" y="48" width="125" height="245" fill="url(#hatch-wall)" stroke="#475569" stroke-width="1.8" />
+      <text x="92" y="75" font-size="15" font-weight="800" fill="#1e293b" text-anchor="middle">Hauswand</text>
+      <text x="92" y="94" font-size="13" font-weight="600" fill="#475569" text-anchor="middle">(unter Fenstern)</text>
+
+      <!-- Injektionsanker fischer FIS V mit Bemaßung hef >= 130 mm -->
+      <line x1="25" y1="165" x2="215" y2="165" stroke="#0f172a" stroke-width="7" stroke-linecap="round" />
+      <circle cx="215" cy="165" r="9" fill="#ef4444" stroke="#0f172a" stroke-width="2.5" />
+      
+      <!-- Bemaßung Verankerungstiefe hef >= 130 mm -->
+      <line x1="25" y1="182" x2="155" y2="182" marker-start="url(#tick-blue)" marker-end="url(#tick-blue)" stroke="#0284c7" stroke-width="1.5" />
+      <rect x="45" y="188" width="95" height="18" rx="3" fill="#e0f2fe" />
+      <text x="92" y="201" font-size="11" font-weight="900" fill="#0369a1" text-anchor="middle">hef ≥ 130 mm</text>
+
+      <!-- Label Injektionsanker -->
+      <rect x="12" y="220" width="145" height="42" rx="5" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5" />
+      <text x="84" y="238" font-size="12" font-weight="900" fill="#b91c1c" text-anchor="middle">fischer FIS V M12/M16</text>
+      <text x="84" y="254" font-size="11" font-weight="700" fill="#b91c1c" text-anchor="middle">in Siebhülse 20×130</text>
+
+      <!-- Wandholz Pos. 02 (8/14 oder 10/14) -->
+      <rect x="155" y="95" width="60" height="145" fill="#475569" stroke="#0f172a" stroke-width="2.5" rx="2" />
+      <g transform="translate(185, 167) rotate(-90)">
+        <text x="0" y="0" font-size="14" font-weight="900" fill="#ffffff" text-anchor="middle">Wandholz 8/14</text>
+      </g>
+
+      <!-- Bemaßung Wandholz: Breite 8 cm, Höhe 14 cm -->
+      <line x1="155" y1="82" x2="215" y2="82" marker-start="url(#tick)" marker-end="url(#tick)" stroke="#0f172a" stroke-width="1.5" />
+      <rect x="168" y="68" width="35" height="18" rx="2" fill="#ffffff" stroke="#0f172a" stroke-width="1" />
+      <text x="185" y="81" font-size="11.5" font-weight="900" fill="#0f172a" text-anchor="middle">8 cm</text>
+
+      <!-- Balkenschuh Typ BSI verzinkt -->
+      <!-- Backplate -->
+      <rect x="215" y="100" width="8" height="135" fill="#f59e0b" stroke="#b45309" stroke-width="2" />
+      <!-- Bottom support plate -->
+      <rect x="215" y="230" width="95" height="8" fill="#f59e0b" stroke="#b45309" stroke-width="2" />
+      <!-- Side wing of Balkenschuh -->
+      <polygon points="215,135 305,135 305,230 215,230" fill="#fcd34d" opacity="0.65" stroke="#b45309" stroke-width="2" />
+      
+      <!-- Kammnägel dots on Balkenschuh -->
+      <circle cx="223" cy="112" r="3" fill="#78350f" />
+      <circle cx="223" cy="130" r="3" fill="#78350f" />
+      <circle cx="223" cy="155" r="3" fill="#78350f" />
+      <circle cx="223" cy="180" r="3" fill="#78350f" />
+      <circle cx="223" cy="205" r="3" fill="#78350f" />
+      <circle cx="223" cy="222" r="3" fill="#78350f" />
+      
+      <circle cx="250" cy="160" r="3" fill="#78350f" />
+      <circle cx="275" cy="175" r="3" fill="#78350f" />
+      <circle cx="290" cy="200" r="3" fill="#78350f" />
+
+      <!-- Bemaßung Balkenschuh Schenkel 95 mm -->
+      <line x1="215" y1="248" x2="310" y2="248" marker-start="url(#tick-amber)" marker-end="url(#tick-amber)" stroke="#b45309" stroke-width="1.5" />
+      <rect x="238" y="254" width="55" height="18" rx="2" fill="#fffbeb" stroke="#f59e0b" stroke-width="1" />
+      <text x="265" y="267" font-size="11" font-weight="900" fill="#b45309" text-anchor="middle">95 mm</text>
+
+      <!-- Eingelegter Balken: Mittelpfette 10/20 bzw. Linke Pfette -->
+      <rect x="223" y="95" width="290" height="135" fill="#334155" stroke="#0f172a" stroke-width="2.5" rx="2" />
+      <text x="368" y="150" font-size="16" font-weight="900" fill="#ffffff" text-anchor="middle">Mittelpfette (10/20 cm BSH)</text>
+      <text x="368" y="172" font-size="13" font-weight="700" fill="#93c5fd" text-anchor="middle">b = 10 cm | h = 20 cm | L = 4,00 m</text>
+
+      <!-- Bemaßung Trägerhöhe 20 cm -->
+      <line x1="520" y1="95" x2="520" y2="230" marker-start="url(#tick)" marker-end="url(#tick)" stroke="#0f172a" stroke-width="1.8" />
+      <rect x="526" y="150" width="55" height="22" rx="3" fill="#ffffff" stroke="#0f172a" stroke-width="1" />
+      <text x="553" y="166" font-size="12" font-weight="900" fill="#0f172a" text-anchor="middle">h = 20 cm</text>
+
+      <!-- BÜNDIGER SPARRENANSCHLUSS: SPARREN 10/10 BÜNDIG MIT MITTELPFETTE (10/20) -->
+      <!-- Sparren links bündig an Mittelpfette anstoßend (Höhe 10 cm, Oberkante bündig bei y=95) -->
+      <rect x="75" y="95" width="140" height="68" rx="2" fill="#475569" stroke="#0f172a" stroke-width="2.2" />
+      <text x="145" y="132" font-size="12.5" font-weight="900" fill="#ffffff" text-anchor="middle">Sparren 10/10 cm</text>
+      <text x="145" y="148" font-size="10" font-weight="700" fill="#93c5fd" text-anchor="middle">L = 1,35 m bündig</text>
+
+      <!-- Bemaßung Sparrenhöhe 10 cm -->
+      <line x1="68" y1="95" x2="68" y2="163" marker-start="url(#tick)" marker-end="url(#tick)" stroke="#0f172a" stroke-width="1.5" />
+      <rect x="22" y="118" width="42" height="18" rx="2" fill="#ffffff" stroke="#0f172a" stroke-width="1" />
+      <text x="43" y="131" font-size="10.5" font-weight="900" fill="#0f172a" text-anchor="middle">10 cm</text>
+
+      <!-- SCHWERLAST-BALKENWINKEL MIT VERSTÄRKUNGSRIPPE (70x70x55 od. 90x90) -->
+      <!-- Horizontaler Schenkel am Sparren -->
+      <rect x="165" y="157" width="50" height="6" fill="#f59e0b" stroke="#b45309" stroke-width="1.5" />
+      <!-- Vertikaler Schenkel an Mittelpfette -->
+      <rect x="215" y="157" width="6" height="50" fill="#f59e0b" stroke="#b45309" stroke-width="1.5" />
+      <!-- Dreiecks-Verstärkungsrippe (Steg) -->
+      <polygon points="215,163 215,195 185,163" fill="#d97706" stroke="#b45309" stroke-width="1.2" />
+      
+      <!-- Kammnägel im Winkel (Punkte) -->
+      <circle cx="178" cy="160" r="1.8" fill="#78350f" />
+      <circle cx="195" cy="160" r="1.8" fill="#78350f" />
+      <circle cx="218" cy="175" r="1.8" fill="#78350f" />
+      <circle cx="218" cy="190" r="1.8" fill="#78350f" />
+
+      <!-- Callout Winkel in Detail A -->
+      <rect x="65" y="185" width="205" height="52" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="2" />
+      <text x="167" y="203" font-size="11.5" font-weight="900" fill="#b45309" text-anchor="middle">★ SCHWERLASTWINKEL (MIT RIPPE)</text>
+      <text x="167" y="218" font-size="10" font-weight="700" fill="#78350f" text-anchor="middle">Je 2 Winkel mit Kammnägeln 4,0×40</text>
+      <text x="167" y="230" font-size="9.5" font-weight="800" fill="#15803d" text-anchor="middle">Tragkraft: 8,5 kN (Auslastung nur 7 %)</text>
+      <path d="M 215 185 L 210 170" fill="none" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arrow-amber)" />
+
+      <!-- Bündiger oberer Dachabschluss: Profilblech liegt glatt auf Sparren UND Pfette auf -->
+      <line x1="60" y1="92" x2="520" y2="92" stroke="#b91c1c" stroke-width="6" stroke-linecap="round" />
+      <rect x="180" y="38" width="310" height="26" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.5" />
+      <text x="335" y="55" font-size="12" font-weight="900" fill="#065f46" text-anchor="middle">✓ BÜNDIGE EBENE: +10 cm mehr Stehhöhe unter Dach!</text>
+
+      <!-- Large Legible Annotations Box for Balkenschuh -->
+      <rect x="375" y="195" width="270" height="92" rx="6" fill="#fffbeb" stroke="#f59e0b" stroke-width="2" />
+      <text x="510" y="216" font-size="13.5" font-weight="900" fill="#b45309" text-anchor="middle">Balkenschuh Typ BSI (100/200)</text>
+      <text x="390" y="238" font-size="12" font-weight="700" fill="#78350f">• Innenliegende Laschen (verdeckt)</text>
+      <text x="390" y="256" font-size="12" font-weight="700" fill="#78350f">• Vollausnagelung: Kammnägel 4,0×40</text>
+      <text x="390" y="274" font-size="12" font-weight="700" fill="#78350f">• Max. Tragfähigkeit R_v,d = 18,2 kN</text>
+    </g>
+
+    <!-- LOWER SUB-PANEL: QUERSCHNITT FRONT (2,80 m stützenfrei, 1,0°) -->
+    <g transform="translate(20, 378)">
+      <rect x="0" y="0" width="655" height="515" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+      <rect x="0" y="0" width="655" height="32" rx="6" fill="#f1f5f9" />
+      <text x="15" y="22" font-size="14" font-weight="900" fill="#0f172a">QUERSCHNITT FRONT (M 1:25) – VOLL BEMAẞTE HÖHEN &amp; WEITEN</text>
+
+      <!-- Ground Level -->
+      <rect x="25" y="380" width="605" height="35" fill="url(#hatch-concrete)" stroke="#475569" stroke-width="1.8" />
+      <line x1="15" y1="380" x2="640" y2="380" stroke="#0f172a" stroke-width="2.5" />
+      <text x="35" y="403" font-size="14" font-weight="800" fill="#1e293b">OK Pflaster ± 0,00 m (Terrassenplatten)</text>
+
+      <!-- Right House Wall -->
+      <rect x="525" y="45" width="115" height="335" fill="url(#hatch-wall)" stroke="#475569" stroke-width="2" />
+      <text x="585" y="66" font-size="13" font-weight="900" fill="#0f172a" text-anchor="middle">Hauswand rechts</text>
+
+      <!-- Wandpfette rechts an M16 Gewindestange -->
+      <rect x="495" y="85" width="30" height="28" fill="#334155" stroke="#0f172a" stroke-width="2" />
+      <circle cx="510" cy="99" r="5" fill="#0284c7" stroke="#0f172a" />
+      <rect x="415" y="55" width="95" height="24" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2" />
+      <text x="462" y="71" font-size="12" font-weight="900" fill="#0369a1" text-anchor="middle">+2,70 m Wand</text>
+
+      <!-- 1,0° FRONT BEAM & BLENDE (10/20 BSH) -->
+      <polygon points="120,95 495,87 495,115 120,123" fill="#334155" stroke="#0f172a" stroke-width="2.5" />
+
+      <!-- BALKENSCHUH 3 in Frontansicht (Frontbalken an Wandpfette) -->
+      <rect x="487" y="85" width="10" height="30" rx="2" fill="#f59e0b" stroke="#b45309" stroke-width="2" />
+      <circle cx="492" cy="92" r="1.8" fill="#78350f" />
+      <circle cx="492" cy="100" r="1.8" fill="#78350f" />
+      <circle cx="492" cy="108" r="1.8" fill="#78350f" />
+      <rect x="450" y="125" width="190" height="32" rx="4" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8" />
+      <text x="545" y="141" font-size="12" font-weight="900" fill="#b45309" text-anchor="middle">★ BALKENSCHUH 3 (100/140)</text>
+      <text x="545" y="153" font-size="10" font-weight="700" fill="#92400e" text-anchor="middle">Frontträger an Wandpfette</text>
+      <line x1="510" y1="125" x2="495" y2="114" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arrow-amber)" />
+
+      <!-- Mittelpfette Cross Section in front beam -->
+      <rect x="295" y="91" width="24" height="28" fill="#1e293b" stroke="#0f172a" stroke-width="2" />
+      <rect x="235" y="48" width="145" height="36" rx="4" fill="#0f172a" stroke="#f8fafc" stroke-width="1.2" />
+      <text x="307" y="64" font-size="12" font-weight="900" fill="#f8fafc" text-anchor="middle">Mittelpfette 10/20 BSH</text>
+      <text x="307" y="78" font-size="10" font-weight="800" fill="#f59e0b" text-anchor="middle">im Balkenschuh 4 (innen verdeckt)</text>
+      <line x1="307" y1="84" x2="307" y2="91" stroke="#0f172a" stroke-width="1.5" marker-end="url(#arrow)" />
+
+      <!-- Red Roof Trim (flush closed, no gap!) -->
+      <line x1="110" y1="92" x2="505" y2="84" stroke="#b91c1c" stroke-width="6" stroke-linecap="round" />
+      
+      <!-- BEMAẞUNG GEFÄLLE DIFFERENZ Δh = 7 cm (1,0°) -->
+      <rect x="155" y="118" width="275" height="22" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.5" />
+      <text x="292" y="134" font-size="12" font-weight="800" fill="#065f46" text-anchor="middle">Δh = 7 cm Gefälle (1,0° zur linken Ecke FP-2)</text>
+
+      <!-- Left Post FP-2 (10/10 cm) -->
+      <rect x="110" y="123" width="24" height="242" fill="#334155" stroke="#0f172a" stroke-width="2" />
+      <!-- Pfostenträger Fuß (10 cm Abstand) -->
+      <rect x="117" y="365" width="10" height="15" fill="#94a3b8" stroke="#0f172a" stroke-width="1.5" />
+      
+      <!-- Kote FP-2 oben -->
+      <rect x="12" y="105" width="95" height="42" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5" />
+      <text x="59" y="123" font-size="12" font-weight="900" fill="#0369a1" text-anchor="middle">+2,63 m Traufe</text>
+      <text x="59" y="140" font-size="10.5" font-weight="800" fill="#0284c7" text-anchor="middle">Ablauf: +2,63 m</text>
+
+      <!-- Ablaufrohr an FP-2 -->
+      <rect x="96" y="118" width="12" height="18" fill="#64748b" stroke="#334155" />
+      <line x1="102" y1="136" x2="102" y2="380" stroke="#64748b" stroke-width="4" />
+      <g transform="translate(75, 250) rotate(-90)">
+        <text x="0" y="0" font-size="12.5" font-weight="800" fill="#475569" text-anchor="middle">Ablauf ins Beet</text>
+      </g>
+
+      <!-- ==================== HÖHENBEMAẞUNGEN ==================== -->
+      <!-- Bemaßung Lichte Durchgangshöhe links 2,43 m -->
+      <line x1="145" y1="123" x2="145" y2="380" marker-start="url(#tick-green)" marker-end="url(#tick-green)" stroke="#059669" stroke-width="2" />
+      <rect x="152" y="240" width="125" height="32" rx="5" fill="#ecfdf5" stroke="#059669" stroke-width="1.8" />
+      <text x="214" y="261" font-size="14.5" font-weight="900" fill="#065f46" text-anchor="middle">Lichte: 2,43 m</text>
+
+      <!-- Bemaßung Pfostenhöhe 2,33 m + 10 cm Träger -->
+      <line x1="92" y1="123" x2="92" y2="365" marker-start="url(#tick)" marker-end="url(#tick)" stroke="#0f172a" stroke-width="1.5" />
+      <g transform="translate(84, 328) rotate(-90)">
+        <rect x="-26" y="-11" width="52" height="22" rx="3" fill="#ffffff" stroke="#0f172a" stroke-width="1" />
+        <text x="0" y="4" font-size="11" font-weight="900" fill="#0f172a" text-anchor="middle">h = 2,33m</text>
+      </g>
+
+      <!-- Bemaßung Lichte Durchgangshöhe rechts 2,48 m -->
+      <line x1="480" y1="115" x2="480" y2="380" marker-start="url(#tick-green)" marker-end="url(#tick-green)" stroke="#059669" stroke-width="1.8" />
+      <rect x="425" y="240" width="105" height="28" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.5" />
+      <text x="477" y="258" font-size="13" font-weight="900" fill="#065f46" text-anchor="middle">Lichte: 2,48 m</text>
+
+      <!-- Silhouette Mensch (1,75 m) -->
+      <g transform="translate(195, 220)">
+        <circle cx="14" cy="0" r="10" fill="#f8fafc" stroke="#334155" stroke-width="2" />
+        <line x1="14" y1="10" x2="14" y2="60" stroke="#334155" stroke-width="3" />
+        <line x1="0" y1="25" x2="28" y2="25" stroke="#334155" stroke-width="2.5" />
+        <line x1="14" y1="60" x2="4" y2="160" stroke="#334155" stroke-width="2.5" />
+        <line x1="14" y1="60" x2="24" y2="160" stroke="#334155" stroke-width="2.5" />
+        <rect x="-8" y="70" width="44" height="20" rx="3" fill="#ffffff" stroke="#cbd5e1" />
+        <text x="14" y="85" font-size="12" font-weight="800" fill="#475569" text-anchor="middle">1,75 m</text>
+      </g>
+
+      <!-- STÜTZENFREIE FRONT CALLOUT -->
+      <rect x="255" y="165" width="215" height="68" rx="7" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.2" />
+      <text x="362" y="190" font-size="14.5" font-weight="900" fill="#15803d" text-anchor="middle">★ 2,80 m FREIE FRONT</text>
+      <text x="362" y="210" font-size="13" font-weight="800" fill="#166534" text-anchor="middle">Kein Mittelpfosten im Weg!</text>
+      <text x="362" y="226" font-size="11.5" font-weight="600" fill="#15803d" text-anchor="middle">Starrer 10/20 BSH Unterzug</text>
+
+      <!-- ==================== HORIZONTALE BEMAẞUNG FRONT ==================== -->
+      <!-- Pfostenbreite links: 10 cm -->
+      <line x1="110" y1="430" x2="134" y2="430" marker-start="url(#tick)" marker-end="url(#tick)" stroke="#0f172a" stroke-width="1.5" />
+      <text x="122" y="445" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">10cm</text>
+
+      <!-- Lichte Weite 2,80 m -->
+      <line x1="134" y1="430" x2="525" y2="430" marker-start="url(#tick-green)" marker-end="url(#tick-green)" stroke="#059669" stroke-width="2" />
+      <rect x="235" y="415" width="195" height="30" rx="5" fill="#ecfdf5" stroke="#059669" stroke-width="1.8" />
+      <text x="332" y="435" font-size="15" font-weight="900" fill="#065f46" text-anchor="middle">2,80 m freie Spannweite</text>
+
+      <!-- Wandpfette Breite rechts: 8 cm -->
+      <line x1="525" y1="430" x2="555" y2="430" marker-start="url(#tick)" marker-end="url(#tick)" stroke="#0f172a" stroke-width="1.5" />
+      <text x="540" y="445" font-size="11" font-weight="800" fill="#0f172a" text-anchor="middle">8cm</text>
+
+      <!-- Statics note -->
+      <rect x="25" y="470" width="605" height="30" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+      <text x="327" y="490" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">Statik Eurocode 5: Durchbiegung unter voller Schneelast nur 0,7 mm (zulässig: 9,3 mm) – 100% starr</text>
+    </g>
+  </g>
+</svg>

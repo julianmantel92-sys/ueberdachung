@@ -1,0 +1,72 @@
+---
+title: "📐 Interaktiver Bauplan, Statik-Inspektor & Einkaufsliste"
+subtitle: "Vollbild-Ausführungszeichnung & Eurocode 5 Bauteil-Inspektion mit synchronisierter Materialliste (1,0° Terrassenüberdachung)"
+author: "Julian Mantel"
+date: today
+format:
+  html:
+    theme: cosmo
+    toc: false
+    smooth-scroll: false
+    embed-resources: true
+    page-layout: full
+lang: de
+---
+
+::: {.d-flex .justify-content-between .align-items-center style="margin-bottom: 1.25rem; flex-wrap: wrap; gap: 10px;"}
+<div>
+  <a href="Bauplan.html" class="btn btn-outline-secondary" style="font-weight: 700; border-radius: 8px;">
+    ← Zurück zum vollständigen Bauplan &amp; Statikbericht
+  </a>
+</div>
+<div class="d-flex align-items-center gap-2">
+  <a href="diagrams/bauplan-dachueberstand.svg" target="_blank" class="btn btn-outline-primary" style="font-weight: 700; border-radius: 8px;">
+    🔍 Reine SVG-Zeichnung öffnen
+  </a>
+  <button onclick="window.print()" class="btn btn-outline-dark" style="font-weight: 600; border-radius: 8px;">
+    🖨️ Drucken
+  </button>
+  <button onclick="toggleFullscreen()" class="btn btn-primary" style="font-weight: 700; border-radius: 8px;">
+    ⛶ Vollbild (Nur Bauplan)
+  </button>
+</div>
+:::
+
+::: {.column-screen style="padding: 0 1.2rem;"}
+<div id="widget-frame-wrapper" style="background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08); border: 1px solid #e2e8f0;">
+  <iframe id="statik-frame" src="widgets/widget-bauplan-statik.html" width="100%" height="2150px" style="border:none; display: block; min-height: 1200px;" scrolling="no" allowfullscreen="true" allow="fullscreen"></iframe>
+</div>
+:::
+
+<script>
+  function toggleFullscreen() {
+    const frame = document.getElementById('statik-frame');
+    if (frame && frame.contentWindow) {
+      try {
+        if (typeof frame.contentWindow.togglePlanFullscreen === 'function') {
+          frame.contentWindow.togglePlanFullscreen();
+          return;
+        }
+      } catch (e) {
+        // Fallback for cross-origin or local restrictions
+      }
+      frame.contentWindow.postMessage({ action: 'toggle-plan-fullscreen' }, '*');
+    }
+  }
+
+  // Adjust iframe height dynamically if message received (strictly loop-proof)
+  let lastFrameHeight = 0;
+  window.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'resize-iframe' && e.data.height) {
+      const targetHeight = Math.ceil(e.data.height);
+      // Guard against infinite height expansion loops: only resize if difference > 15px
+      if (Math.abs(targetHeight - lastFrameHeight) > 15) {
+        lastFrameHeight = targetHeight;
+        const frame = document.getElementById('statik-frame');
+        if (frame) {
+          frame.style.height = targetHeight + 'px';
+        }
+      }
+    }
+  });
+</script>
