@@ -1103,23 +1103,16 @@
 </head>
 <body>
   <!-- Top Navigation Bar for Distribution -->
-  <div style="max-width: 1400px; margin: 12px auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 0 10px;">
-    <div>
-      <a href="Bauplan.html" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; color: #334155; text-decoration: none; font-size: 0.85rem; font-weight: 700; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-        ← Zurück zum vollständigen Bauplan &amp; Statikbericht
-      </a>
-    </div>
-    <div style="display: flex; align-items: center; gap: 8px;">
-      <a href="diagrams/bauplan-dachueberstand.svg" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: #ffffff; border: 1px solid #0284c7; border-radius: 8px; color: #0284c7; text-decoration: none; font-size: 0.85rem; font-weight: 700;">
-        🔍 Reine SVG-Zeichnung
-      </a>
-      <button onclick="window.print()" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: #ffffff; border: 1px solid #334155; border-radius: 8px; color: #334155; font-size: 0.85rem; font-weight: 700; cursor: pointer;">
-        🖨️ Drucken
-      </button>
-      <button onclick="window.togglePlanFullscreen()" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: #0284c7; border: 1px solid #0284c7; border-radius: 8px; color: #ffffff; font-size: 0.85rem; font-weight: 700; cursor: pointer; box-shadow: 0 2px 4px rgba(2, 132, 199, 0.3);">
-        ⛶ Vollbild (Nur Bauplan)
-      </button>
-    </div>
+  <div style="max-width: 1400px; margin: 12px auto; display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 8px; padding: 0 10px;">
+    <a href="diagrams/bauplan-dachueberstand.svg" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: #ffffff; border: 1px solid #0284c7; border-radius: 8px; color: #0284c7; text-decoration: none; font-size: 0.85rem; font-weight: 700;">
+      🔍 Reine SVG-Zeichnung
+    </a>
+    <button onclick="window.print()" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: #ffffff; border: 1px solid #334155; border-radius: 8px; color: #334155; font-size: 0.85rem; font-weight: 700; cursor: pointer;">
+      🖨️ Drucken
+    </button>
+    <button onclick="window.togglePlanFullscreen()" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: #0284c7; border: 1px solid #0284c7; border-radius: 8px; color: #ffffff; font-size: 0.85rem; font-weight: 700; cursor: pointer; box-shadow: 0 2px 4px rgba(2, 132, 199, 0.3);">
+      ⛶ Vollbild (Nur Bauplan)
+    </button>
   </div>
 
 
