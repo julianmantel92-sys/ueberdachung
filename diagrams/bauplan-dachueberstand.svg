@@ -90,11 +90,12 @@
     <text x="285" y="105" font-size="8.5" font-weight="800" fill="#ef4444" text-anchor="middle">hef ≥ 130 mm ↓</text>
 
     <!-- ==================== WANDHOLZ POS. 02 (8/14 cm KVH) ==================== -->
-    <g id="svg-wandholz-fenster" class="comp-hitbox" data-id="wandholz-fenster">
-      <rect id="svg-wandholz-fenster" class="comp-hitbox" data-id="wandholz-fenster" x="310" y="130" width="390" height="18" fill="#475569" stroke="#0f172a" stroke-width="2" />
+    <g id="svg-wandholz-fenster" class="comp-hitbox" data-id="wandholz-fenster" title="Wandholz Pos. 02 (8/14 KVH an Hauswand)">
+      <rect x="310" y="118" width="390" height="40" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+      <rect id="svg-wandholz-fenster" x="310" y="130" width="390" height="18" fill="#475569" stroke="#0f172a" stroke-width="2" />
       <!-- Transversale Fugenlinie am Stoß x=575 (unteres & oberes Blatt treffen aufeinander) -->
-      <line x1="575" y1="130" x2="575" y2="148" stroke="#ffffff" stroke-width="1.8" stroke-dasharray="2,1" />
-      <text x="490" y="143" font-size="10" font-weight="800" fill="#f8fafc" text-anchor="middle" paint-order="stroke" stroke="#0f172a" stroke-width="1.5">Wandholz Pos. 02 (8/14 KVH, 2-tlg. Stoß bei x=1,65 m → siehe Schnitt B)</text>
+      <line x1="575" y1="130" x2="575" y2="148" stroke="#ffffff" stroke-width="1.8" stroke-dasharray="2,1" pointer-events="none" />
+      <text x="490" y="143" font-size="10" font-weight="800" fill="#f8fafc" text-anchor="middle" paint-order="stroke" stroke="#0f172a" stroke-width="1.5" pointer-events="none">Wandholz Pos. 02 (8/14 KVH, 2-tlg. Stoß bei x=1,65 m → siehe Schnitt B)</text>
     </g>
 
     <!-- Zentraler M12 Durchgangsbolzen am Stoß (senkrechte Bohrung durch beide Blätter) -->
@@ -561,12 +562,15 @@
       <rect x="28" y="134" width="70" height="14" rx="2" fill="#e0f2fe" />
       <text x="63" y="144" font-size="8.5" font-weight="900" fill="#0369a1" text-anchor="middle">hef ≥ 130 mm</text>
 
-      <!-- 3. Wandholz 8/14 KVH (flach an Hauswand gedübelt) -->
-      <rect class="comp-hitbox" data-id="wandholz-fenster" x="105" y="60" width="50" height="145" fill="#475569" stroke="#0f172a" stroke-width="2" rx="2" />
-      <!-- Horizontale Stoßlinie (Überblattung 7 cm + 7 cm in der Höhe) -->
-      <line x1="105" y1="132" x2="155" y2="132" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="2,2" />
-      <g transform="translate(130, 102) rotate(-90)">
-        <text x="0" y="0" font-size="10.5" font-weight="900" fill="#ffffff" text-anchor="middle">Wandholz 8/14</text>
+      <!-- 3. Wandholz 8/14 KVH (flach an Hauswand gedübelt) - VOLL INTERAKTIV & GROSSE HITBOX -->
+      <g class="comp-hitbox" data-id="wandholz-fenster" title="Wandholz Pos. 02 (8/14 KVH an Hauswand)">
+        <rect x="100" y="55" width="60" height="155" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+        <rect x="105" y="60" width="50" height="145" fill="#475569" stroke="#0f172a" stroke-width="2" rx="2" />
+        <!-- Horizontale Stoßlinie (Überblattung 7 cm + 7 cm in der Höhe) -->
+        <line x1="105" y1="132" x2="155" y2="132" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="2,2" pointer-events="none" />
+        <g transform="translate(130, 102) rotate(-90)" pointer-events="none">
+          <text x="0" y="0" font-size="10.5" font-weight="900" fill="#ffffff" text-anchor="middle">Wandholz 8/14</text>
+        </g>
       </g>
       <!-- Bemaßung Wandholz: 8 cm -->
       <line x1="105" y1="48" x2="155" y2="48" marker-start="url(#tick)" marker-end="url(#tick)" stroke="#0f172a" stroke-width="1.2" />
@@ -591,10 +595,22 @@
         <circle cx="265" cy="122" r="1.8" fill="#f59e0b" stroke="#78350f" stroke-width="0.7" />
       </g>
 
-      <!-- 5. Eingelegte Mittelpfette 10/20 cm BSH (läuft nach rechts in den Hof) -->
-      <rect class="comp-hitbox" data-id="mittelpfette" x="161" y="60" width="265" height="140" fill="#334155" stroke="#0f172a" stroke-width="2" rx="2" />
-      <text x="295" y="150" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">Mittelpfette 10/20 BSH</text>
-      <text x="295" y="167" font-size="9.5" font-weight="700" fill="#93c5fd" text-anchor="middle">b = 10 cm | h = 20 cm | L = 4,00 m</text>
+      <!-- 5. Eingelegte Mittelpfette 10/20 cm BSH (mit 6 cm Ausklinkung am Wandanschluss) -->
+      <g class="comp-hitbox" data-id="mittelpfette" title="Mittelpfette 10/20 BSH mit 6 cm Ausklinkung im Balkenschuh (h_ef = 14 cm)">
+        <!-- Ausgeklinkter Träger: 14 cm im Balkenschuh (x=161 bis 245), danach volle 20 cm Bauhöhe (y=225) -->
+        <path d="M 161,60 L 426,60 L 426,225 L 245,225 L 245,195 L 161,195 Z" fill="#334155" stroke="#0f172a" stroke-width="2" />
+        
+        <!-- Bemaßung & Klinkungskante 6 cm -->
+        <line x1="245" y1="195" x2="245" y2="225" stroke="#ef4444" stroke-width="2" stroke-dasharray="2,1" />
+        <line x1="240" y1="195" x2="240" y2="225" marker-start="url(#tick-red)" marker-end="url(#tick-red)" stroke="#ef4444" stroke-width="1.2" />
+        <rect x="249" y="202" width="62" height="15" rx="2" fill="#fee2e2" stroke="#ef4444" stroke-width="0.8" />
+        <text x="280" y="213" font-size="7.5" font-weight="900" fill="#b91c1c" text-anchor="middle">✂ 6 cm Klinkung</text>
+
+        <!-- Beschriftung Mittelpfette -->
+        <text x="335" y="146" font-size="11.5" font-weight="900" fill="#ffffff" text-anchor="middle">Mittelpfette 10/20 BSH</text>
+        <text x="335" y="161" font-size="8.5" font-weight="700" fill="#93c5fd" text-anchor="middle">b = 10 cm | h = 20 cm (Feldmitte) • L = 4,00 m</text>
+        <text x="335" y="174" font-size="8" font-weight="800" fill="#fde047" text-anchor="middle">h_ef = 14 cm im Balkenschuh 2 (DIN EN 1995-1-1 ✓)</text>
+      </g>
 
       <!-- 6. BÜNDIG AN DER MITTELPFETTE MONTIERTER SPARREN (10x10 cm Querschnitt) -->
       <g class="comp-hitbox" data-id="sparren">
@@ -625,9 +641,10 @@
       <text x="317" y="46" font-size="9" font-weight="900" fill="#065f46" text-anchor="middle">✓ BÜNDIG OBEN: +10 cm Stehhöhe!</text>
 
       <!-- Balkenschuh Info Box -->
-      <rect x="195" y="180" width="245" height="48" rx="4" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.3" />
-      <text x="317" y="195" font-size="10" font-weight="900" fill="#b45309" text-anchor="middle">Balkenschuh Typ BSI 100/140 (14,5 kN ✓)</text>
-      <text x="317" y="210" font-size="8.5" font-weight="700" fill="#78350f" text-anchor="middle">• Vollverschraubung (CSA 5,0×40) | Schnitt B ↓</text>
+      <rect x="315" y="185" width="125" height="44" rx="4" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.2" />
+      <text x="377" y="200" font-size="8.5" font-weight="900" fill="#b45309" text-anchor="middle">BSI 100/140 (14,5 kN ✓)</text>
+      <text x="377" y="212" font-size="7.5" font-weight="700" fill="#78350f" text-anchor="middle">14 cm Schuh auf</text>
+      <text x="377" y="222" font-size="7.5" font-weight="800" fill="#b45309" text-anchor="middle">14 cm Klinkung</text>
     </g>
 
     <!-- ==================== SCHNITT B: WANDHOLZ-ÜBERBLATTUNG (ANSICHT VON VORNE M 1:10) ==================== -->
