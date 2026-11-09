@@ -1,5 +1,66 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 1150" width="100%" height="100%" style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 2070" width="100%" height="100%" style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <defs>
+    <style>
+      .comp-hitbox {
+        cursor: pointer;
+        pointer-events: all;
+        transition: filter 0.15s ease, opacity 0.15s ease, stroke-width 0.15s ease;
+      }
+      .comp-hitbox * {
+        pointer-events: auto;
+      }
+      #svg-schrauben-legende .comp-hitbox:hover > rect:first-child {
+        fill: rgba(2, 132, 199, 0.12) !important;
+        rx: 3px;
+      }
+      #svg-schrauben-legende .comp-hitbox.active > rect:first-child {
+        fill: #e0f2fe !important;
+        stroke: #0284c7 !important;
+        stroke-width: 1.2px !important;
+        rx: 3px;
+      }
+      .comp-hitbox:hover {
+        filter: drop-shadow(0 0 6px rgba(2, 132, 199, 0.7));
+        opacity: 0.95;
+      }
+      .comp-hitbox.active {
+        filter: drop-shadow(0 0 10px rgba(2, 132, 199, 1)) !important;
+        stroke: #0284c7 !important;
+        stroke-width: 2.5px !important;
+      }
+      .plan-pos-badge {
+        display: none;
+        opacity: 0;
+        pointer-events: none;
+        cursor: pointer;
+      }
+      .plan-pos-badge.active-badge {
+        display: inline !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        filter: drop-shadow(0 2px 8px rgba(2, 132, 199, 0.8));
+      }
+      .pos-badge-rect {
+        fill: #0284c7;
+        stroke: #ffffff;
+        stroke-width: 1.6px;
+        rx: 4px;
+        filter: drop-shadow(0 1px 4px rgba(15, 23, 42, 0.3));
+      }
+      .pos-badge-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 10px;
+        font-weight: 900;
+        fill: #ffffff;
+        text-anchor: middle;
+        letter-spacing: 0.3px;
+        pointer-events: none;
+      }
+      .plan-pos-badge:hover .pos-badge-rect {
+        fill: #0369a1;
+        stroke-width: 2px;
+      }
+    </style>
     <!-- Architectural Tick Markers for Dimension Lines -->
     <marker id="tick" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto">
       <line x1="1" y1="9" x2="9" y2="1" stroke="#0f172a" stroke-width="2.5" />
@@ -31,23 +92,55 @@
     <pattern id="hatch-wall" width="12" height="12" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
       <line x1="0" y1="0" x2="0" y2="12" stroke="#94a3b8" stroke-width="1.3" opacity="0.6" />
     </pattern>
+    <!-- POS-BADGES STYLE: Standardmäßig unsichtbar (Clean Drawing) -->
+    <!-- Sie tauchen NUR beim Anklicken des Bauteils/der Schraube auf und verschwinden beim Abwählen! -->
+    <style>
+      .plan-pos-badge {
+        display: none;
+        opacity: 0;
+        pointer-events: none;
+        cursor: pointer;
+      }
+      .plan-pos-badge.active-badge {
+        display: inline !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        filter: drop-shadow(0 2px 8px rgba(2, 132, 199, 0.8));
+      }
+      .pos-badge-rect {
+        fill: #0284c7;
+        stroke: #ffffff;
+        stroke-width: 1.6px;
+        rx: 4px;
+        filter: drop-shadow(0 1px 4px rgba(15, 23, 42, 0.3));
+      }
+      .pos-badge-text {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 10px;
+        font-weight: 900;
+        fill: #ffffff;
+        text-anchor: middle;
+        letter-spacing: 0.3px;
+        pointer-events: none;
+      }
+      .plan-pos-badge:hover .pos-badge-rect {
+        fill: #0369a1;
+        stroke-width: 2px;
+      }
+    </style>
   </defs>
 
   <!-- ==================== HEADER BAR ==================== -->
-  <rect x="20" y="12" width="1440" height="78" rx="8" fill="#0f172a" />
-  <text x="45" y="44" font-size="21" font-weight="900" fill="#f8fafc" letter-spacing="0.5">AUSFÜHRUNGS- &amp; BEMAẞUNGSPLAN: 1,0° TERRASSENÜBERDACHUNG</text>
-  <text x="45" y="70" font-size="13.5" font-weight="600" fill="#93c5fd">Alle Konstruktions- &amp; Achsmaße | 4 Balkenschuhe | 2,80 m stützenfreie Front | L-Pfosten FP-2 | RAL 7016</text>
-  
-  <rect x="1170" y="22" width="270" height="58" rx="6" fill="#0369a1" stroke="#38bdf8" stroke-width="1.5" />
-  <text x="1305" y="45" font-size="13" font-weight="900" fill="#ffffff" text-anchor="middle">VOLL BEMAẞTE AUSFÜHRUNG</text>
-  <text x="1305" y="64" font-size="11.5" font-weight="700" fill="#bae6fd" text-anchor="middle">GERADES DACH &amp; BALKENSCHUHE</text>
+  <rect x="20" y="12" width="940" height="78" rx="8" fill="#0f172a" />
+  <text x="40" y="44" font-size="19" font-weight="900" fill="#f8fafc" letter-spacing="0.5">AUSFÜHRUNGS- &amp; BEMAẞUNGSPLAN: 1,0° TERRASSENÜBERDACHUNG</text>
+  <text x="40" y="68" font-size="12" font-weight="600" fill="#93c5fd">Alle Konstruktions- &amp; Achsmaße | 4 Balkenschuhe | 2,80 m stützenfreie Front | Keine Sparrenwinkel (24x Knaggen)</text>
 
   <!-- ============================================================== -->
   <!-- LINKES PANEL: 1. DRAUFSICHT (MASSIV VERGRÖSSERT AUF 950px BREITE!) -->
   <!-- ============================================================== -->
   <g id="grundriss" transform="translate(20, 102)">
     <!-- Container Card -->
-    <rect x="0" y="0" width="940" height="1030" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+    <rect x="0" y="0" width="940" height="860" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
     <rect x="0" y="0" width="940" height="42" rx="8" fill="#f1f5f9" />
     <text x="20" y="27" font-size="16.5" font-weight="900" fill="#0f172a">1. DRAUFSICHT: VOLLSTÄNDIGER AUSFÜHRUNGSPLAN (M 1:30)</text>
 
@@ -80,20 +173,19 @@
     <rect x="455" y="67" width="110" height="22" rx="4" fill="#0f172a" />
     <text x="510" y="83" font-size="12.5" font-weight="900" fill="#ffffff" text-anchor="middle">2,80 m Gesamtbreite</text>
 
-    <!-- ==================== HINTERE WAND (FENSTER) & WANDHOLZ MIT ANKERN ==================== -->
+    <!-- ==================== HINTERE WAND (FENSTER) &amp; WANDHOLZ MIT ANKERN ==================== -->
     <!-- Hauswand-Mauerwerk (Hintergrund: y=88 bis 130) -->
     <rect x="250" y="88" width="510" height="42" fill="url(#hatch-wall)" stroke="#475569" stroke-width="1.8" />
     
     <!-- Beschriftung Hauswand (mittig platziert) -->
-    <rect x="355" y="92" width="210" height="18" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1" opacity="0.95" />
-    <text x="460" y="105" font-size="10.5" font-weight="800" fill="#1e293b" text-anchor="middle">Hauswand unter 3 Fenstern (+2,70 m)</text>
-    <text x="285" y="105" font-size="8.5" font-weight="800" fill="#ef4444" text-anchor="middle">hef ≥ 130 mm ↓</text>
+    <rect x="310" y="92" width="300" height="18" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1" opacity="0.95" />
+    <text x="460" y="105" font-size="10" font-weight="900" fill="#1e293b" text-anchor="middle">Hauswand unter 3 Fenstern: 3x M16 Gewindestäbe (vorh.) + 2x 10er Dübel</text>
 
     <!-- ==================== WANDHOLZ POS. 02 (8/14 cm KVH) ==================== -->
     <g id="svg-wandholz-fenster" class="comp-hitbox" data-id="wandholz-fenster" title="Wandholz Pos. 02 (8/14 KVH an Hauswand)">
       <rect x="310" y="118" width="390" height="40" fill="rgba(0,0,0,0.001)" pointer-events="all" />
-      <rect id="svg-wandholz-fenster" x="310" y="130" width="390" height="18" fill="#475569" stroke="#0f172a" stroke-width="2" />
-      <!-- Transversale Fugenlinie am Stoß x=575 (unteres & oberes Blatt treffen aufeinander) -->
+      <rect id="svg-wandholz-fenster" x="310" y="130" width="382" height="18" fill="#475569" stroke="#0f172a" stroke-width="2" />
+      <!-- Transversale Fugenlinie am Stoß x=575 (unteres &amp; oberes Blatt treffen aufeinander) -->
       <line x1="575" y1="130" x2="575" y2="148" stroke="#ffffff" stroke-width="1.8" stroke-dasharray="2,1" pointer-events="none" />
       <text x="490" y="143" font-size="10" font-weight="800" fill="#f8fafc" text-anchor="middle" paint-order="stroke" stroke="#0f172a" stroke-width="1.5" pointer-events="none">Wandholz Pos. 02 (8/14 KVH, 2-tlg. Stoß bei x=1,65 m → siehe Schnitt B)</text>
     </g>
@@ -105,43 +197,44 @@
       <circle cx="575" cy="139" r="1.5" fill="#ffffff" />
     </g>
 
-    <!-- ==================== 5x INJEKTIONSANKER FIS V PLUS (DURCH HOLZ IN DIE HAUSWAND) ==================== -->
-    <!-- Korrekt dargestellt: Gehen horizontal von Holz-Vorderseite (y=148) durchs Holz (y=148->130) und tief in die Ziegelwand (y=130->95) -->
-    <g id="svg-injektionsanker" class="comp-hitbox" data-id="injektionsanker" title="5x Injektionsanker FIS V Plus M12 mit Siebhülse FIS H 20x130">
-      <!-- Anker 1 (x=330): Links bei Pfette 1 -->
-      <rect x="325.5" y="95" width="9" height="35" rx="2" fill="#fee2e2" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="2,2" />
-      <line x1="330" y1="130" x2="330" y2="98" stroke="#b91c1c" stroke-width="2.5" />
-      <line x1="330" y1="148" x2="330" y2="130" stroke="#ef4444" stroke-width="3" />
-      <rect x="326" y="147" width="8" height="3" rx="0.5" fill="#ef4444" stroke="#0f172a" stroke-width="0.8" />
+    <!-- ==================== WANDVERANKERUNG UNTER FENSTERN: 3x M16 (VORHANDEN) + 2x 10er DÜBEL ==================== -->
+    <g id="svg-injektionsanker" class="comp-hitbox" data-id="injektionsanker" title="Wandbefestigung: 3x vorhandene M16-Gewindestäbe + 2x 10er Dübel (mit 8x120 mm Schrauben)">
+      <!-- 1. 10er Dübel links (x=330, bei Balkenschuh 1) -->
+      <rect x="326.5" y="100" width="7" height="30" rx="1.5" fill="#fef3c7" stroke="#d97706" stroke-width="1.2" />
+      <line x1="330" y1="130" x2="330" y2="102" stroke="#b45309" stroke-width="2" />
+      <line x1="330" y1="148" x2="330" y2="130" stroke="#d97706" stroke-width="2.5" />
+      <rect x="326" y="147" width="8" height="3" rx="0.5" fill="#d97706" stroke="#0f172a" stroke-width="0.8" />
       <circle cx="330" cy="148.5" r="1.5" fill="#ffffff" /><rect x="316" y="95" width="28" height="60" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+      <rect x="318" y="108" width="24" height="11" rx="2" fill="#fef3c7" stroke="#d97706" stroke-width="0.6" /><text x="330" y="116" font-size="6.5" font-weight="900" fill="#b45309" text-anchor="middle">10er</text>
 
-      <!-- Anker 2 (x=415): Zwischenfeld links -->
-      <rect x="410.5" y="95" width="9" height="35" rx="2" fill="#fee2e2" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="2,2" />
-      <line x1="415" y1="130" x2="415" y2="98" stroke="#b91c1c" stroke-width="2.5" />
-      <line x1="415" y1="148" x2="415" y2="130" stroke="#ef4444" stroke-width="3" />
-      <rect x="411" y="147" width="8" height="3" rx="0.5" fill="#ef4444" stroke="#0f172a" stroke-width="0.8" />
-      <circle cx="415" cy="148.5" r="1.5" fill="#ffffff" /><rect x="401" y="95" width="28" height="60" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+      <!-- 2. M16-Gewindestab 1 (x=415, unter Fenster 1 - VORHANDEN WIE RECHTS) -->
+      <line x1="415" y1="92" x2="415" y2="130" stroke="#0284c7" stroke-width="3.5" />
+      <line x1="415" y1="130" x2="415" y2="148" stroke="#0284c7" stroke-width="4" />
+      <rect x="410" y="147" width="10" height="3" rx="0.5" fill="#0284c7" stroke="#0f172a" stroke-width="0.8" />
+      <circle cx="415" cy="148.5" r="2.2" fill="#ffffff" stroke="#0284c7" stroke-width="0.8" /><rect x="401" y="95" width="28" height="60" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+      <rect x="403" y="108" width="24" height="11" rx="2" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.6" /><text x="415" y="116" font-size="6.5" font-weight="900" fill="#0369a1" text-anchor="middle">M16</text>
 
-      <!-- Anker 3 (x=475): Direkt 25 cm links neben Balkenschuh 2 -->
-      <rect x="470.5" y="95" width="9" height="35" rx="2" fill="#fee2e2" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="2,2" />
-      <line x1="475" y1="130" x2="475" y2="98" stroke="#b91c1c" stroke-width="2.5" />
-      <line x1="475" y1="148" x2="475" y2="130" stroke="#ef4444" stroke-width="3" />
-      <rect x="471" y="147" width="8" height="3" rx="0.5" fill="#ef4444" stroke="#0f172a" stroke-width="0.8" />
-      <circle cx="475" cy="148.5" r="1.5" fill="#ffffff" /><rect x="461" y="95" width="28" height="60" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+      <!-- 3. M16-Gewindestab 2 (x=475, unter Fenster 2 / neben Mittelpfette - VORHANDEN WIE RECHTS) -->
+      <line x1="475" y1="92" x2="475" y2="130" stroke="#0284c7" stroke-width="3.5" />
+      <line x1="475" y1="130" x2="475" y2="148" stroke="#0284c7" stroke-width="4" />
+      <rect x="470" y="147" width="10" height="3" rx="0.5" fill="#0284c7" stroke="#0f172a" stroke-width="0.8" />
+      <circle cx="475" cy="148.5" r="2.2" fill="#ffffff" stroke="#0284c7" stroke-width="0.8" /><rect x="461" y="95" width="28" height="60" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+      <rect x="463" y="108" width="24" height="11" rx="2" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.6" /><text x="475" y="116" font-size="6.5" font-weight="900" fill="#0369a1" text-anchor="middle">M16</text>
 
-      <!-- Anker 4 (x=540): ca. 25 cm vor dem Stoß (in Teil A) -->
-      <rect x="535.5" y="95" width="9" height="35" rx="2" fill="#fee2e2" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="2,2" />
-      <line x1="540" y1="130" x2="540" y2="98" stroke="#b91c1c" stroke-width="2.5" />
-      <line x1="540" y1="148" x2="540" y2="130" stroke="#ef4444" stroke-width="3" />
-      <rect x="536" y="147" width="8" height="3" rx="0.5" fill="#ef4444" stroke="#0f172a" stroke-width="0.8" />
-      <circle cx="540" cy="148.5" r="1.5" fill="#ffffff" /><rect x="526" y="95" width="28" height="60" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+      <!-- 4. M16-Gewindestab 3 (x=540, vor Überblattungsstoß - VORHANDEN WIE RECHTS) -->
+      <line x1="540" y1="92" x2="540" y2="130" stroke="#0284c7" stroke-width="3.5" />
+      <line x1="540" y1="130" x2="540" y2="148" stroke="#0284c7" stroke-width="4" />
+      <rect x="535" y="147" width="10" height="3" rx="0.5" fill="#0284c7" stroke="#0f172a" stroke-width="0.8" />
+      <circle cx="540" cy="148.5" r="2.2" fill="#ffffff" stroke="#0284c7" stroke-width="0.8" /><rect x="526" y="95" width="28" height="60" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+      <rect x="528" y="108" width="24" height="11" rx="2" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.6" /><text x="540" y="116" font-size="6.5" font-weight="900" fill="#0369a1" text-anchor="middle">M16</text>
 
-      <!-- Anker 5 (x=650): Rechts in Teil B vor der rechten Wand -->
-      <rect x="645.5" y="95" width="9" height="35" rx="2" fill="#fee2e2" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="2,2" />
-      <line x1="650" y1="130" x2="650" y2="98" stroke="#b91c1c" stroke-width="2.5" />
-      <line x1="650" y1="148" x2="650" y2="130" stroke="#ef4444" stroke-width="3" />
-      <rect x="646" y="147" width="8" height="3" rx="0.5" fill="#ef4444" stroke="#0f172a" stroke-width="0.8" />
+      <!-- 5. 10er Dübel 2 (x=650, nach Überblattungsstoß / unter Fenster 3) -->
+      <rect x="646.5" y="100" width="7" height="30" rx="1.5" fill="#fef3c7" stroke="#d97706" stroke-width="1.2" />
+      <line x1="650" y1="130" x2="650" y2="102" stroke="#b45309" stroke-width="2" />
+      <line x1="650" y1="148" x2="650" y2="130" stroke="#d97706" stroke-width="2.5" />
+      <rect x="646" y="147" width="8" height="3" rx="0.5" fill="#d97706" stroke="#0f172a" stroke-width="0.8" />
       <circle cx="650" cy="148.5" r="1.5" fill="#ffffff" /><rect x="636" y="95" width="28" height="60" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+      <rect x="638" y="108" width="24" height="11" rx="2" fill="#fef3c7" stroke="#d97706" stroke-width="0.6" /><text x="650" y="116" font-size="6.5" font-weight="900" fill="#b45309" text-anchor="middle">10er</text>
     </g>
 
     <!-- ==================== RECHTE WAND (BALKON) ==================== -->
@@ -168,44 +261,54 @@
     <rect x="780" y="443" width="55" height="20" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" />
     <text x="807" y="457" font-size="11" font-weight="900" fill="#0369a1" text-anchor="middle">~1,90m</text>
 
-    <!-- ==================== LINKE PFETTE (2-TEILIG 10/10) ==================== -->
-    <!-- Teil 1 (2,50 m: Wand bis FP-1) -->
-    <g id="svg-pfette-links-1" class="comp-hitbox" data-id="pfette-links-1">
+    <!-- ==================== LINKE DOPPEL-FUẞPFETTE (2x 10/10 cm GESTAPELT = 10/20 cm) ==================== -->
+    <!-- Teil 1 (2,50 m: Wand bis FP-1 - 2 Hölzer 10/10 gestapelt &amp; mit 8x160 mm verschraubt) -->
+    <g id="svg-pfette-links-1" class="comp-hitbox" data-id="pfette-links-1" title="Pos. 03: Doppel-Fußpfette links Teil 1 (2x 10/10 cm gestapelt = 10/20 cm Verbund, L = 2,50 m)">
       <rect x="310" y="148" width="20" height="262" rx="1" fill="#334155" stroke="#0f172a" stroke-width="2" />
+      <line x1="314" y1="148" x2="314" y2="410" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="3,5" />
       <g transform="translate(320, 275) rotate(-90)">
-        <text x="0" y="3.5" font-size="8.5" font-weight="900" fill="#94a3b8" letter-spacing="0.8" text-anchor="middle">TEIL 1: 2,50 m (10/10)</text>
+        <text x="0" y="3.5" font-size="8.5" font-weight="900" fill="#f8fafc" letter-spacing="0.6" text-anchor="middle">DOPPEL-PFETTE 2x (10/10) • 2,50 m</text>
       </g>
     </g>
 
-    <!-- Teil 2 (1,50 m: FP-1 bis FP-2) -->
-    <g id="svg-pfette-links-2" class="comp-hitbox" data-id="pfette-links-2">
+    <!-- Teil 2 (1,50 m: FP-1 bis FP-2 - 2 Hölzer 10/10 gestapelt &amp; mit 8x160 mm verschraubt) -->
+    <g id="svg-pfette-links-2" class="comp-hitbox" data-id="pfette-links-2" title="Pos. 03: Doppel-Fußpfette links Teil 2 (2x 10/10 cm gestapelt = 10/20 cm Verbund, L = 1,50 m)">
       <rect x="310" y="414" width="20" height="158" rx="1" fill="#334155" stroke="#0f172a" stroke-width="2" />
+      <line x1="314" y1="414" x2="314" y2="572" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="3,5" />
       <g transform="translate(320, 492) rotate(-90)">
-        <text x="0" y="3.5" font-size="8.5" font-weight="900" fill="#94a3b8" letter-spacing="0.8" text-anchor="middle">TEIL 2: 1,50 m (10/10)</text>
+        <text x="0" y="3.5" font-size="8.5" font-weight="900" fill="#f8fafc" letter-spacing="0.6" text-anchor="middle">DOPPEL-PFETTE 2x (10/10) • 1,50 m</text>
       </g>
     </g>
 
-    <!-- Stoßlasche / Flachverbinder auf Pfosten FP-1 -->
-    <rect x="309" y="408" width="22" height="4" fill="#f59e0b" />
-    <rect x="312" y="402" width="16" height="16" rx="2" fill="#cbd5e1" stroke="#0f172a" stroke-width="1.3" />
-    <circle cx="316" cy="406" r="1.3" fill="#0f172a" /><circle cx="324" cy="406" r="1.3" fill="#0f172a" />
-    <circle cx="316" cy="414" r="1.3" fill="#0f172a" /><circle cx="324" cy="414" r="1.3" fill="#0f172a" />
-
-    <!-- Callout Stoßverbindung FP-1 links platziert ohne Überlappung -->
-    <g class="comp-hitbox" data-id="pfette-links-1">
-      <rect x="135" y="415" width="160" height="38" rx="5" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8" />
-      <text x="215" y="431" font-size="10.5" font-weight="900" fill="#b45309" text-anchor="middle">★ STOSS AUF FP-1</text>
-      <text x="215" y="445" font-size="9" font-weight="800" fill="#78350f" text-anchor="middle">2,50 m + 1,50 m (je 5cm)</text>
-      <path d="M 295 434 L 310 410" fill="none" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arrow-amber)" />
+    <!-- DOPPELPFOSTEN FP-1a + FP-1b (je 10x10 cm) mit 8x160 mm Schraube gekoppelt -->
+    <g id="svg-pfosten-fp1" class="comp-hitbox" data-id="pfosten-fp1" title="Pos. 04a: Doppelpfosten FP-1a &amp; FP-1b (je 10/10 cm) mit 8x160 mm verbunden">
+      <!-- FP-1a unter Pfette Teil 1 (y=388 bis 410, 10 cm Vollauflager) -->
+      <rect x="308" y="388" width="24" height="22" rx="1" fill="#ef4444" stroke="#0f172a" stroke-width="1.8" />
+      <circle cx="320" cy="399" r="3.5" fill="#ffffff" />
+      <text x="320" y="402" font-size="7" font-weight="900" fill="#b91c1c" text-anchor="middle">1a</text>
+      <!-- FP-1b unter Pfette Teil 2 (y=410 bis 432, 10 cm Vollauflager) -->
+      <rect x="308" y="410" width="24" height="22" rx="1" fill="#dc2626" stroke="#0f172a" stroke-width="1.8" />
+      <circle cx="320" cy="421" r="3.5" fill="#ffffff" />
+      <text x="320" y="424" font-size="7" font-weight="900" fill="#ffffff" text-anchor="middle">1b</text>
+      <!-- Horizontale Koppelung: Tellerkopfschraube 8x160 mm durch beide Pfosten -->
+      <line x1="304" y1="410" x2="336" y2="410" stroke="#f59e0b" stroke-width="2.5" />
+      <circle cx="320" cy="410" r="2.2" fill="#f59e0b" stroke="#78350f" stroke-width="0.8" />
     </g>
 
-    <!-- Pfosten FP-1 Symbol -->
-    <rect id="svg-pfosten-fp1" class="comp-hitbox" data-id="pfosten-fp1" x="308" y="398" width="24" height="24" fill="#ef4444" stroke="#0f172a" stroke-width="2" />
-    <circle cx="320" cy="410" r="4" fill="#ffffff" />
+    <!-- Callout Doppelpfosten FP-1a + FP-1b -->
     <g class="comp-hitbox" data-id="pfosten-fp1">
-      <rect x="228" y="365" width="72" height="30" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5" />
-      <text x="264" y="384" font-size="12" font-weight="900" fill="#b91c1c" text-anchor="middle">● FP-1</text>
-      <path d="M 300 380 L 308 400" fill="none" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arrow-red)" />
+      <rect x="95" y="360" width="205" height="44" rx="5" fill="#fee2e2" stroke="#ef4444" stroke-width="1.8" />
+      <text x="197" y="377" font-size="11" font-weight="900" fill="#b91c1c" text-anchor="middle">● DOPPELPFOSTEN FP-1a / FP-1b</text>
+      <text x="197" y="394" font-size="8.8" font-weight="800" fill="#7f1d1d" text-anchor="middle">2x 10/10 cm • mit 8×160 mm gekoppelt</text>
+      <path d="M 300 382 L 308 399" fill="none" stroke="#ef4444" stroke-width="1.8" marker-end="url(#arrow-red)" />
+    </g>
+
+    <!-- Callout Vollauflager 10 cm je Pfette -->
+    <g class="comp-hitbox" data-id="pfette-links-1">
+      <rect x="95" y="412" width="205" height="42" rx="5" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8" />
+      <text x="197" y="428" font-size="10.5" font-weight="900" fill="#b45309" text-anchor="middle">★ JE 10 cm VOLLAUFLAGER</text>
+      <text x="197" y="443" font-size="8.5" font-weight="800" fill="#78350f" text-anchor="middle">Teil 1 auf FP-1a • Teil 2 auf FP-1b</text>
+      <path d="M 300 430 L 308 420" fill="none" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arrow-amber)" />
     </g>
 
     <!-- ==================== FP-2: L-PFOSTEN (2 HÖLZER) ==================== -->
@@ -216,7 +319,7 @@
       <rect x="310" y="572" width="34" height="20" fill="#dc2626" stroke="#0f172a" stroke-width="2" rx="1" />
       <!-- L-Stoßfuge -->
       <line x1="310" y1="572" x2="330" y2="572" stroke="#fef2f2" stroke-width="1.5" stroke-dasharray="2,2" />
-      <!-- Schrauben im L-Stoß (4x Tellerkopf 8x120 mm) -->
+      <!-- Schrauben im L-Stoß (4x Tellerkopf 8x160 mm) -->
       <circle cx="315" cy="558" r="2" fill="#ffffff" stroke="#0f172a" stroke-width="1" />
       <circle cx="325" cy="564" r="2" fill="#ffffff" stroke="#0f172a" stroke-width="1" />
       <circle cx="336" cy="582" r="2" fill="#ffffff" stroke="#0f172a" stroke-width="1" />
@@ -275,6 +378,15 @@
       <path d="M 510 542 L 510 562" fill="none" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow-amber)" />
     </g>
 
+        <!-- BALKENSCHUH 5 (Wandholz Pos. 02 an Wandpfette rechts, 8 cm Innenbreite Typ BSI 80/120) -->
+    <rect id="svg-balkenschuh-5" class="comp-hitbox" data-id="balkenschuh-5" title="Pos. 10b: Balkenschuh BSI 80/120 (8 cm Innenbreite) - Wandholz an Wandpfette rechts" x="680" y="128" width="14" height="22" rx="2" fill="#f59e0b" stroke="#b45309" stroke-width="2.5" />
+    <g class="comp-hitbox" data-id="balkenschuh-5">
+      <rect x="775" y="98" width="155" height="42" rx="5" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8" />
+      <text x="852" y="116" font-size="11" font-weight="900" fill="#b45309" text-anchor="middle">★ BALKENSCHUH 5 (8 cm)</text>
+      <text x="852" y="131" font-size="8.8" font-weight="800" fill="#92400e" text-anchor="middle">BSI 80/120 an Wandpfette rechts</text>
+      <path d="M 775 122 L 696 138" fill="none" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arrow-amber)" />
+    </g>
+
     <!-- BALKENSCHUH 3 (Frontträger an Wandpfette rechts) -->
     <rect id="svg-balkenschuh-3" class="comp-hitbox" data-id="balkenschuh-3" x="680" y="566" width="28" height="30" rx="3" fill="#f59e0b" stroke="#b45309" stroke-width="2.5" />
     <g class="comp-hitbox" data-id="balkenschuh-3">
@@ -282,6 +394,124 @@
       <text x="725" y="624" font-size="11.5" font-weight="900" fill="#b45309" text-anchor="middle">★ BALKENSCHUH 3</text>
       <text x="725" y="640" font-size="9.5" font-weight="800" fill="#92400e" text-anchor="middle">Frontträger an Wandpfette</text>
       <path d="M 700 605 L 695 596" fill="none" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow-amber)" />
+    </g>
+
+<!-- AUFLAGERHÖLZER 10x10 cm (L = 30 cm) AN MITTEL- &amp; FUẞPFETTE (18 Stk. mit je 2x 8x160 mm verschraubt) -->
+    <g id="sparren-auflagehoelzer" class="comp-hitbox" data-id="balkenwinkel" title="Pos. 13b: 24x Auflagehölzer 10x10 cm (L=30 cm) mit je 2x 8x160 mm Tellerkopf (Fuß-, Mittel- &amp; Wandpfette)">
+      <!-- 6 AUFLAGEHÖLZER LINKS (AN DER DOPPEL-FUẞPFETTE, JE 30 cm) -->
+      <rect x="330" y="161" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="336" cy="167" r="1.8" fill="#0f172a" /><circle cx="336" cy="167" r="0.8" fill="#f59e0b" />
+      <circle cx="336" cy="189" r="1.8" fill="#0f172a" /><circle cx="336" cy="189" r="0.8" fill="#f59e0b" />
+
+      <rect x="330" y="238" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="336" cy="244" r="1.8" fill="#0f172a" /><circle cx="336" cy="244" r="0.8" fill="#f59e0b" />
+      <circle cx="336" cy="266" r="1.8" fill="#0f172a" /><circle cx="336" cy="266" r="0.8" fill="#f59e0b" />
+
+      <rect x="330" y="315" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="336" cy="321" r="1.8" fill="#0f172a" /><circle cx="336" cy="321" r="0.8" fill="#f59e0b" />
+      <circle cx="336" cy="343" r="1.8" fill="#0f172a" /><circle cx="336" cy="343" r="0.8" fill="#f59e0b" />
+
+      <rect x="330" y="392" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="336" cy="398" r="1.8" fill="#0f172a" /><circle cx="336" cy="398" r="0.8" fill="#f59e0b" />
+      <circle cx="336" cy="420" r="1.8" fill="#0f172a" /><circle cx="336" cy="420" r="0.8" fill="#f59e0b" />
+
+      <rect x="330" y="469" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="336" cy="475" r="1.8" fill="#0f172a" /><circle cx="336" cy="475" r="0.8" fill="#f59e0b" />
+      <circle cx="336" cy="497" r="1.8" fill="#0f172a" /><circle cx="336" cy="497" r="0.8" fill="#f59e0b" />
+
+      <rect x="330" y="546" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="336" cy="552" r="1.8" fill="#0f172a" /><circle cx="336" cy="552" r="0.8" fill="#f59e0b" />
+      <circle cx="336" cy="574" r="1.8" fill="#0f172a" /><circle cx="336" cy="574" r="0.8" fill="#f59e0b" />
+      <!-- Sparren bei y=178 links: Auflageholz 30 cm -->
+      <rect x="487" y="161" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <!-- 2 Bohrungen mit 8x160 mm Schrauben (oben &amp; unten neben Sparren) -->
+      <circle cx="493" cy="167" r="1.8" fill="#0f172a" /><circle cx="493" cy="167" r="0.8" fill="#f59e0b" />
+      <circle cx="493" cy="189" r="1.8" fill="#0f172a" /><circle cx="493" cy="189" r="0.8" fill="#f59e0b" />
+
+      <!-- Sparren bei y=178 rechts: Auflageholz 30 cm -->
+      <rect x="521" y="161" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="527" cy="167" r="1.8" fill="#0f172a" /><circle cx="527" cy="167" r="0.8" fill="#f59e0b" />
+      <circle cx="527" cy="189" r="1.8" fill="#0f172a" /><circle cx="527" cy="189" r="0.8" fill="#f59e0b" />
+      <!-- Sparren bei y=255 links: Auflageholz 30 cm -->
+      <rect x="487" y="238" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <!-- 2 Bohrungen mit 8x160 mm Schrauben (oben &amp; unten neben Sparren) -->
+      <circle cx="493" cy="244" r="1.8" fill="#0f172a" /><circle cx="493" cy="244" r="0.8" fill="#f59e0b" />
+      <circle cx="493" cy="266" r="1.8" fill="#0f172a" /><circle cx="493" cy="266" r="0.8" fill="#f59e0b" />
+
+      <!-- Sparren bei y=255 rechts: Auflageholz 30 cm -->
+      <rect x="521" y="238" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="527" cy="244" r="1.8" fill="#0f172a" /><circle cx="527" cy="244" r="0.8" fill="#f59e0b" />
+      <circle cx="527" cy="266" r="1.8" fill="#0f172a" /><circle cx="527" cy="266" r="0.8" fill="#f59e0b" />
+      <!-- Sparren bei y=332 links: Auflageholz 30 cm -->
+      <rect x="487" y="315" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <!-- 2 Bohrungen mit 8x160 mm Schrauben (oben &amp; unten neben Sparren) -->
+      <circle cx="493" cy="321" r="1.8" fill="#0f172a" /><circle cx="493" cy="321" r="0.8" fill="#f59e0b" />
+      <circle cx="493" cy="343" r="1.8" fill="#0f172a" /><circle cx="493" cy="343" r="0.8" fill="#f59e0b" />
+
+      <!-- Sparren bei y=332 rechts: Auflageholz 30 cm -->
+      <rect x="521" y="315" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="527" cy="321" r="1.8" fill="#0f172a" /><circle cx="527" cy="321" r="0.8" fill="#f59e0b" />
+      <circle cx="527" cy="343" r="1.8" fill="#0f172a" /><circle cx="527" cy="343" r="0.8" fill="#f59e0b" />
+      <!-- Sparren bei y=409 links: Auflageholz 30 cm -->
+      <rect x="487" y="392" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <!-- 2 Bohrungen mit 8x160 mm Schrauben (oben &amp; unten neben Sparren) -->
+      <circle cx="493" cy="398" r="1.8" fill="#0f172a" /><circle cx="493" cy="398" r="0.8" fill="#f59e0b" />
+      <circle cx="493" cy="420" r="1.8" fill="#0f172a" /><circle cx="493" cy="420" r="0.8" fill="#f59e0b" />
+
+      <!-- Sparren bei y=409 rechts: Auflageholz 30 cm -->
+      <rect x="521" y="392" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="527" cy="398" r="1.8" fill="#0f172a" /><circle cx="527" cy="398" r="0.8" fill="#f59e0b" />
+      <circle cx="527" cy="420" r="1.8" fill="#0f172a" /><circle cx="527" cy="420" r="0.8" fill="#f59e0b" />
+      <!-- Sparren bei y=486 links: Auflageholz 30 cm -->
+      <rect x="487" y="469" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <!-- 2 Bohrungen mit 8x160 mm Schrauben (oben &amp; unten neben Sparren) -->
+      <circle cx="493" cy="475" r="1.8" fill="#0f172a" /><circle cx="493" cy="475" r="0.8" fill="#f59e0b" />
+      <circle cx="493" cy="497" r="1.8" fill="#0f172a" /><circle cx="493" cy="497" r="0.8" fill="#f59e0b" />
+
+      <!-- Sparren bei y=486 rechts: Auflageholz 30 cm -->
+      <rect x="521" y="469" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="527" cy="475" r="1.8" fill="#0f172a" /><circle cx="527" cy="475" r="0.8" fill="#f59e0b" />
+      <circle cx="527" cy="497" r="1.8" fill="#0f172a" /><circle cx="527" cy="497" r="0.8" fill="#f59e0b" />
+      <!-- Sparren bei y=563 links: Auflageholz 30 cm -->
+      <rect x="487" y="546" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <!-- 2 Bohrungen mit 8x160 mm Schrauben (oben &amp; unten neben Sparren) -->
+      <circle cx="493" cy="552" r="1.8" fill="#0f172a" /><circle cx="493" cy="552" r="0.8" fill="#f59e0b" />
+      <circle cx="493" cy="574" r="1.8" fill="#0f172a" /><circle cx="493" cy="574" r="0.8" fill="#f59e0b" />
+
+      <!-- Sparren bei y=563 rechts: Auflageholz 30 cm -->
+      <rect x="521" y="546" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="527" cy="552" r="1.8" fill="#0f172a" /><circle cx="527" cy="552" r="0.8" fill="#f59e0b" />
+      <circle cx="527" cy="574" r="1.8" fill="#0f172a" /><circle cx="527" cy="574" r="0.8" fill="#f59e0b" />
+      <!-- 6 AUFLAGEHÖLZER RECHTS (AN DER WANDPFETTE RECHTS, JE 30 cm) -->
+      <!-- Sparren bei y=178: Auflageholz 30 cm (y=161 bis 195) -->
+      <rect x="680" y="161" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="686" cy="167" r="1.8" fill="#0f172a" /><circle cx="686" cy="167" r="0.8" fill="#f59e0b" />
+      <circle cx="686" cy="189" r="1.8" fill="#0f172a" /><circle cx="686" cy="189" r="0.8" fill="#f59e0b" />
+
+      <!-- Sparren bei y=255: Auflageholz 30 cm (y=238 bis 272) -->
+      <rect x="680" y="238" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="686" cy="244" r="1.8" fill="#0f172a" /><circle cx="686" cy="244" r="0.8" fill="#f59e0b" />
+      <circle cx="686" cy="266" r="1.8" fill="#0f172a" /><circle cx="686" cy="266" r="0.8" fill="#f59e0b" />
+
+      <!-- Sparren bei y=332: Auflageholz 30 cm (y=315 bis 349) -->
+      <rect x="680" y="315" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="686" cy="321" r="1.8" fill="#0f172a" /><circle cx="686" cy="321" r="0.8" fill="#f59e0b" />
+      <circle cx="686" cy="343" r="1.8" fill="#0f172a" /><circle cx="686" cy="343" r="0.8" fill="#f59e0b" />
+
+      <!-- Sparren bei y=409: Auflageholz 30 cm (y=392 bis 426) -->
+      <rect x="680" y="392" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="686" cy="398" r="1.8" fill="#0f172a" /><circle cx="686" cy="398" r="0.8" fill="#f59e0b" />
+      <circle cx="686" cy="420" r="1.8" fill="#0f172a" /><circle cx="686" cy="420" r="0.8" fill="#f59e0b" />
+
+      <!-- Sparren bei y=486: Auflageholz 30 cm (y=469 bis 503) -->
+      <rect x="680" y="469" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="686" cy="475" r="1.8" fill="#0f172a" /><circle cx="686" cy="475" r="0.8" fill="#f59e0b" />
+      <circle cx="686" cy="497" r="1.8" fill="#0f172a" /><circle cx="686" cy="497" r="0.8" fill="#f59e0b" />
+
+      <!-- Sparren bei y=563: Auflageholz 30 cm (y=546 bis 580) -->
+      <rect x="680" y="546" width="12" height="34" rx="1.5" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="686" cy="552" r="1.8" fill="#0f172a" /><circle cx="686" cy="552" r="0.8" fill="#f59e0b" />
+      <circle cx="686" cy="574" r="1.8" fill="#0f172a" /><circle cx="686" cy="574" r="0.8" fill="#f59e0b" />
     </g>
 
     <!-- ==================== SPARRENLAGE (12 STK. 10/10) ==================== -->
@@ -305,46 +535,30 @@
       <rect x="521" y="557" width="171" height="12" rx="1" />
     </g>
 
-    <!-- Schwerlastwinkel an Mittelpfette -->
-    <g id="sparren-winkel" class="comp-hitbox" data-id="balkenwinkel" fill="#f59e0b" stroke="#b45309" stroke-width="1.2">
-      <!-- 12 Paare an Mittelpfette -->
-      <polygon points="494,169 499,169 499,174 497,174 497,171 494,171" />
-      <polygon points="494,187 499,187 499,182 497,182 497,185 494,185" />
-      <polygon points="526,169 521,169 521,174 523,174 523,171 526,171" />
-      <polygon points="526,187 521,187 521,182 523,182 523,185 526,185" />
+    
 
-      <polygon points="494,246 499,246 499,251 497,251 497,248 494,248" />
-      <polygon points="494,264 499,264 499,259 497,259 497,262 494,262" />
-      <polygon points="526,246 521,246 521,251 523,251 523,248 526,248" />
-      <polygon points="526,264 521,264 521,259 523,259 523,262 526,262" />
-
-      <polygon points="494,323 499,323 499,328 497,328 497,325 494,325" />
-      <polygon points="494,341 499,341 499,336 497,336 497,339 494,339" />
-      <polygon points="526,323 521,323 521,328 523,328 523,325 526,325" />
-      <polygon points="526,341 521,341 521,336 523,336 523,339 526,339" />
-
-      <polygon points="494,400 499,400 499,405 497,405 497,402 494,402" />
-      <polygon points="494,418 499,418 499,413 497,413 497,416 494,416" />
-      <polygon points="526,400 521,400 521,405 523,405 523,402 526,402" />
-      <polygon points="526,418 521,418 521,413 523,413 523,416 526,416" />
-
-      <polygon points="494,477 499,477 499,482 497,482 497,479 494,479" />
-      <polygon points="494,495 499,495 499,490 497,490 497,493 494,493" />
-      <polygon points="526,477 521,477 521,482 523,482 523,479 526,479" />
-      <polygon points="526,495 521,495 521,490 523,490 523,493 526,493" />
-
-      <polygon points="494,554 499,554 499,559 497,559 497,556 494,556" />
-      <polygon points="494,572 499,572 499,567 497,567 497,570 494,570" />
-      <polygon points="526,554 521,554 521,559 523,559 523,556 526,556" />
-      <polygon points="526,572 521,572 521,567 523,567 523,570 526,570" />
+        <!-- Callout Auflagehölzer an Doppel-Fußpfette links -->
+    <g class="comp-hitbox" data-id="balkenwinkel" title="Pos. 13b: 6x Auflagehölzer 10x10 cm (L=30 cm) an linker Fußpfette mit 8x160 mm Tellerkopfschrauben">
+      <rect x="155" y="274" width="168" height="42" rx="5" fill="#eff6ff" stroke="#0284c7" stroke-width="1.8" />
+      <text x="239" y="291" font-size="9" font-weight="900" fill="#0369a1" text-anchor="middle">★ AUFLAGEHÖLZER FUẞPFETTE</text>
+      <text x="239" y="305" font-size="8" font-weight="800" fill="#0284c7" text-anchor="middle">6x 10×10 (L=30 cm) • 8×160 mm</text>
+      <path d="M 320 295 L 340 326" fill="none" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arrow-blue)" />
     </g>
 
-    <!-- Callout Sparrenwinkel (oben rechts platziert, absolut frei) -->
-    <g class="comp-hitbox" data-id="balkenwinkel">
-      <rect x="545" y="275" width="155" height="40" rx="5" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8" />
-      <text x="622" y="292" font-size="10.5" font-weight="900" fill="#b45309" text-anchor="middle">★ SPARRENWINKEL (24x)</text>
-      <text x="622" y="306" font-size="9" font-weight="800" fill="#78350f" text-anchor="middle">Mit Rippe (bündig eingebaut)</text>
-      <path d="M 545 295 L 526 323" fill="none" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arrow-amber)" />
+    <!-- Callout Auflagehölzer an Wandpfette rechts (Nutzer-Anforderung!) -->
+    <g class="comp-hitbox" data-id="balkenwinkel" title="Pos. 13b: 6x Auflagehölzer 10x10 cm (L=30 cm) an Wandpfette rechts mit 8x160 mm Tellerkopfschrauben">
+      <rect x="718" y="315" width="190" height="42" rx="5" fill="#eff6ff" stroke="#0284c7" stroke-width="1.8" />
+      <text x="813" y="332" font-size="9" font-weight="900" fill="#0369a1" text-anchor="middle">★ AUFLAGEHÖLZER WANDPFETTE</text>
+      <text x="813" y="346" font-size="8" font-weight="800" fill="#0284c7" text-anchor="middle">6x 10×10 (L=30 cm) • 8×160 mm (Keine Winkel!)</text>
+      <path d="M 718 336 L 694 332" fill="none" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arrow-blue)" />
+    </g>
+
+    <!-- Callout Auflagerknaggen (Ersetzt Sparrenwinkel zu 100%) -->
+    <g class="comp-hitbox" data-id="balkenwinkel" title="Pos. 13b: 24x Auflagerknaggen 10x10 cm (L=30 cm) mit je 2x 8x160 mm Tellerkopf an ALLEN 3 Pfetten">
+      <rect x="535" y="270" width="185" height="44" rx="5" fill="#eff6ff" stroke="#0284c7" stroke-width="1.8" />
+      <text x="627" y="287" font-size="10" font-weight="900" fill="#0369a1" text-anchor="middle">★ 24x AUFLAGEHÖLZER (30 cm)</text>
+      <text x="627" y="301" font-size="8" font-weight="800" fill="#0284c7" text-anchor="middle">8×160 mm • KEINE Winkel nötig!</text>
+      <path d="M 535 292 L 526 323" fill="none" stroke="#0284c7" stroke-width="1.5" marker-end="url(#arrow-blue)" />
     </g>
 
     <!-- Sparren-Achsabstand e = 80 cm -->
@@ -352,45 +566,7 @@
     <rect x="360" y="276" width="115" height="20" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" />
     <text x="417" y="290" font-size="11" font-weight="900" fill="#0369a1" text-anchor="middle">e = 80 cm (Sparren)</text>
 
-    <!-- ==================== SCHRAUBEN- & WINKEL-MARKIERUNGEN IM PLAN ==================== -->
-    <!-- Pos. 15a: 24x Schwerlast-Winkelverbinder mit Rippe (Sparren an Fußpfette links & Wandpfette rechts) -->
-    <g id="sparren-winkel-aussen" class="comp-hitbox" data-id="sparrenwinkel-aussen" fill="#f59e0b" stroke="#b45309" stroke-width="1.2" title="Pos. 15a: 24x Schwerlastwinkel mit Rippe (Sparren an Fuß- &amp; Wandpfette)">
-      <!-- Links an Fußpfette (x=330) -->
-      <polygon points="330,169 335,169 335,174 333,174 333,171 330,171" />
-      <polygon points="330,187 335,187 335,182 333,182 333,185 330,185" />
-      <polygon points="330,246 335,246 335,251 333,251 333,248 330,248" />
-      <polygon points="330,264 335,264 335,259 333,259 333,262 330,262" />
-      <polygon points="330,323 335,323 335,328 333,328 333,325 330,325" />
-      <polygon points="330,341 335,341 335,336 333,336 333,339 330,339" />
-      <polygon points="330,400 335,400 335,405 333,405 333,402 330,402" />
-      <polygon points="330,418 335,418 335,413 333,413 333,416 330,416" />
-      <polygon points="330,477 335,477 335,482 333,482 333,479 330,479" />
-      <polygon points="330,495 335,495 335,490 333,490 333,493 330,493" />
-      <polygon points="330,554 335,554 335,559 333,559 333,556 330,556" />
-      <polygon points="330,572 335,572 335,567 333,567 333,570 330,570" />
-
-      <!-- Rechts an Wandpfette (x=692) -->
-      <polygon points="692,169 687,169 687,174 689,174 689,171 692,171" />
-      <polygon points="692,187 687,187 687,182 689,182 689,185 692,185" />
-      <polygon points="692,246 687,246 687,251 689,251 689,248 692,248" />
-      <polygon points="692,264 687,264 687,259 689,259 689,262 692,262" />
-      <polygon points="692,323 687,323 687,328 689,328 689,325 692,325" />
-      <polygon points="692,341 687,341 687,336 689,336 689,339 692,339" />
-      <polygon points="692,400 687,400 687,405 689,405 689,402 692,402" />
-      <polygon points="692,418 687,418 687,413 689,413 689,416 692,416" />
-      <polygon points="692,477 687,477 687,482 689,482 689,479 692,479" />
-      <polygon points="692,495 687,495 687,490 689,490 689,493 692,493" />
-      <polygon points="692,554 687,554 687,559 689,559 689,556 692,556" />
-      <polygon points="692,572 687,572 687,567 689,567 689,570 692,570" />
-    </g>
-
-    <!-- Callout Sparrenwinkel Außenauflager links (Pos. 15a) -->
-    <g class="comp-hitbox" data-id="sparrenwinkel-aussen">
-      <rect x="175" y="274" width="145" height="38" rx="5" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.8" />
-      <text x="247" y="290" font-size="10" font-weight="900" fill="#b45309" text-anchor="middle">★ SPARRENWINKEL (24x)</text>
-      <text x="247" y="304" font-size="8.5" font-weight="800" fill="#78350f" text-anchor="middle">Pos. 15a: An Fuß- &amp; Wandpfette</text>
-      <path d="M 320 293 L 330 323" fill="none" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arrow-amber)" />
-    </g>
+    <!-- ==================== KEINE METALL-WINKEL: ALLE SPARREN LIEGEN AUF 30 CM AUFLAGEHÖLZERN (NUTZER-STANDARD) ==================== -->
 
     <!-- 2. Spenglerschrauben für Trapezblech (Pos. 15c - INTERAKTIV) -->
     <g class="comp-hitbox" data-id="spenglerschrauben" title="Pos. 15c: 100x Spenglerschrauben 4,8x35 mm mit EPDM-Dichtscheibe" fill="#b91c1c" stroke="#ffffff" stroke-width="0.8">
@@ -402,11 +578,18 @@
       <circle cx="390" cy="563" r="2" /><circle cx="450" cy="563" r="2" /><circle cx="570" cy="563" r="2" /><circle cx="640" cy="563" r="2" />
     </g>
 
-    <!-- Gefälle-Pfeil diagonal -->
-    <path d="M 660 160 L 340 560" fill="none" stroke="#0284c7" stroke-width="3" marker-end="url(#arrow-blue)" stroke-dasharray="6,4" />
-    <rect x="535" y="215" width="130" height="40" rx="5" fill="#ffffff" stroke="#0284c7" stroke-width="1.8" />
-    <text x="600" y="233" font-size="12.5" font-weight="900" fill="#0369a1" text-anchor="middle">1,0° Gefälle ↘</text>
-    <text x="600" y="248" font-size="10.5" font-weight="700" fill="#0284c7" text-anchor="middle">Ablauf vorne links</text>
+    <!-- Gefälle-Pfeile horizontal: 1,0° Gefälle von rechts nach links (Exakt in Trapezblech-Spannrichtung!) -->
+    <path d="M 680 210 L 330 210" fill="none" stroke="#0284c7" stroke-width="3.5" marker-end="url(#arrow-blue)" stroke-dasharray="8,5" />
+    <path d="M 680 445 L 330 445" fill="none" stroke="#0284c7" stroke-width="2.5" marker-end="url(#arrow-blue)" stroke-dasharray="8,5" opacity="0.6" />
+    <rect x="410" y="190" width="200" height="40" rx="6" fill="#ffffff" stroke="#0284c7" stroke-width="1.8" filter="drop-shadow(0 2px 6px rgba(2, 132, 199, 0.22))" />
+    <text x="510" y="208" font-size="12" font-weight="900" fill="#0369a1" text-anchor="middle">◀ 1,0° GEFÄLLE (Δh = 7 cm)</text>
+    <text x="510" y="222" font-size="9" font-weight="700" fill="#0284c7" text-anchor="middle">Von rechts nach links zur Regenrinne</text>
+
+    <!-- Traufe &amp; Rinnen-Hinweis links -->
+    <g transform="translate(295, 360) rotate(-90)">
+      <rect x="-80" y="-10" width="160" height="20" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" />
+      <text x="0" y="4" font-size="9.5" font-weight="900" fill="#0369a1" text-anchor="middle">💧 DACHRINNE / TRAUFE LINKS</text>
+    </g>
 
     <!-- ==================== BEMAẞUNGSKETTE LINKS (TIEFE) ==================== -->
     <line x1="160" y1="139" x2="310" y2="139" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="2,2" />
@@ -443,99 +626,414 @@
     <rect x="390" y="605" width="240" height="24" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.5" />
     <text x="510" y="621" font-size="12" font-weight="900" fill="#065f46" text-anchor="middle">✓ KEIN MITTELPFOSTEN FREI!</text>
 
-    <!-- ==================== SCHRAUBEN- & VERBINDER-LEGENDE ==================== -->
-    <!-- Positioned in the upper right open space inside Draufsicht - FULLY INTERACTIVE -->
-    <g transform="translate(725, 10)">
-      <rect x="0" y="0" width="215" height="162" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.3" filter="drop-shadow(0 2px 4px rgba(15,23,42,0.06))" />
-      <rect x="0" y="0" width="215" height="22" rx="6" fill="#f1f5f9" />
-      <text x="107" y="15" font-size="9.5" font-weight="900" fill="#0f172a" text-anchor="middle">🔩 SCHRAUBEN- &amp; VERBINDER-LEGENDE</text>
+    <!-- ==================== SCHRAUBEN- &amp; VERBINDER-LEGENDE ==================== -->
+    <!-- Positioned in the upper right open space inside Draufsicht - MIT MAUS FREI VERSCHIEBBAR -->
+    <g id="svg-schrauben-legende" class="draggable-legend" transform="translate(725, 10)" style="cursor: grab;" title="Klicke auf eine Schraube, um sie im Plan anzuzeigen • Mit Header verschiebbar (Doppelklick: Reset)">
+      <rect id="schrauben-legende-bg" x="0" y="0" width="215" height="174" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.3" filter="drop-shadow(0 4px 10px rgba(15,23,42,0.12))" />
+      <g id="schrauben-legende-handle">
+        <rect x="0" y="0" width="215" height="22" rx="6" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.8" />
+        <text x="10" y="15" font-size="9" font-weight="900" fill="#0f172a">🔩 SCHRAUBEN-LEGENDE</text>
+        <text x="205" y="15" font-size="8" font-weight="700" fill="#64748b" text-anchor="end">✥ Verschieben</text>
+      </g>
       
-      <!-- Pos 15a: 24x Schwerlastwinkel Außenpfetten -->
-      <g class="comp-hitbox" data-id="sparrenwinkel-aussen" title="Pos. 15a: 24x Schwerlastwinkel (Sparren an Außenpfetten)">
-        <rect x="4" y="24" width="207" height="16" fill="rgba(0,0,0,0.001)" pointer-events="all" />
-        <polygon points="12,32 17,32 17,37 15,37 15,34 12,34" fill="#f59e0b" stroke="#b45309" stroke-width="0.8" />
-        <text x="26" y="35" font-size="8.5" font-weight="800" fill="#334155">24x Schwerlastwinkel (Außenpfetten)</text>
+      <!-- Pos 13b: 24x Auflagerknaggen 10x10 cm L=30cm (Ersetzt Metallwinkel zu 100%) -->
+      <g class="comp-hitbox" data-id="balkenwinkel" data-pos="13b" title="Pos. 13b: 24x Auflagerknaggen 10x10 cm (L=30 cm) mit 8x160 mm Schrauben">
+        <rect x="4" y="24" width="207" height="32" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+        <rect x="11" y="32" width="10" height="10" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" rx="1.5" />
+        <circle cx="16" cy="37" r="1.5" fill="#0f172a" />
+        <text x="26" y="34" font-size="8.5" font-weight="900" fill="#0369a1">24x Auflagehölzer 10×10 (L=30cm)</text>
+        <text x="26" y="46" font-size="7.5" font-weight="700" fill="#64748b">mit 8×160 mm (ersetzt alle Winkel!)</text>
       </g>
 
-      <!-- Pos 13b: 24x Sparrenwinkel Mittelpfette -->
-      <g class="comp-hitbox" data-id="balkenwinkel" title="Pos. 13b: 24x Sparrenwinkel mit Rippe (an Mittelpfette)">
-        <rect x="4" y="40" width="207" height="16" fill="rgba(0,0,0,0.001)" pointer-events="all" />
-        <polygon points="12,48 17,48 17,53 15,53 15,50 12,50" fill="#d97706" stroke="#78350f" stroke-width="0.8" />
-        <text x="26" y="51" font-size="8.5" font-weight="800" fill="#334155">24x Sparrenwinkel (Mittelpfette)</text>
-      </g>
-
-      <!-- Pos 15b: 15x Tellerkopf 8x120 Pfosten & Kopfbänder -->
-      <g class="comp-hitbox" data-id="tellerkopf-pfosten" title="Pos. 15b: 15x Tellerkopf 8x120 mm (Kopfband/Pfosten)">
+      <!-- Pos 15b: 50x Tellerkopf 8x160 mm (Standardisierung: ersetzt alle 8x120 mm) -->
+      <g class="comp-hitbox" data-id="tellerkopf-pfosten" data-pos="15b" title="Pos. 15b: 50x Tellerkopf 8x160 mm (FP-1a/b, Knaggen, Kopfbänder)">
         <rect x="4" y="56" width="207" height="16" fill="rgba(0,0,0,0.001)" pointer-events="all" />
         <circle cx="15" cy="64" r="2.5" fill="#ffffff" stroke="#ef4444" stroke-width="1.2" />
-        <text x="26" y="67" font-size="8.5" font-weight="800" fill="#334155">15x Tellerkopf 8×120 mm (Pfosten)</text>
+        <text x="26" y="67" font-size="8.5" font-weight="800" fill="#334155">50x Tellerkopf 8×160 mm (Holzbau)</text>
       </g>
 
-<!-- Pos 15e: 1x Bolzen-Set M12 Schnitt B -->
-      <g class="comp-hitbox" data-id="bolzen-m12" title="Pos. 15e: 1x M12 Bolzen-Set Schnitt B Stoß">
+      <!-- Pos 15e: 1x Bolzen-Set M12 Schnitt B -->
+      <g class="comp-hitbox" data-id="bolzen-m12" data-pos="15e" title="Pos. 15e: 1x M12 Bolzen-Set Schnitt B Stoß">
         <rect x="4" y="72" width="207" height="16" fill="rgba(0,0,0,0.001)" pointer-events="all" />
         <rect x="12" y="76" width="6" height="7" rx="1" fill="#ef4444" stroke="#0f172a" stroke-width="0.8" />
         <text x="26" y="83" font-size="8.5" font-weight="800" fill="#334155">1x M12 Bolzen-Set (Schnitt B Stoß)</text>
       </g>
 
       <!-- Pos 15c: 100x Spenglerschrauben 4,8x35 -->
-      <g class="comp-hitbox" data-id="spenglerschrauben" title="Pos. 15c: 100x Spenglerschrauben 4,8x35 mm (Trapezblech)">
+      <g class="comp-hitbox" data-id="spenglerschrauben" data-pos="15c" title="Pos. 15c: 100x Spenglerschrauben 4,8x35 mm (Trapezblech)">
         <rect x="4" y="88" width="207" height="16" fill="rgba(0,0,0,0.001)" pointer-events="all" />
         <circle cx="15" cy="96" r="2.5" fill="#b91c1c" />
         <text x="26" y="99" font-size="8.5" font-weight="800" fill="#334155">100x Spenglerschr. 4,8×35 (Blech)</text>
       </g>
 
-      <!-- Pos 14: 500x CSA-Schrauben 5,0x40 -->
-      <g class="comp-hitbox" data-id="csa-schrauben" title="Pos. 14: 500x CSA-Schrauben 5,0x40 mm (Verbinder)">
+      <!-- Pos 14: 100x CSA-Schrauben 5,0x40 (nur für 4 Balkenschuhe BSI) -->
+      <g class="comp-hitbox" data-id="csa-schrauben" data-pos="14" title="Pos. 14: 100x CSA-Schrauben 5,0x40 mm (4x Balkenschuh BSI)">
         <rect x="4" y="104" width="207" height="16" fill="rgba(0,0,0,0.001)" pointer-events="all" />
         <rect x="12" y="108" width="6" height="6" fill="#f59e0b" rx="1" />
-        <text x="26" y="115" font-size="8.5" font-weight="800" fill="#334155">500x CSA-Schrauben 5,0×40 (Verbinder)</text>
+        <text x="26" y="115" font-size="8.5" font-weight="800" fill="#334155">100x CSA-Schrauben 5,0×40 (Schuhe)</text>
       </g>
 
-      <!-- Pos 08: 5x Injektionsanker FIS V -->
-      <g class="comp-hitbox" data-id="injektionsanker" title="Pos. 08: 5x Injektionsanker FIS V Plus M12">
+      <!-- Pos 08: Wandverankerung 3x M16 (vorh.) + 2x 10er Dübel -->
+      <g class="comp-hitbox" data-id="injektionsanker" data-pos="08" title="Pos. 08: 3x M16 (vorh.) + 2x 10er Dübel">
         <rect x="4" y="120" width="207" height="16" fill="rgba(0,0,0,0.001)" pointer-events="all" />
-        <circle cx="15" cy="128" r="3" fill="#ef4444" />
-        <text x="26" y="131" font-size="8.5" font-weight="800" fill="#334155">5x Injektionsanker FIS V (Wand)</text>
+        <circle cx="15" cy="128" r="3" fill="#d97706" />
+        <text x="26" y="131" font-size="8.5" font-weight="800" fill="#334155">3x M16 (vorh.) + 2x 10er Dübel</text>
       </g>
 
-      <!-- Pos 09: 2x Pfostenschuh M24/M30 -->
-      <g class="comp-hitbox" data-id="pfostenschuh" title="Pos. 09: 2x Pfostenschuh M24/M30 (Fundament)">
+      <!-- Pos 09: 3x Pfostenschuh M24/M30 -->
+      <g class="comp-hitbox" data-id="pfostenschuh" data-pos="09" title="Pos. 09: 3x Pfostenschuh M24/M30 (FP-1a/b, FP-2)">
         <rect x="4" y="136" width="207" height="16" fill="rgba(0,0,0,0.001)" pointer-events="all" />
         <circle cx="15" cy="144" r="3" fill="#0284c7" />
-        <text x="26" y="147" font-size="8.5" font-weight="800" fill="#334155">2x Pfostenschuh M24/M30 (Boden)</text>
+        <text x="26" y="147" font-size="8.5" font-weight="800" fill="#334155">3x Pfostenschuh M24/M30 (FP-1a/b, FP-2)</text>
+      </g>
+
+      <!-- Pos 16: 24x Tellerkopf 8x180 mm Sparren an Pfetten -->
+      <g class="comp-hitbox" data-id="tellerkopf-sparren" data-pos="16" title="Pos. 16: 24x Tellerkopf 8x180 mm (Windsogsicherung Sparren an Pfetten)">
+        <rect x="4" y="152" width="207" height="16" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+        <circle cx="15" cy="160" r="2.5" fill="#ffffff" stroke="#0284c7" stroke-width="1.2" />
+        <text x="26" y="163" font-size="8.5" font-weight="800" fill="#334155">24x Tellerkopf 8×180 mm (Sparren)</text>
       </g>
     </g>
 
-    <!-- ==================== BAUTEILMAẞE INFORMATION BOX ==================== -->
-    <!-- Perfectly formatted 2-column list without ANY text overlap! -->
-    <rect x="20" y="680" width="900" height="175" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
-    <rect x="20" y="680" width="900" height="30" rx="8" fill="#f1f5f9" />
-    <text x="35" y="700" font-size="13.5" font-weight="900" fill="#0f172a">Verbindliche Holz- &amp; Bauteilmaße (Ausführung 1,0° Gefälle):</text>
+        <!-- ==================== BAUTEILMAẞE INFORMATION BOX (AUFKLAPPBAR &amp; OHNE TEXT-ÜBERLAPPUNG) ==================== -->
+    <g id="bauteilmasse-box" class="bauteilmasse-box is-expanded" onclick="toggleBauteilmasse()">
+      <!-- Hintergrund-Box (aufgeklappt: y=675, h=180; zugeklappt: y=818, h=36) -->
+      <rect id="bauteilmasse-bg" x="20" y="675" width="900" height="180" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+      
+      <!-- Klickbare Titelleiste -->
+      <rect id="bauteilmasse-header-bg" x="20" y="675" width="900" height="34" rx="8" fill="#f1f5f9" />
+      
+      <text x="35" y="698" font-size="13" font-weight="900" fill="#0f172a">📋 Verbindliche Holz- &amp; Bauteilmaße (Ausführung 1,0° Gefälle von rechts nach links):</text>
+      
+      <!-- Auf-/Zuklapp-Button rechts im Header -->
+      <g id="bauteilmasse-toggle-btn" transform="translate(770, 682)">
+        <rect x="0" y="0" width="140" height="20" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1" />
+        <text id="bauteilmasse-toggle-text" x="70" y="14" font-size="10.5" font-weight="800" fill="#0369a1" text-anchor="middle">▴ Details einklappen</text>
+      </g>
 
-    <!-- Linke Spalte -->
-    <text x="35" y="728" font-size="12" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#0369a1">Mittelpfette (10/20 cm BSH):</tspan> L = 4,00 m freitragend mittig bei x = 1,40 m</text>
-    <text x="35" y="752" font-size="12" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#0369a1">Vorderer Querträger (10/20 cm BSH):</tspan> L = 2,80 m frei von FP-2 bis Schuh 3</text>
-    <text x="35" y="776" font-size="12" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#0369a1">Fußpfette links (10/10 cm):</tspan> 1x 2,50 m + 1x 1,50 m (Stoß auf Kopf FP-1)</text>
-    <text x="35" y="800" font-size="12" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#0369a1">Wandpfette rechts (8/14 cm):</tspan> L = 4,00 m an 3x M16-Gewindestangen</text>
-    <text x="35" y="824" font-size="12" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#0369a1">Wandholz Fenster (8/14 cm):</tspan> 2-tlg. mit 20 cm Überblattung in der Höhe (siehe Schnitt B)</text>
+      <!-- Aufklappbarer Inhalt: 2 Spalten mit klarem Abstand (absolut keine Überlappung mehr!) -->
+      <g id="bauteilmasse-content">
+        <!-- Horizontale Trennlinie unter Header -->
+        <line x1="20" y1="709" x2="920" y2="709" stroke="#e2e8f0" stroke-width="1" />
+        
+        <!-- Vertikale Trennlinie zwischen den 2 Spalten -->
+        <line x1="465" y1="718" x2="465" y2="845" stroke="#f1f5f9" stroke-width="2" />
 
-    <!-- Rechte Spalte -->
-    <text x="495" y="728" font-size="12" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#0369a1">Sparrenlage (12 Stk. 10/10 cm):</tspan> L = 1,35 m bündig mit Mittelpfette (+10 cm Stehhöhe)</text>
-    <text x="495" y="752" font-size="12" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#0369a1">Pfosten FP-1 (10/10 cm):</tspan> h = 2,33 m (+ 10 cm Bodenabstand verstellbar)</text>
-    <text x="495" y="776" font-size="12" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#b91c1c">Eckpfosten FP-2 (L-Form 2 Hölzer):</tspan> 8/14 Verbund für getrennte Auflager</text>
-    <text x="495" y="800" font-size="12" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#b45309">Balkenschuhe (4 Stk. BSI 100/140):</tspan> 2x Mittelpfette, 1x Front rechts, 1x Pfette links</text>
-    <text x="495" y="824" font-size="12" font-weight="600" fill="#1e293b">• <tspan font-weight="900" fill="#059669">Dacheindeckung:</tspan> Ziegelrotes Trapezblech (T-18/T-35) mit Antikondensvlies</text>
+        <!-- ================= Linke Spalte (x=35 bis max x=450) ================= -->
+        <!-- Pos. 03c -->
+        <g transform="translate(35, 717)">
+          <rect x="0" y="0" width="46" height="15" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8"/>
+          <text x="23" y="11" font-size="8.5" font-weight="800" fill="#0369a1" text-anchor="middle">Pos. 03c</text>
+          <text x="52" y="12" font-size="11" font-weight="600" fill="#1e293b"><tspan font-weight="900" fill="#0369a1">Mittelpfette (10/20):</tspan> L = 4,00 m freitragend</text>
+        </g>
+        <!-- Pos. 03d -->
+        <g transform="translate(35, 738)">
+          <rect x="0" y="0" width="46" height="15" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8"/>
+          <text x="23" y="11" font-size="8.5" font-weight="800" fill="#0369a1" text-anchor="middle">Pos. 03d</text>
+          <text x="52" y="12" font-size="11" font-weight="600" fill="#1e293b"><tspan font-weight="900" fill="#0369a1">Frontträger (10/20):</tspan> L = 2,80 m stützenfrei</text>
+        </g>
+        <!-- Pos. 03a/b -->
+        <g transform="translate(35, 759)">
+          <rect x="0" y="0" width="56" height="15" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8"/>
+          <text x="28" y="11" font-size="8.5" font-weight="800" fill="#0369a1" text-anchor="middle">Pos. 03a/b</text>
+          <text x="62" y="12" font-size="11" font-weight="600" fill="#1e293b"><tspan font-weight="900" fill="#0369a1">Fußpfette links (10/20):</tspan> 2x 2,50 m + 2x 1,50 m</text>
+        </g>
+        <!-- Pos. 01 -->
+        <g transform="translate(35, 780)">
+          <rect x="0" y="0" width="46" height="15" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8"/>
+          <text x="23" y="11" font-size="8.5" font-weight="800" fill="#0369a1" text-anchor="middle">Pos. 01</text>
+          <text x="52" y="12" font-size="11" font-weight="600" fill="#1e293b"><tspan font-weight="900" fill="#0369a1">Wandpfette rechts (8/14):</tspan> L = 4,00 m an 3x M16</text>
+        </g>
+        <!-- Pos. 02 -->
+        <g transform="translate(35, 801)">
+          <rect x="0" y="0" width="46" height="15" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8"/>
+          <text x="23" y="11" font-size="8.5" font-weight="800" fill="#0369a1" text-anchor="middle">Pos. 02</text>
+          <text x="52" y="12" font-size="11" font-weight="600" fill="#1e293b"><tspan font-weight="900" fill="#0369a1">Wandholz Fenster (8/14):</tspan> 2-tlg. Überblattung 20 cm</text>
+        </g>
+        <!-- Pos. 08 -->
+        <g transform="translate(35, 822)">
+          <rect x="0" y="0" width="46" height="15" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8"/>
+          <text x="23" y="11" font-size="8.5" font-weight="800" fill="#0369a1" text-anchor="middle">Pos. 08</text>
+          <text x="52" y="12" font-size="11" font-weight="600" fill="#1e293b"><tspan font-weight="900" fill="#0369a1">Wandverankerung:</tspan> 3x M16 vorh. + 2x 10er Dübel</text>
+        </g>
+
+        <!-- ================= Rechte Spalte (x=480 bis max x=905) ================= -->
+        <!-- Pos. 07 -->
+        <g transform="translate(480, 717)">
+          <rect x="0" y="0" width="46" height="15" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8"/>
+          <text x="23" y="11" font-size="8.5" font-weight="800" fill="#0369a1" text-anchor="middle">Pos. 07</text>
+          <text x="52" y="12" font-size="11" font-weight="600" fill="#1e293b"><tspan font-weight="900" fill="#0369a1">Sparrenlage (12x 10/10):</tspan> bündig auf Knaggen</text>
+        </g>
+        <!-- Pos. 04a -->
+        <g transform="translate(480, 738)">
+          <rect x="0" y="0" width="46" height="15" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8"/>
+          <text x="23" y="11" font-size="8.5" font-weight="800" fill="#0369a1" text-anchor="middle">Pos. 04a</text>
+          <text x="52" y="12" font-size="11" font-weight="600" fill="#1e293b"><tspan font-weight="900" fill="#0369a1">Doppelpfosten FP-1:</tspan> 2x 10/10 cm, h = 2,33 m</text>
+        </g>
+        <!-- Pos. 04b -->
+        <g transform="translate(480, 759)">
+          <rect x="0" y="0" width="46" height="15" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8"/>
+          <text x="23" y="11" font-size="8.5" font-weight="800" fill="#0369a1" text-anchor="middle">Pos. 04b</text>
+          <text x="52" y="12" font-size="11" font-weight="600" fill="#1e293b"><tspan font-weight="900" fill="#0369a1">Eckpfosten FP-2:</tspan> L-Verbund (2x 8/14, h = 2,33 m)</text>
+        </g>
+        <!-- Pos. 13b -->
+        <g transform="translate(480, 780)">
+          <rect x="0" y="0" width="46" height="15" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8"/>
+          <text x="23" y="11" font-size="8.5" font-weight="800" fill="#0369a1" text-anchor="middle">Pos. 13b</text>
+          <text x="52" y="12" font-size="11" font-weight="600" fill="#1e293b"><tspan font-weight="900" fill="#0369a1">Auflagehölzer (10/10):</tspan> 24 Stk. (L=30 cm) mit 8x160</text>
+        </g>
+        <!-- Pos. 10/10b -->
+        <g transform="translate(480, 801)">
+          <rect x="0" y="0" width="56" height="15" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8"/>
+          <text x="28" y="11" font-size="8.5" font-weight="800" fill="#0369a1" text-anchor="middle">Pos. 10/10b</text>
+          <text x="62" y="12" font-size="11" font-weight="600" fill="#1e293b"><tspan font-weight="900" fill="#b45309">Balkenschuhe (5 Stk.):</tspan> 4x BSI 100/140 + 1x 80/120</text>
+        </g>
+        <!-- Pos. 16 -->
+        <g transform="translate(480, 822)">
+          <rect x="0" y="0" width="46" height="15" rx="3" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8"/>
+          <text x="23" y="11" font-size="8.5" font-weight="800" fill="#0369a1" text-anchor="middle">Pos. 16</text>
+          <text x="52" y="12" font-size="11" font-weight="600" fill="#1e293b"><tspan font-weight="900" fill="#059669">Dacheindeckung:</tspan> Ziegelrotes Trapezblech (4,00 m)</text>
+        </g>
+      </g>
+    </g>
+
+  <!-- ============================================================== -->
+  <!-- NEUER SCHNITT D: SPARREN-QUERSCHNITT MIT DOPPEL-FUẞPFETTE (NUTZER-SKIZZE) -->
+  <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- POSITIONS-KENNZEICHNUNGEN (Erscheinen nur beim Anklicken / Verschwinden beim Abwählen) -->
+    <!-- ============================================================== -->
+    <g id="grundriss-pos-badges">
+      <!-- Pos. 01: Wandpfette rechts -->
+      <g class="plan-pos-badge" data-pos="01" transform="translate(695, 310)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 01</text>
+      </g>
+      <!-- Pos. 02: Wandholz unter Fenstern -->
+      <g class="plan-pos-badge" data-pos="02" transform="translate(440, 138)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 02</text>
+      </g>
+      <!-- Pos. 03a: Fußpfette links Teil 1 (L=2,50 m) -->
+      <g class="plan-pos-badge" data-pos="03a" transform="translate(235, 235)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 03a</text>
+      </g>
+      <!-- Pos. 03b: Fußpfette links Teil 2 (L=1,50 m) -->
+      <g class="plan-pos-badge" data-pos="03b" transform="translate(235, 485)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 03b</text>
+      </g>
+      <!-- Pos. 03c: Mittelpfette 10/20 BSH (L=4,00 m) -->
+      <g class="plan-pos-badge" data-pos="03c" transform="translate(515, 345)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 03c</text>
+      </g>
+      <!-- Pos. 03d: Vorderer Querträger 10/20 BSH (L=2,80 m) -->
+      <g class="plan-pos-badge" data-pos="03d" transform="translate(440, 580)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 03d</text>
+      </g>
+      <!-- Pos. 04a: Doppelpfosten FP-1a &amp; FP-1b -->
+      <g class="plan-pos-badge" data-pos="04a" transform="translate(210, 395)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 04a</text>
+      </g>
+      <!-- Pos. 04b: L-Eckpfosten FP-2 -->
+      <g class="plan-pos-badge" data-pos="04b" transform="translate(210, 580)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 04b</text>
+      </g>
+      <!-- Pos. 06: Kopfbänder 45° -->
+      <g class="plan-pos-badge" data-pos="06" transform="translate(250, 350)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 06</text>
+      </g>
+      <!-- Pos. 07: Sparrenlage 12 Stk. -->
+      <g class="plan-pos-badge" data-pos="07" transform="translate(415, 330)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 07</text>
+      </g>
+      <!-- Pos. 08: Wandverankerung 10er Dübel (links und rechts an Hauswand) -->
+      <g class="plan-pos-badge" data-pos="08" transform="translate(325, 110)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 08</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="08" transform="translate(645, 110)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 08</text>
+      </g>
+      <!-- Pos. 09: Pfostenschuhe höhenverstellbar M24/M30 -->
+      <g class="plan-pos-badge" data-pos="09" transform="translate(210, 425)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 09</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="09" transform="translate(210, 610)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 09</text>
+      </g>
+      <!-- Pos. 10: Schwerlast-Balkenschuhe 10 cm Typ BSI -->
+      <g class="plan-pos-badge" data-pos="10" transform="translate(525, 148)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 10</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="10" transform="translate(525, 568)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 10</text>
+      </g>
+      <!-- Pos. 10b: Balkenschuh 8 cm Typ BSI (Wandpfette rechts) -->
+      <g class="plan-pos-badge" data-pos="10b" transform="translate(675, 125)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 10b</text>
+      </g>
+      <!-- Pos. 13b: 24x Auflagehölzer 10x10 cm L=30cm (Knaggen) -->
+      <g class="plan-pos-badge" data-pos="13b" transform="translate(528, 255)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 13b</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="13b" transform="translate(270, 275)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 13b</text>
+      </g>
+      <!-- Pos. 14: 100x CSA-Schrauben 5,0x40 mm (Exakt an den Balkenschuhen!) -->
+      <g class="plan-pos-badge" data-pos="14" transform="translate(528, 172)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 14</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="14" transform="translate(528, 546)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 14</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="14" transform="translate(335, 142)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 14</text>
+      </g>
+      <!-- Pos. 15b: 50x Tellerkopf 8x160 mm (Holzbau: an Knaggen und Pfostenkoppelung!) -->
+      <g class="plan-pos-badge" data-pos="15b" transform="translate(528, 305)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 15b</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="15b" transform="translate(260, 395)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 15b</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="15b" transform="translate(260, 575)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 15b</text>
+      </g>
+      <!-- Pos. 15c: 100x Spenglerschrauben 4,8x35 mm (Trapezblech-Befestigung auf Sparren) -->
+      <g class="plan-pos-badge" data-pos="15c" transform="translate(415, 475)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 15c</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="15c" transform="translate(595, 475)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 15c</text>
+      </g>
+      <!-- Pos. 15e: 1x M12 Bolzenset (Exakt an der 20 cm Halbholz-Überblattung Stoß x=575) -->
+      <g class="plan-pos-badge" data-pos="15e" transform="translate(585, 140)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 15e</text>
+      </g>
+      <!-- Pos. 15f: M10 Muttern &amp; Karosseriescheiben (Pfostenschuhe) -->
+      <g class="plan-pos-badge" data-pos="15f" transform="translate(210, 448)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 15f</text>
+      </g>
+      <!-- Pos. 16: 24x Tellerkopf 8x180 mm (Windsogsicherung Sparren an Pfetten) -->
+      <g class="plan-pos-badge" data-pos="16" transform="translate(470, 240)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 16</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="16" transform="translate(528, 238)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 16</text>
+      </g>
+      <!-- Pos. 17: Ortgang- &amp; Stirnblende -->
+      <g class="plan-pos-badge" data-pos="17" transform="translate(265, 605)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 17</text>
+      </g>
+    </g>
+  </g>
+
+  <g id="schnitt-d-sparren" class="comp-hitbox" data-id="sparren" transform="translate(20, 976)">
+    <rect x="0" y="0" width="940" height="150" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+    <rect x="0" y="0" width="940" height="26" rx="8" fill="#f1f5f9" />
+    <text x="16" y="18" font-size="12" font-weight="900" fill="#0369a1">SCHNITT D: QUERSCHNITT SPARRENFELD LINKS (1:1 NACH NUTZER-SKIZZE M 1:15)</text>
+    <text x="920" y="18" font-size="10" font-weight="800" fill="#059669" text-anchor="end">✓ DOPPEL-FUẞPFETTE (2x 10/10) + BEIDSEITIGE AUFLAGERKNAGGEN MIT 8×160 mm</text>
+
+    <!-- HINTERGRUND-RASTER &amp; ACHSEN -->
+    <line x1="20" y1="130" x2="920" y2="130" stroke="#e2e8f0" stroke-width="1" />
+
+    <!-- 1. LINKE DOPPEL-FUẞPFETTE (2x 10/10 cm gestapelt = 10/20 cm, ROT WIE SKIZZE) -->
+    <!-- Oberes Holz: Zusatz 10/10 (x=160..215, y=38..74) -->
+    <rect x="160" y="38" width="55" height="36" rx="1" fill="#ef4444" stroke="#991b1b" stroke-width="1.8" />
+    <text x="187" y="60" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">10/10</text>
+    <!-- Unteres Holz: Fußpfette 10/10 (x=160..215, y=74..110) -->
+    <rect x="160" y="74" width="55" height="36" rx="1" fill="#dc2626" stroke="#991b1b" stroke-width="1.8" />
+    <text x="187" y="96" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">10/10</text>
+    <line x1="160" y1="74" x2="215" y2="74" stroke="#0f172a" stroke-width="1.5" />
+    <!-- Beschriftung links -->
+    <text x="150" y="62" font-size="9" font-weight="900" fill="#b91c1c" text-anchor="end">Zusätzliches Holz</text>
+    <text x="150" y="76" font-size="8" font-weight="800" fill="#7f1d1d" text-anchor="end">(10/10 oben)</text>
+    <text x="150" y="94" font-size="8" font-weight="800" fill="#475569" text-anchor="end">+ Fußpfette (10/10)</text>
+    <text x="150" y="106" font-size="7.5" font-weight="900" fill="#0369a1" text-anchor="end">= 10/20 cm Verbund</text>
+
+    <!-- 2. SPARREN 10/10 cm (BLAU WIE SKIZZE, L = 1,35 m) -->
+    <!-- Von Pfette links (x=215) bis Mittelpfette (x=725), Höhe 36 px = 10 cm, y=38..74 -->
+    <rect x="215" y="38" width="510" height="36" rx="1" fill="#38bdf8" stroke="#0284c7" stroke-width="2" />
+    <text x="470" y="61" font-size="12" font-weight="900" fill="#0f172a" text-anchor="middle">Sparren (10/10 cm • KVH C24 • L = 1,35 m)</text>
+
+    <!-- 3. AUFLAGER LINKS (10/10 cm, L = 30 cm) UNTER SPARREN -->
+    <rect x="215" y="74" width="55" height="36" rx="1" fill="#7dd3fc" stroke="#0284c7" stroke-width="1.8" />
+    <text x="242" y="96" font-size="8" font-weight="900" fill="#0369a1" text-anchor="middle">Auflage</text>
+    <text x="242" y="106" font-size="7" font-weight="700" fill="#0f172a" text-anchor="middle">10/10</text>
+    <!-- Bohrung &amp; Schraube 8x160 mm links (durch Pfette in Auflage) -->
+    <line x1="180" y1="92" x2="255" y2="92" stroke="#0f172a" stroke-width="3" stroke-linecap="round" />
+    <circle cx="187" cy="92" r="3" fill="#f59e0b" stroke="#0f172a" stroke-width="0.8" />
+    <circle cx="242" cy="92" r="2" fill="#ffffff" />
+    <rect x="180" y="114" width="120" height="15" rx="3" fill="#ffffff" stroke="#0f172a" stroke-width="0.8" />
+    <text x="240" y="125" font-size="7.5" font-weight="900" fill="#0f172a" text-anchor="middle">Bohrung mit 8×160 mm</text>
+
+    <!-- 4. MITTELPFETTE 10/20 BSH (GRÜN WIE SKIZZE) -->
+    <!-- x=725..780, y=38..110 (Höhe 72 px = 20 cm) -->
+    <rect x="725" y="38" width="55" height="72" rx="1" fill="#22c55e" stroke="#15803d" stroke-width="2" />
+    <text x="752" y="70" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">Mittel-</text>
+    <text x="752" y="82" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">pfette</text>
+    <text x="752" y="95" font-size="7.5" font-weight="800" fill="#dcfce7" text-anchor="middle">10/20</text>
+    <text x="752" y="32" font-size="9.5" font-weight="900" fill="#15803d" text-anchor="middle">Mittelpfette</text>
+
+    <!-- 5. AUFLAGER RECHTS (10/10 cm, L = 30 cm) UNTER SPARREN -->
+    <rect x="670" y="74" width="55" height="36" rx="1" fill="#7dd3fc" stroke="#0284c7" stroke-width="1.8" />
+    <text x="697" y="96" font-size="8" font-weight="900" fill="#0369a1" text-anchor="middle">Auflage</text>
+    <text x="697" y="106" font-size="7" font-weight="700" fill="#0f172a" text-anchor="middle">10/10</text>
+    <!-- Bohrung &amp; Schraube 8x160 mm rechts (durch Mittelpfette in Auflage) -->
+    <line x1="685" y1="92" x2="760" y2="92" stroke="#0f172a" stroke-width="3" stroke-linecap="round" />
+    <circle cx="752" cy="92" r="3" fill="#f59e0b" stroke="#0f172a" stroke-width="0.8" />
+    <circle cx="697" cy="92" r="2" fill="#ffffff" />
+    <rect x="640" y="114" width="120" height="15" rx="3" fill="#ffffff" stroke="#0f172a" stroke-width="0.8" />
+    <text x="700" y="125" font-size="7.5" font-weight="900" fill="#0f172a" text-anchor="middle">Bohrung mit 8×160 mm</text>
+
+    <!-- 6. TRAPEZBLECH BÜNDIG OBEN -->
+    <line x1="150" y1="35" x2="790" y2="35" stroke="#b91c1c" stroke-width="3" stroke-linecap="round" />
+    <text x="470" y="30" font-size="8" font-weight="900" fill="#b91c1c" text-anchor="middle">▲ TRAPEZBLECH BÜNDIG DURCHGEHEND AUF PFETTEN &amp; SPARREN</text>
+
+    <!-- 7. BEMAẞUNG FELDBREITE 1,35 m -->
+    <line x1="215" y1="138" x2="725" y2="138" marker-start="url(#tick-blue)" marker-end="url(#tick-blue)" stroke="#0284c7" stroke-width="1.3" />
+    <rect x="435" y="130" width="70" height="15" rx="2" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8" />
+    <text x="470" y="141" font-size="8.5" font-weight="900" fill="#0369a1" text-anchor="middle">e = 1,35 m</text>
   </g>
 
   <!-- ============================================================== -->
-  <!-- RECHTES PANEL: 2. DETAILS & FRONTANSICHT (KOMPAKT & AUFGERÄUMT) -->
+  <!-- RECHTES PANEL: 2. DETAILS &amp; FRONTANSICHT (KOMPAKT &amp; AUFGERÄUMT) -->
   <!-- ============================================================== -->
-  <g id="detail-balkenschuh" transform="translate(980, 102)">
-    <!-- Container Card (480px width, 1030px height) -->
-    <rect x="0" y="0" width="480" height="1030" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
-    <rect x="0" y="0" width="480" height="42" rx="8" fill="#f1f5f9" />
-    <text x="16" y="27" font-size="15.5" font-weight="900" fill="#0f172a">2. DETAILS: SCHNITT A, B &amp; FRONT C</text>
+  <g id="detail-balkenschuh" transform="translate(20, 1140)">
+    <!-- Container Card (940px width unter der Zeichnung, 560px height) -->
+    <rect x="0" y="0" width="940" height="560" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+    <rect x="0" y="0" width="940" height="42" rx="8" fill="#f1f5f9" />
+    <text x="20" y="27" font-size="16.5" font-weight="900" fill="#0f172a">2. DETAILS: SCHNITT A, B &amp; FRONT C</text>
 
     <!-- ==================== DETAIL A: WANDANSCHLUSS MIT BALKENSCHUH (SEITENSCHNITT M 1:10) ==================== -->
     <g transform="translate(15, 50)">
@@ -548,21 +1046,21 @@
       <text x="62" y="62" font-size="11.5" font-weight="800" fill="#1e293b" text-anchor="middle">Hauswand</text>
       <text x="62" y="76" font-size="10" font-weight="600" fill="#475569" text-anchor="middle">(unter Fenstern)</text>
 
-      <!-- 2. Injektionsanker FIS V mit Siebhülse hef >= 130 mm (INTERAKTIV) -->
-      <g class="comp-hitbox" data-id="injektionsanker" title="Pos. 08: Injektionsanker FIS V Plus M12 mit Siebhülse in Hauswand">
-        <line x1="15" y1="115" x2="160" y2="115" stroke="#0f172a" stroke-width="5.5" stroke-linecap="round" />
-        <line x1="20" y1="115" x2="105" y2="115" stroke="#ef4444" stroke-width="4" stroke-dasharray="3,2" />
-        <rect x="15" y="107" width="90" height="16" rx="2" fill="none" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="2,2" opacity="0.8" />
-        <rect x="155" y="105" width="5" height="20" rx="1" fill="#ef4444" stroke="#0f172a" stroke-width="1" />
+      <!-- 2. Wanddübel Pos. 08: 10er Universaldübel mit Schlüsselschraube 8x120 mm &amp; DIN 440 Scheibe (INTERAKTIV) -->
+      <g class="comp-hitbox" data-id="injektionsanker" title="Pos. 08: 10er Dübel mit Schlüsselschraube 8×120 mm &amp; DIN 440 Scheibe in Hauswand">
+        <line x1="25" y1="115" x2="160" y2="115" stroke="#0f172a" stroke-width="5" stroke-linecap="round" />
+        <rect x="25" y="110" width="80" height="10" rx="2" fill="#fef3c7" stroke="#d97706" stroke-width="1.2" />
+        <line x1="30" y1="115" x2="155" y2="115" stroke="#b45309" stroke-width="3" />
+        <rect x="155" y="105" width="5" height="20" rx="1" fill="#d97706" stroke="#0f172a" stroke-width="1" />
         <circle cx="160" cy="115" r="5" fill="#ffffff" stroke="#0f172a" stroke-width="1" />
       </g>
       
-      <!-- hef >= 130 mm Bemaßung -->
-      <line x1="15" y1="130" x2="105" y2="130" marker-start="url(#tick-blue)" marker-end="url(#tick-blue)" stroke="#0284c7" stroke-width="1.2" />
-      <rect x="28" y="134" width="70" height="14" rx="2" fill="#e0f2fe" />
-      <text x="63" y="144" font-size="8.5" font-weight="900" fill="#0369a1" text-anchor="middle">hef ≥ 130 mm</text>
+      <!-- 10er Dübel (80 mm) Bemaßung -->
+      <line x1="25" y1="130" x2="105" y2="130" marker-start="url(#tick-blue)" marker-end="url(#tick-blue)" stroke="#0284c7" stroke-width="1.2" />
+      <rect x="28" y="134" width="74" height="14" rx="2" fill="#e0f2fe" />
+      <text x="65" y="144" font-size="8.5" font-weight="900" fill="#0369a1" text-anchor="middle">10er Dübel (80 mm)</text>
 
-      <!-- 3. Wandholz 8/14 KVH (flach an Hauswand gedübelt) - VOLL INTERAKTIV & GROSSE HITBOX -->
+      <!-- 3. Wandholz 8/14 KVH (flach an Hauswand gedübelt) - VOLL INTERAKTIV &amp; GROSSE HITBOX -->
       <g class="comp-hitbox" data-id="wandholz-fenster" title="Wandholz Pos. 02 (8/14 KVH an Hauswand)">
         <rect x="100" y="55" width="60" height="155" fill="rgba(0,0,0,0.001)" pointer-events="all" />
         <rect x="105" y="60" width="50" height="145" fill="#475569" stroke="#0f172a" stroke-width="2" rx="2" />
@@ -577,56 +1075,68 @@
       <rect x="117" y="37" width="26" height="14" rx="2" fill="#ffffff" stroke="#0f172a" stroke-width="0.8" />
       <text x="130" y="47" font-size="9" font-weight="900" fill="#0f172a" text-anchor="middle">8cm</text>
 
-      <!-- 4. Balkenschuh Typ BSI 100/140 (am Wandholz voll verschraubt) -->
-      <rect x="155" y="65" width="6" height="135" fill="#f59e0b" stroke="#b45309" stroke-width="1.8" />
-      <rect x="155" y="195" width="85" height="5" fill="#f59e0b" stroke="#b45309" stroke-width="1.8" />
-      <polygon class="comp-hitbox" data-id="balkenschuh-2" points="155,95 240,95 240,195 155,195" fill="#fcd34d" opacity="0.65" stroke="#b45309" stroke-width="1.8" />
+            <!-- 4. Balkenschuh Typ BSI 100/140 (am Wandholz verschraubt für 10/20 Mittelpfette) -->
+      <rect x="155" y="100" width="6" height="90" fill="#f59e0b" stroke="#b45309" stroke-width="1.8" />
+      <rect x="155" y="185" width="85" height="5" fill="#f59e0b" stroke="#b45309" stroke-width="1.8" />
+      <polygon class="comp-hitbox" data-id="balkenschuh-2" points="155,100 235,100 235,185 155,185" fill="#fcd34d" opacity="0.65" stroke="#b45309" stroke-width="1.8" />
       
-      <!-- Schraubpunkte / CSA-Schrauben im Balkenschuh & Winkel (INTERAKTIV) -->
+      <!-- Schraubpunkte / CSA-Schrauben im Balkenschuh (INTERAKTIV) -->
       <g class="comp-hitbox" data-id="csa-schrauben" title="Pos. 14: Simpson CSA-Schrauben 5,0x40 mm mit Zentrierbund">
-        <circle cx="162" cy="78" r="2.2" fill="#f59e0b" stroke="#78350f" stroke-width="0.8" />
-        <circle cx="162" cy="98" r="2.2" fill="#f59e0b" stroke="#78350f" stroke-width="0.8" />
-        <circle cx="162" cy="120" r="2.2" fill="#f59e0b" stroke="#78350f" stroke-width="0.8" />
-        <circle cx="162" cy="150" r="2.2" fill="#f59e0b" stroke="#78350f" stroke-width="0.8" />
-        <circle cx="162" cy="178" r="2.2" fill="#f59e0b" stroke="#78350f" stroke-width="0.8" />
-        <!-- Schrauben im Sparrenwinkel -->
-        <circle cx="247" cy="95" r="1.8" fill="#f59e0b" stroke="#78350f" stroke-width="0.7" />
-        <circle cx="247" cy="112" r="1.8" fill="#f59e0b" stroke="#78350f" stroke-width="0.7" />
-        <circle cx="265" cy="122" r="1.8" fill="#f59e0b" stroke="#78350f" stroke-width="0.7" />
+        <circle cx="162" cy="115" r="2.2" fill="#f59e0b" stroke="#78350f" stroke-width="0.8" />
+        <circle cx="162" cy="135" r="2.2" fill="#f59e0b" stroke="#78350f" stroke-width="0.8" />
+        <circle cx="162" cy="155" r="2.2" fill="#f59e0b" stroke="#78350f" stroke-width="0.8" />
+        <circle cx="162" cy="175" r="2.2" fill="#f59e0b" stroke="#78350f" stroke-width="0.8" />
+        <circle cx="185" cy="180" r="2.2" fill="#f59e0b" stroke="#78350f" stroke-width="0.8" />
+        <circle cx="215" cy="180" r="2.2" fill="#f59e0b" stroke="#78350f" stroke-width="0.8" />
       </g>
 
-      <!-- 5. Eingelegte Mittelpfette 10/20 cm BSH (mit 6 cm Ausklinkung am Wandanschluss) -->
-      <g class="comp-hitbox" data-id="mittelpfette" title="Mittelpfette 10/20 BSH mit 6 cm Ausklinkung im Balkenschuh (h_ef = 14 cm)">
-        <!-- Ausgeklinkter Träger: 14 cm im Balkenschuh (x=161 bis 245), danach volle 20 cm Bauhöhe (y=225) -->
-        <path d="M 161,60 L 426,60 L 426,225 L 245,225 L 245,195 L 161,195 Z" fill="#334155" stroke="#0f172a" stroke-width="2" />
-        
-        <!-- Bemaßung & Klinkungskante 6 cm -->
-        <line x1="245" y1="195" x2="245" y2="225" stroke="#ef4444" stroke-width="2" stroke-dasharray="2,1" />
-        <line x1="240" y1="195" x2="240" y2="225" marker-start="url(#tick-red)" marker-end="url(#tick-red)" stroke="#ef4444" stroke-width="1.2" />
-        <rect x="249" y="202" width="62" height="15" rx="2" fill="#fee2e2" stroke="#ef4444" stroke-width="0.8" />
-        <text x="280" y="213" font-size="7.5" font-weight="900" fill="#b91c1c" text-anchor="middle">✂ 6 cm Klinkung</text>
+      <!-- 5. EINTEILIGE MITTELPFETTE 10/20 cm BSH (VOLLTRÄGER, KEIN ZUSÄTZLICHES HOLZ DARUNTER, KEINE KLINKUNG!) -->
+      <g class="comp-hitbox" data-id="mittelpfette" title="Mittelpfette (10/20 cm BSH GL24h, einteilig &amp; ungeklinkt voll im Balkenschuh)">
+        <!-- Massiver Vollholzträger 10/20 cm BSH: x=161 bis 426, y=60 bis 190 (Höhe 130 px = 20 cm) -->
+        <rect x="161" y="60" width="265" height="130" rx="2" fill="#334155" stroke="#0f172a" stroke-width="2" />
 
         <!-- Beschriftung Mittelpfette -->
-        <text x="335" y="146" font-size="11.5" font-weight="900" fill="#ffffff" text-anchor="middle">Mittelpfette 10/20 BSH</text>
-        <text x="335" y="161" font-size="8.5" font-weight="700" fill="#93c5fd" text-anchor="middle">b = 10 cm | h = 20 cm (Feldmitte) • L = 4,00 m</text>
-        <text x="335" y="174" font-size="8" font-weight="800" fill="#fde047" text-anchor="middle">h_ef = 14 cm im Balkenschuh 2 (DIN EN 1995-1-1 ✓)</text>
+        <text x="335" y="102" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle">Mittelpfette 10/20 cm BSH</text>
+        <text x="335" y="118" font-size="8.8" font-weight="700" fill="#93c5fd" text-anchor="middle">L = 4,00 m freitragend • Durchgehend voll tragfähig</text>
+        <text x="335" y="132" font-size="8.2" font-weight="800" fill="#38bdf8" text-anchor="middle">Ungeklinkt im Balkenschuh BSI 100/140</text>
       </g>
 
-      <!-- 6. BÜNDIG AN DER MITTELPFETTE MONTIERTER SPARREN (10x10 cm Querschnitt) -->
-      <g class="comp-hitbox" data-id="sparren">
-        <rect x="250" y="60" width="65" height="65" rx="2" fill="#475569" stroke="#0f172a" stroke-width="1.8" />
-        <text x="282" y="92" font-size="10" font-weight="900" fill="#ffffff" text-anchor="middle">Sparren</text>
-        <text x="282" y="106" font-size="9" font-weight="700" fill="#38bdf8" text-anchor="middle">10/10 cm</text>
+      <!-- 6. AUFLAGEHOLZ 10/10 cm (L = 30 cm) MIT SPARREN (SEITLICH AN MITTELPFETTE VERSCHRAUBT) -->
+      <!-- AUFLAGEHOLZ (30 cm LÄNGE HORIZONTAL AN DER MITTELPFETTE) -->
+      <g id="svg-knagge-detail" class="comp-hitbox" data-id="balkenwinkel" title="Pos. 13b: Auflageholz 10x10x30 cm mit 2x 8x160 mm Tellerkopfschrauben">
+        <!-- 30 cm langer Holzbalken (195 px breit = 30 cm, 65 px hoch = 10 cm, von x=185 bis x=380, y=125 bis 190) -->
+        <rect x="185" y="125" width="195" height="65" rx="3" fill="#38bdf8" stroke="#0284c7" stroke-width="2.5" />
+        
+        <!-- Bohrung links (neben Sparren) mit 8x160 mm Tellerkopfschraube horizontal in die Mittelpfette -->
+        <circle cx="218" cy="157" r="7" fill="#0f172a" stroke="#ffffff" stroke-width="1.5" />
+        <circle cx="218" cy="157" r="3" fill="#f59e0b" />
+        <text x="218" y="178" font-size="7.5" font-weight="900" fill="#0f172a" text-anchor="middle">Bohrung</text>
+
+        <!-- Bohrung rechts (neben Sparren) mit 8x160 mm Tellerkopfschraube horizontal in die Mittelpfette -->
+        <circle cx="347" cy="157" r="7" fill="#0f172a" stroke="#ffffff" stroke-width="1.5" />
+        <circle cx="347" cy="157" r="3" fill="#f59e0b" />
+        <text x="347" y="178" font-size="7.5" font-weight="900" fill="#0f172a" text-anchor="middle">Bohrung</text>
+
+        <!-- Beschriftung Auflageholz mittig -->
+        <text x="282" y="150" font-size="9" font-weight="900" fill="#0f172a" text-anchor="middle">Auflageholz (10/10 cm)</text>
+        <text x="282" y="163" font-size="8" font-weight="800" fill="#0369a1" text-anchor="middle">Länge = 30 cm</text>
+        <text x="282" y="175" font-size="7.5" font-weight="700" fill="#1e293b" text-anchor="middle">2x 8×160 mm in Mittelpfette</text>
+
+        <!-- Bemaßung 30 cm Länge unter dem Auflageholz -->
+        <line x1="185" y1="198" x2="380" y2="198" marker-start="url(#tick-blue)" marker-end="url(#tick-blue)" stroke="#0284c7" stroke-width="1.5" />
+        <rect x="257" y="191" width="50" height="14" rx="2" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8" />
+        <text x="282" y="201" font-size="8" font-weight="900" fill="#0369a1" text-anchor="middle">L = 30 cm</text>
       </g>
 
-      <!-- Schwerlast-Balkenwinkel mit Rippe am Sparrenanschluss -->
-      <g class="comp-hitbox" data-id="balkenwinkel">
-        <rect x="244" y="85" width="6" height="40" fill="#f59e0b" stroke="#b45309" stroke-width="1.2" />
-        <rect x="244" y="120" width="30" height="5" fill="#f59e0b" stroke="#b45309" stroke-width="1.2" />
-        <polygon points="244,100 258,120 244,120" fill="#d97706" />
+      <!-- SPARREN (10x10 cm Querschnitt, sitzt mittig voll auf dem 30 cm Auflageholz auf) -->
+      <g class="comp-hitbox" data-id="sparren" title="Sparren 10/10 KVH C24 sitzt mittig voll auf dem 30 cm Auflageholz">
+        <rect x="250" y="60" width="65" height="65" rx="2" fill="#475569" stroke="#0f172a" stroke-width="2.2" />
+        <text x="282" y="90" font-size="10.5" font-weight="900" fill="#ffffff" text-anchor="middle">Sparren</text>
+        <text x="282" y="104" font-size="9" font-weight="700" fill="#38bdf8" text-anchor="middle">10/10 cm</text>
+        <text x="282" y="117" font-size="7.5" font-weight="800" fill="#fde047" text-anchor="middle">Auflager 10 cm</text>
       </g>
 
-      <!-- Trapezblech oben durchgehend bündig über Mittelpfette & Sparren -->
+      <!-- Trapezblech oben durchgehend bündig über Mittelpfette &amp; Sparren -->
       <line x1="161" y1="57" x2="426" y2="57" stroke="#b91c1c" stroke-width="3" />
       <line x1="161" y1="59" x2="426" y2="59" stroke="#64748b" stroke-width="1" stroke-dasharray="2,2" />
       <!-- Spenglerschraube mit EPDM Dichtscheibe auf Trapezblech -->
@@ -637,14 +1147,43 @@
       </g>
 
       <!-- BÜNDIGE EBENE BADGE -->
-      <rect x="200" y="32" width="235" height="20" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.2" />
-      <text x="317" y="46" font-size="9" font-weight="900" fill="#065f46" text-anchor="middle">✓ BÜNDIG OBEN: +10 cm Stehhöhe!</text>
+      <rect x="180" y="32" width="255" height="20" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.2" />
+      <text x="307" y="46" font-size="8" font-weight="900" fill="#065f46" text-anchor="middle">✓ KEINE AUSKLINKUNG: 10/20 BSH Vollträger ungeschwächt!</text>
 
       <!-- Balkenschuh Info Box -->
-      <rect x="315" y="185" width="125" height="44" rx="4" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.2" />
-      <text x="377" y="200" font-size="8.5" font-weight="900" fill="#b45309" text-anchor="middle">BSI 100/140 (14,5 kN ✓)</text>
-      <text x="377" y="212" font-size="7.5" font-weight="700" fill="#78350f" text-anchor="middle">14 cm Schuh auf</text>
-      <text x="377" y="222" font-size="7.5" font-weight="800" fill="#b45309" text-anchor="middle">14 cm Klinkung</text>
+      <rect x="315" y="213" width="125" height="34" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.2" />
+      <text x="377" y="226" font-size="8" font-weight="900" fill="#065f46" text-anchor="middle">Balkenschuh BSI 100/140</text>
+      <text x="377" y="238" font-size="7.5" font-weight="800" fill="#047857" text-anchor="middle">✓ 0 cm Klinkung (Vollträger!)</text>
+
+      <!-- Pos-Badges Detail A (erscheinen nur beim Anklicken / verschwinden beim Abwählen) -->
+      <g class="plan-pos-badge" data-pos="08" transform="translate(45, 90)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 08</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="02" transform="translate(110, 75)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 02</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="10" transform="translate(190, 165)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 10</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="14" transform="translate(145, 120)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 14</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="13b" transform="translate(325, 120)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 13b</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="15b" transform="translate(255, 165)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 15b</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="15c" transform="translate(300, 35)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24" y="13" class="pos-badge-text">Pos. 15c</text>
+      </g>
     </g>
 
     <!-- ==================== SCHNITT B: WANDHOLZ-ÜBERBLATTUNG (ANSICHT VON VORNE M 1:10) ==================== -->
@@ -656,7 +1195,7 @@
       <!-- Hauswand unter Fenstern (Hintergrundmauerwerk) -->
       <rect x="15" y="34" width="420" height="195" fill="url(#hatch-wall)" stroke="#cbd5e1" stroke-width="1" opacity="0.4" />
       
-      <!-- Fensterbänke & Fenster-Andeutung oben -->
+      <!-- Fensterbänke &amp; Fenster-Andeutung oben -->
       <rect x="20" y="34" width="115" height="12" rx="2" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1" />
       <text x="77" y="43" font-size="7.5" font-weight="800" fill="#475569" text-anchor="middle">Fensterbank 1</text>
       
@@ -676,6 +1215,15 @@
         <path d="M 190,105 L 290,105 L 290,70 L 430,70 L 430,140 L 190,140 Z" fill="#3e4c5e" stroke="#0f172a" stroke-width="2" />
         <text x="360" y="108" font-size="10.5" font-weight="900" fill="#ffffff" text-anchor="middle">Teil B (8/14)</text>
 
+        <!-- Auflager in Balkenschuh 5 (8 cm BSI 80/120) an Wandpfette rechts -->
+        <g class="comp-hitbox" data-id="balkenschuh-5" title="Balkenschuh 5 (8 cm Innenbreite BSI 80/120 an Wandpfette rechts)">
+          <rect x="427" y="68" width="8" height="74" rx="1" fill="#f59e0b" stroke="#b45309" stroke-width="1.8" />
+          <rect x="410" y="138" width="25" height="5" fill="#f59e0b" stroke="#b45309" stroke-width="1.8" />
+          <circle cx="431" cy="80" r="1.8" fill="#78350f" />
+          <circle cx="431" cy="105" r="1.8" fill="#78350f" />
+          <circle cx="431" cy="130" r="1.8" fill="#78350f" />
+        </g>
+
         <!-- Horizontale Stoßfuge der Überblattung -->
         <line x1="190" y1="105" x2="290" y2="105" stroke="#0f172a" stroke-width="2" />
         <!-- Vertikale Absätze -->
@@ -688,7 +1236,7 @@
       <rect x="215" y="49" width="50" height="15" rx="2" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8" />
       <text x="240" y="60" font-size="8.5" font-weight="900" fill="#0369a1" text-anchor="middle">20 cm Stoß</text>
 
-      <!-- Bemaßung Höhen: 14 cm Gesamthöhe & 7 cm Stufenhöhe rechts -->
+      <!-- Bemaßung Höhen: 14 cm Gesamthöhe &amp; 7 cm Stufenhöhe rechts -->
       <line x1="438" y1="70" x2="438" y2="140" marker-start="url(#tick)" marker-end="url(#tick)" stroke="#0f172a" stroke-width="1.2" />
       <text x="445" y="108" font-size="8.5" font-weight="900" fill="#0f172a">14cm</text>
       <line x1="300" y1="70" x2="300" y2="105" marker-start="url(#tick-blue)" marker-end="url(#tick-blue)" stroke="#0284c7" stroke-width="1" />
@@ -701,7 +1249,7 @@
         <rect x="238" y="70" width="4" height="70" fill="#0f172a" />
         <!-- Sechskantkopf / Scheibe oben -->
         <rect x="233" y="66" width="14" height="4" rx="1" fill="#ef4444" stroke="#0f172a" stroke-width="1" />
-        <!-- Unterlegscheibe & Mutter unten -->
+        <!-- Unterlegscheibe &amp; Mutter unten -->
         <rect x="233" y="140" width="14" height="4" rx="1" fill="#ef4444" stroke="#0f172a" stroke-width="1" />
         
         <!-- Callout Bohrung nach oben -->
@@ -710,28 +1258,48 @@
         <path d="M 240,42 L 240,64" stroke="#ef4444" stroke-width="1.3" marker-end="url(#arrow-red)" />
       </g>
 
-      <!-- ==================== HORIZONTALE WANDANKER FIS V (IN DIE ZIEGELWAND) ==================== -->
-      <g class="comp-hitbox" data-id="injektionsanker" title="5x Injektionsanker FIS V Plus in Hauswand (Pos. 08)">
-        <!-- Ankerpunkte in Wandholz (mit breiter DIN 440 Scheibe dargestellt) -->
-        <circle cx="50" cy="105" r="7" fill="#ef4444" stroke="#0f172a" stroke-width="1.5" />
-        <circle cx="50" cy="105" r="2.5" fill="#ffffff" /><circle cx="50" cy="105" r="20" fill="rgba(0,0,0,0.001)" pointer-events="all" />
-        <circle cx="140" cy="105" r="7" fill="#ef4444" stroke="#0f172a" stroke-width="1.5" />
-        <circle cx="140" cy="105" r="2.5" fill="#ffffff" /><circle cx="140" cy="105" r="20" fill="rgba(0,0,0,0.001)" pointer-events="all" />
-        <circle cx="340" cy="105" r="7" fill="#ef4444" stroke="#0f172a" stroke-width="1.5" />
-        <circle cx="340" cy="105" r="2.5" fill="#ffffff" /><circle cx="340" cy="105" r="20" fill="rgba(0,0,0,0.001)" pointer-events="all" />
-        <text x="50" y="123" font-size="7" font-weight="800" fill="#b91c1c" text-anchor="middle">FIS V</text>
-        <text x="140" y="123" font-size="7" font-weight="800" fill="#b91c1c" text-anchor="middle">FIS V</text>
-        <text x="340" y="123" font-size="7" font-weight="800" fill="#b91c1c" text-anchor="middle">FIS V</text>
+      <!-- ==================== HORIZONTALE WANDVERANKERUNG: 3x M16 (VORH.) + 2x 10er DÜBEL ==================== -->
+      <g class="comp-hitbox" data-id="injektionsanker" title="Wandbefestigung: 3x M16 Gewindestangen (vorh.) + 2x 10er Dübel">
+        <!-- 1. 10er Dübel links (cx=30) -->
+        <circle cx="30" cy="105" r="6" fill="#d97706" stroke="#0f172a" stroke-width="1.5" />
+        <circle cx="30" cy="105" r="2" fill="#ffffff" /><circle cx="30" cy="105" r="16" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+        <text x="30" y="123" font-size="6.5" font-weight="800" fill="#b45309" text-anchor="middle">10er</text>
+        <!-- 2. M16 Stab 1 unter Fenster 1 (cx=77, blau) -->
+        <circle cx="77" cy="105" r="7.5" fill="#0284c7" stroke="#0f172a" stroke-width="1.5" />
+        <circle cx="77" cy="105" r="2.5" fill="#ffffff" /><circle cx="77" cy="105" r="18" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+        <text x="77" y="123" font-size="6.5" font-weight="900" fill="#0369a1" text-anchor="middle">M16 (vorh.)</text>
+        <!-- 3. M16 Stab 2 unter Fenster 2 (cx=185, blau) -->
+        <circle cx="185" cy="105" r="7.5" fill="#0284c7" stroke="#0f172a" stroke-width="1.5" />
+        <circle cx="185" cy="105" r="2.5" fill="#ffffff" /><circle cx="185" cy="105" r="18" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+        <text x="185" y="123" font-size="6.5" font-weight="900" fill="#0369a1" text-anchor="middle">M16 (vorh.)</text>
+        <!-- 4. M16 Stab 3 vor Stoß (cx=295, blau - VORH.) -->
+        <circle cx="295" cy="105" r="7.5" fill="#0284c7" stroke="#0f172a" stroke-width="1.5" />
+        <circle cx="295" cy="105" r="2.5" fill="#ffffff" /><circle cx="295" cy="105" r="18" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+        <text x="295" y="123" font-size="6.5" font-weight="900" fill="#0369a1" text-anchor="middle">M16 (vorh.)</text>
+        <!-- 5. 10er Dübel 2 unter Fenster 3 (cx=372) -->
+        <circle cx="372" cy="105" r="6" fill="#d97706" stroke="#0f172a" stroke-width="1.5" />
+        <circle cx="372" cy="105" r="2" fill="#ffffff" /><circle cx="372" cy="105" r="16" fill="rgba(0,0,0,0.001)" pointer-events="all" />
+        <text x="372" y="123" font-size="6.5" font-weight="800" fill="#b45309" text-anchor="middle">10er</text>
       </g>
 
       <!-- ==================== HINWEISKASTEN: WANDHOLZ-ÜBERBLATTUNG DETAIL ==================== -->
       <rect x="25" y="196" width="400" height="42" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.2" />
       <text x="225" y="211" font-size="9" font-weight="900" fill="#065f46" text-anchor="middle">✓ STATISCH SICHER: 20 cm Halbholz-Überblattung in Balkenhöhe</text>
       <text x="225" y="226" font-size="8" font-weight="700" fill="#166534" text-anchor="middle">M12 Durchgangsbolzen mit 2x DIN 440 Scheiben &amp; Stoppmutter DIN 985</text>
-    </g>
+    
+        <!-- Pos-Badges Schnitt B -->
+      <g class="plan-pos-badge" data-pos="02" transform="translate(175, 45)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23.0" y="13" class="pos-badge-text">Pos. 02</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="15e" transform="translate(225, 175)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24.0" y="13" class="pos-badge-text">Pos. 15e</text>
+      </g>
+</g>
 
     <!-- ==================== DETAIL C: QUERSCHNITT FRONT (SCHNITT A-A M 1:25) ==================== -->
-    <g transform="translate(15, 552)">
+    <g transform="translate(475, 50)">
       <rect x="0" y="0" width="450" height="465" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
       <rect x="0" y="0" width="450" height="26" rx="6" fill="#f1f5f9" />
       <text x="14" y="18" font-size="12" font-weight="900" fill="#0369a1">QUERSCHNITT C: FRONTANSICHT DURCHFAHRT (M 1:25)</text>
@@ -774,7 +1342,7 @@
 
       <!-- Gefälledifferenz Δh = 7 cm -->
       <rect x="130" y="130" width="230" height="20" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.3" />
-      <text x="245" y="144" font-size="10.5" font-weight="800" fill="#065f46" text-anchor="middle">Δh = 7 cm Gefälle (1,0° zur Ecke FP-2)</text>
+      <text x="245" y="144" font-size="10.5" font-weight="800" fill="#065f46" text-anchor="middle">Δh = 7 cm Gefälle (1,0° von rechts nach links)</text>
 
       <!-- Pfosten FP-2: L-Verbund (8/14 Trägerpfosten) -->
       <g class="comp-hitbox" data-id="pfosten-fp2">
@@ -782,8 +1350,8 @@
         <rect x="90" y="123" width="24" height="242" fill="#334155" stroke="#0f172a" stroke-width="2" />
       </g>
 
-      <!-- Tellerkopfschrauben 8x120 mm an Pfosten FP-2 & Kopfband (Pos. 15b - INTERAKTIV) -->
-      <g class="comp-hitbox" data-id="tellerkopf-pfosten" title="Pos. 15b: 15x Tellerkopfschrauben 8x120 mm flächenbündig">
+      <!-- Tellerkopfschrauben 8x160 mm an Pfosten FP-2 &amp; Kopfband (Pos. 15b - INTERAKTIV) -->
+      <g class="comp-hitbox" data-id="tellerkopf-pfosten" title="Pos. 15b: 50x Tellerkopfschrauben 8x160 mm flächenbündig">
         <!-- Schrauben im L-Pfosten Verbund -->
         <circle cx="95" cy="160" r="3.5" fill="#ffffff" stroke="#ef4444" stroke-width="1.5" />
         <circle cx="95" cy="230" r="3.5" fill="#ffffff" stroke="#ef4444" stroke-width="1.5" />
@@ -818,7 +1386,7 @@
       <text x="47" y="121" font-size="10.5" font-weight="900" fill="#0369a1" text-anchor="middle">+2,63 m</text>
       <text x="47" y="134" font-size="9" font-weight="800" fill="#0284c7" text-anchor="middle">Ablauf Traufe</text>
 
-      <!-- Wandpfette rechts & M16 Gewindestangen (Pos. 01 / m16-staebe - INTERAKTIV) -->
+      <!-- Wandpfette rechts &amp; M16 Gewindestangen (Pos. 01 / m16-staebe - INTERAKTIV) -->
       <rect class="comp-hitbox" data-id="wandpfette-rechts" x="382" y="85" width="14" height="30" rx="1" fill="#334155" stroke="#0f172a" stroke-width="1.5" />
       <g class="comp-hitbox" data-id="m16-staebe" title="3x M16 Gewindestangen im Beton verankert">
         <line x1="382" y1="100" x2="405" y2="100" stroke="#0284c7" stroke-width="3" />
@@ -857,10 +1425,511 @@
       <text x="270" y="202" font-size="10.5" font-weight="800" fill="#166534" text-anchor="middle">Kein Mittelpfosten im Weg!</text>
       <text x="270" y="214" font-size="9" font-weight="600" fill="#15803d" text-anchor="middle">Starrer 10/20 BSH Unterzug</text>
 
-      <!-- Bemaßung Pfostenbreite & Spannweite unten -->
+      <!-- Bemaßung Pfostenbreite &amp; Spannweite unten -->
       <line x1="102" y1="428" x2="385" y2="428" marker-start="url(#tick-green)" marker-end="url(#tick-green)" stroke="#059669" stroke-width="1.8" />
       <rect x="195" y="416" width="150" height="22" rx="3" fill="#ecfdf5" stroke="#059669" stroke-width="1.3" />
       <text x="270" y="431" font-size="11.5" font-weight="900" fill="#065f46" text-anchor="middle">2,80 m freie Spannweite</text>
     </g>
+  
+        <!-- Pos-Badges Querschnitt C -->
+      <g class="plan-pos-badge" data-pos="03d" transform="translate(225, 135)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24.0" y="13" class="pos-badge-text">Pos. 03d</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="04b" transform="translate(80, 205)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24.0" y="13" class="pos-badge-text">Pos. 04b</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="06" transform="translate(145, 175)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23.0" y="13" class="pos-badge-text">Pos. 06</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="09" transform="translate(125, 368)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23.0" y="13" class="pos-badge-text">Pos. 09</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="09c" transform="translate(55, 360)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24.0" y="13" class="pos-badge-text">Pos. 09c</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="15f" transform="translate(125, 388)">
+        <rect x="0" y="0" width="48" height="18" rx="4" class="pos-badge-rect" />
+        <text x="24.0" y="13" class="pos-badge-text">Pos. 15f</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="16" transform="translate(300, 95)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23.0" y="13" class="pos-badge-text">Pos. 16</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="17" transform="translate(35, 120)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23.0" y="13" class="pos-badge-text">Pos. 17</text>
+      </g>
+</g>
+
+  <!-- ============================================================== -->
+  <!-- 3. DETAIL-SCHNITTE: DOPPEL-FUẞPFETTE LINKS (10/20 cm VERBUND) -->
+  <!-- ============================================================== -->
+  <g id="detail-doppelfusspfette" transform="translate(20, 1720)">
+    <!-- Container Card (940px width, 330px height) -->
+    <rect x="0" y="0" width="940" height="330" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+    <rect x="0" y="0" width="940" height="42" rx="8" fill="#f1f5f9" />
+    <text x="20" y="27" font-size="16.5" font-weight="900" fill="#0f172a">3. DETAIL-SCHNITTE: DOPPEL-FUẞPFETTE LINKS (10/20 cm VERBUND)</text>
+    <text x="920" y="27" font-size="11" font-weight="800" fill="#059669" text-anchor="end">✓ 100% VOLLAUFLAGER &amp; ZUGELASSENER SCHUBVERBUND NACH EUROCODE 5</text>
+
+    <!-- ==================== DETAIL E1: QUERSCHNITT E-E (M 1:10) ==================== -->
+    <g transform="translate(15, 52)">
+      <rect x="0" y="0" width="450" height="265" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+      <rect x="0" y="0" width="450" height="26" rx="6" fill="#f1f5f9" />
+      <text x="14" y="18" font-size="12" font-weight="900" fill="#0369a1">DETAIL E1: QUERSCHNITT DOPPELPFETTE (M 1:10)</text>
+
+      <!-- Dachrinne / Kastenrinne links mit Gefälle zur Traufe -->
+      <path d="M 50,75 L 50,140 Q 50,155 65,155 L 85,155 Q 100,155 100,140 L 100,85" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+      <!-- Rinnenhalter an Pfette montiert -->
+      <path d="M 45,78 L 105,78 L 105,158 L 125,158" fill="none" stroke="#64748b" stroke-width="2.5" />
+      <rect x="35" y="48" width="80" height="18" rx="3" fill="#ffffff" stroke="#0284c7" stroke-width="1" />
+      <text x="75" y="61" font-size="8" font-weight="800" fill="#0369a1" text-anchor="middle">Kastenrinne</text>
+
+      <!-- Trapezblech oben mit Abtropfkante in die Rinne -->
+      <path d="M 55,70 L 125,70 L 128,66 L 150,66 L 153,70 L 220,70 L 223,66 L 245,66 L 248,70 L 370,70" fill="none" stroke="#b91c1c" stroke-width="3.5" stroke-linecap="round" />
+      <line x1="55" y1="73" x2="370" y2="73" stroke="#64748b" stroke-width="1.2" stroke-dasharray="3,2" />
+
+      <!-- ==================== DOPPEL-FUẞPFETTE (2x 10/10 GESTAPELT) ==================== -->
+      <!-- Oberes Holz: 10/10 cm (x=125, y=75, w=65, h=65) -->
+      <g class="comp-hitbox" data-id="pfette-links-1" title="Pos. 03a: Doppel-Fußpfette oberes Holz 10/10 cm (Zusatzholz / bündiger Sparrenanschluss)">
+        <rect x="125" y="75" width="65" height="65" rx="1" fill="#ef4444" stroke="#991b1b" stroke-width="2" />
+        <text x="157" y="105" font-size="10" font-weight="900" fill="#ffffff" text-anchor="middle">Oberes Holz</text>
+        <text x="157" y="119" font-size="9" font-weight="800" fill="#fee2e2" text-anchor="middle">10/10 cm</text>
+      </g>
+
+      <!-- Unteres Holz: 10/10 cm (x=125, y=140, w=65, h=65) -->
+      <g class="comp-hitbox" data-id="pfette-links-1" title="Pos. 03a: Doppel-Fußpfette unteres Holz 10/10 cm (Grund-Fußpfette auf Pfosten)">
+        <rect x="125" y="140" width="65" height="65" rx="1" fill="#dc2626" stroke="#991b1b" stroke-width="2" />
+        <text x="157" y="170" font-size="10" font-weight="900" fill="#ffffff" text-anchor="middle">Unteres Holz</text>
+        <text x="157" y="184" font-size="9" font-weight="800" fill="#fee2e2" text-anchor="middle">10/10 cm</text>
+      </g>
+
+      <!-- Horizontale Kontaktfuge zwischen beiden Hölzern -->
+      <line x1="125" y1="140" x2="190" y2="140" stroke="#0f172a" stroke-width="2.2" />
+
+      <!-- Vertikale Verbundverschraubung Pos. 15b: 8×160 mm Tellerkopf (flächenbündig) -->
+      <g class="comp-hitbox" data-id="tellerkopf-pfosten" title="Pos. 15b: Tellerkopf 8×160 mm vertikal im Verbund (sichert Schubübertragung nach EC5)">
+        <line x1="145" y1="77" x2="145" y2="195" stroke="#0f172a" stroke-width="3" stroke-linecap="round" />
+        <rect x="139" y="75" width="12" height="3.5" rx="1" fill="#f59e0b" stroke="#0f172a" stroke-width="0.8" />
+        <polygon points="143,195 147,195 145,202" fill="#0f172a" />
+      </g>
+
+      <!-- ==================== SEITLICHE SPARREN-AUFLAGERKNAGGE (10×10×30 cm) ==================== -->
+      <g class="comp-hitbox" data-id="balkenwinkel" title="Pos. 13b: Auflageholz 10×10 cm (L=30 cm) mit 2x 8×160 mm Tellerkopfschrauben">
+        <rect x="190" y="140" width="65" height="65" rx="1" fill="#7dd3fc" stroke="#0284c7" stroke-width="2" />
+        <text x="222" y="170" font-size="9.5" font-weight="900" fill="#0369a1" text-anchor="middle">Auflage</text>
+        <text x="222" y="184" font-size="8.5" font-weight="800" fill="#0f172a" text-anchor="middle">10×10 cm</text>
+        
+        <!-- Horizontale Verschraubung der Knagge durch die Fußpfette: 2x 8×160 mm -->
+        <line x1="130" y1="158" x2="235" y2="158" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round" />
+        <rect x="127" y="154" width="3" height="8" rx="0.5" fill="#f59e0b" stroke="#0f172a" stroke-width="0.8" />
+        <circle cx="230" cy="158" r="2" fill="#ffffff" />
+
+        <line x1="130" y1="182" x2="235" y2="182" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round" />
+        <rect x="127" y="178" width="3" height="8" rx="0.5" fill="#f59e0b" stroke="#0f172a" stroke-width="0.8" />
+        <circle cx="230" cy="182" r="2" fill="#ffffff" />
+      </g>
+
+      <!-- ==================== SPARREN 10/10 KVH AUF KNAGGE ==================== -->
+      <g class="comp-hitbox" data-id="sparren" title="Pos. 07: Sparren 10/10 cm KVH C24 (liegt 10 cm voll auf Knagge auf, Oberkante bündig)">
+        <rect x="190" y="75" width="180" height="65" rx="1" fill="#38bdf8" stroke="#0284c7" stroke-width="2" />
+        <text x="275" y="105" font-size="10.5" font-weight="900" fill="#0f172a" text-anchor="middle">Sparren (10/10 KVH C24)</text>
+        <text x="275" y="119" font-size="8.5" font-weight="700" fill="#0369a1" text-anchor="middle">10 cm Vollauflager auf Knagge</text>
+      </g>
+
+      <!-- Schräge Windsogsicherung: Pos. 16 Tellerkopf 8×180 mm -->
+      <g class="comp-hitbox" data-id="tellerkopf-sparren" title="Pos. 16: Tellerkopf 8×180 mm schräg von oben durch Sparren in Pfette">
+        <line x1="225" y1="77" x2="165" y2="135" stroke="#0284c7" stroke-width="2.8" stroke-linecap="round" stroke-dasharray="6,2" />
+        <rect x="221" y="75" width="10" height="3" rx="0.5" fill="#f59e0b" stroke="#0f172a" stroke-width="0.8" transform="rotate(-40 225 77)" />
+      </g>
+
+      <!-- Bemaßung Pfette: 10 cm Breite, 10 cm + 10 cm = 20 cm Verbundhöhe -->
+      <!-- Vertikale Höhenbemaßung rechts -->
+      <line x1="385" y1="75" x2="385" y2="140" marker-start="url(#tick-blue)" marker-end="url(#tick-blue)" stroke="#0284c7" stroke-width="1.2" />
+      <text x="392" y="110" font-size="8" font-weight="800" fill="#0369a1">10 cm</text>
+      <line x1="385" y1="140" x2="385" y2="205" marker-start="url(#tick-blue)" marker-end="url(#tick-blue)" stroke="#0284c7" stroke-width="1.2" />
+      <text x="392" y="175" font-size="8" font-weight="800" fill="#0369a1">10 cm</text>
+      <line x1="420" y1="75" x2="420" y2="205" marker-start="url(#tick)" marker-end="url(#tick)" stroke="#0f172a" stroke-width="1.5" />
+      <text x="427" y="143" font-size="9" font-weight="900" fill="#0f172a">20 cm</text>
+
+      <!-- Horizontale Breitenbemaßung unten -->
+      <line x1="125" y1="215" x2="190" y2="215" marker-start="url(#tick)" marker-end="url(#tick)" stroke="#0f172a" stroke-width="1.2" />
+      <text x="157" y="226" font-size="8" font-weight="800" fill="#0f172a" text-anchor="middle">10 cm</text>
+      <line x1="190" y1="215" x2="255" y2="215" marker-start="url(#tick-blue)" marker-end="url(#tick-blue)" stroke="#0284c7" stroke-width="1.2" />
+      <text x="222" y="226" font-size="8" font-weight="800" fill="#0369a1" text-anchor="middle">10 cm</text>
+
+      <!-- Hinweistext unten -->
+      <rect x="25" y="235" width="400" height="22" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1" />
+      <text x="225" y="249" font-size="8" font-weight="800" fill="#1e40af" text-anchor="middle">★ Querschnitt 10/20 cm: 100% bündige Sparrenlage OHNE Klinkung der Pfette!</text>
+
+      <!-- Pos Badges für E1 -->
+      <g class="plan-pos-badge" data-pos="03a" transform="translate(135, 85)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 03a</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="13b" transform="translate(200, 150)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 13b</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="15b" transform="translate(130, 48)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 15b</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="16" transform="translate(235, 48)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 16</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="07" transform="translate(305, 85)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 07</text>
+      </g>
+    </g>
+
+    <!-- ==================== DETAIL E2: LÄNGSSCHNITT &amp; AUFLAGER AM DOPPELPFOSTEN (M 1:10) ==================== -->
+    <g transform="translate(475, 52)">
+      <rect x="0" y="0" width="450" height="265" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+      <rect x="0" y="0" width="450" height="26" rx="6" fill="#f1f5f9" />
+      <text x="14" y="18" font-size="12" font-weight="900" fill="#0369a1">DETAIL E2: AUFLAGER AM DOPPELPFOSTEN FP-1a/b (LÄNGS)</text>
+
+      <!-- Oberes Verbundholz 10/10 cm (durchgehend bzw. überlappend) -->
+      <g class="comp-hitbox" data-id="pfette-links-1" title="Pos. 03a: Oberes Verbundholz 10/10 cm überbrückt den Stoß und koppelt Teil 1 &amp; Teil 2">
+        <rect x="25" y="45" width="400" height="40" rx="1" fill="#ef4444" stroke="#991b1b" stroke-width="2" />
+        <text x="225" y="69" font-size="10.5" font-weight="900" fill="#ffffff" text-anchor="middle">Oberes Verbundholz 10/10 cm (durchgehender Zuggurt)</text>
+      </g>
+
+      <!-- ==================== UNTERE PFETTENLAGE: GESTOSSEN AM DOPPELPFOSTEN ==================== -->
+      <!-- Teil 1 (links, L = 2,50 m von Wand bis FP-1a) -->
+      <g class="comp-hitbox" data-id="pfette-links-1" title="Pos. 03a: Fußpfette Teil 1 (L = 2,50 m) mit 10 cm Vollauflager auf Pfosten FP-1a">
+        <rect x="25" y="85" width="195" height="40" rx="1" fill="#dc2626" stroke="#991b1b" stroke-width="2" />
+        <text x="110" y="109" font-size="10" font-weight="900" fill="#ffffff" text-anchor="middle">Pfette Teil 1 (L = 2,50 m)</text>
+      </g>
+
+      <!-- Teil 2 (rechts, L = 1,50 m von FP-1b bis Frontträger) -->
+      <g class="comp-hitbox" data-id="pfette-links-2" title="Pos. 03b: Fußpfette Teil 2 (L = 1,50 m) mit 10 cm Vollauflager auf Pfosten FP-1b">
+        <rect x="225" y="85" width="200" height="40" rx="1" fill="#b91c1c" stroke="#7f1d1d" stroke-width="2" />
+        <text x="325" y="109" font-size="10" font-weight="900" fill="#ffffff" text-anchor="middle">Pfette Teil 2 (L = 1,50 m)</text>
+      </g>
+
+      <!-- Vertikaler Montagespalt / Stoßfuge zwischen Pfette 1 und 2 -->
+      <line x1="222" y1="85" x2="222" y2="125" stroke="#ffffff" stroke-width="3" />
+      <line x1="222" y1="85" x2="222" y2="125" stroke="#0f172a" stroke-width="1.2" stroke-dasharray="2,2" />
+
+      <!-- ==================== DOPPELPFOSTEN FP-1a &amp; FP-1b (UNTER DEM STOẞ) ==================== -->
+      <!-- Pfosten FP-1a (hinten, trägt Teil 1 mit 10 cm Vollauflager) -->
+      <g class="comp-hitbox" data-id="pfosten-fp1" title="Pos. 04a: Pfosten FP-1a (10/10 cm) – volles 10 cm Kopfauflager für Pfette Teil 1">
+        <rect x="155" y="125" width="65" height="95" rx="1" fill="#334155" stroke="#0f172a" stroke-width="2" />
+        <text x="187" y="170" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">FP-1a</text>
+        <text x="187" y="184" font-size="7.5" font-weight="800" fill="#94a3b8" text-anchor="middle">10/10</text>
+      </g>
+
+      <!-- Pfosten FP-1b (vorne, trägt Teil 2 mit 10 cm Vollauflager) -->
+      <g class="comp-hitbox" data-id="pfosten-fp1" title="Pos. 04a: Pfosten FP-1b (10/10 cm) – volles 10 cm Kopfauflager für Pfette Teil 2">
+        <rect x="225" y="125" width="65" height="95" rx="1" fill="#1e293b" stroke="#0f172a" stroke-width="2" />
+        <text x="257" y="170" font-size="9" font-weight="900" fill="#ffffff" text-anchor="middle">FP-1b</text>
+        <text x="257" y="184" font-size="7.5" font-weight="800" fill="#94a3b8" text-anchor="middle">10/10</text>
+      </g>
+
+      <!-- Horizontale Kopplung der beiden Pfosten mit 8×160 mm Tellerkopfschrauben -->
+      <line x1="160" y1="150" x2="285" y2="150" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" />
+      <circle cx="160" cy="150" r="2.5" fill="#f59e0b" stroke="#0f172a" stroke-width="0.8" />
+      <line x1="160" y1="195" x2="285" y2="195" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" />
+      <circle cx="160" cy="195" r="2.5" fill="#f59e0b" stroke="#0f172a" stroke-width="0.8" />
+      <text x="365" y="175" font-size="7.5" font-weight="800" fill="#d97706">2x 8×160 mm Kopplung</text>
+
+      <!-- Vertikale Befestigung von oben durch beide Pfettenlagen in die Pfosten -->
+      <line x1="187" y1="42" x2="187" y2="155" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round" />
+      <rect x="182" y="42" width="10" height="3" rx="0.5" fill="#f59e0b" stroke="#0f172a" stroke-width="0.8" />
+
+      <line x1="257" y1="42" x2="257" y2="155" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round" />
+      <rect x="252" y="42" width="10" height="3" rx="0.5" fill="#f59e0b" stroke="#0f172a" stroke-width="0.8" />
+
+      <!-- Bemaßung der beiden Vollauflager -->
+      <line x1="155" y1="120" x2="220" y2="120" marker-start="url(#tick-green)" marker-end="url(#tick-green)" stroke="#059669" stroke-width="1.5" />
+      <line x1="225" y1="120" x2="290" y2="120" marker-start="url(#tick-green)" marker-end="url(#tick-green)" stroke="#059669" stroke-width="1.5" />
+      <text x="187" y="132" font-size="7.5" font-weight="900" fill="#059669" text-anchor="middle">10 cm</text>
+      <text x="257" y="132" font-size="7.5" font-weight="900" fill="#059669" text-anchor="middle">10 cm</text>
+
+      <!-- Fazit Box unten -->
+      <rect x="15" y="226" width="420" height="32" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.2" />
+      <text x="225" y="240" font-size="8.5" font-weight="900" fill="#065f46" text-anchor="middle">✓ GENIALE LÖSUNG: Kein Stoß in freier Luft!</text>
+      <text x="225" y="252" font-size="7.5" font-weight="700" fill="#166534" text-anchor="middle">Teil 1 sitzt voll auf FP-1a (10 cm) • Teil 2 sitzt voll auf FP-1b (10 cm). Oberes Holz sichert Durchlauf!</text>
+
+      <!-- Pos Badges für E2 -->
+      <g class="plan-pos-badge" data-pos="03a" transform="translate(60, 95)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 03a</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="03b" transform="translate(345, 95)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 03b</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="04a" transform="translate(198, 195)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 04a</text>
+      </g>
+      <g class="plan-pos-badge" data-pos="15b" transform="translate(200, 32)">
+        <rect x="0" y="0" width="46" height="18" rx="4" class="pos-badge-rect" />
+        <text x="23" y="13" class="pos-badge-text">Pos. 15b</text>
+      </g>
+    </g>
   </g>
+  <script type="text/javascript">
+    <![CDATA[
+      var activePos = null;
+      var activeId = null;
+
+      var COMPONENT_POS_MAP = {
+        'mittelpfette': '03c',
+        'fronttraeger': '03d',
+        'pfette-links-1': '03a',
+        'pfette-links-2': '03b',
+        'wandholz-fenster': '02',
+        'wandpfette-rechts': '01',
+        'sparren': '07',
+        'balkenwinkel': '13b',
+        'pfosten-fp1': '04a',
+        'pfosten-fp2': '04b',
+        'balkenschuh-1': '10',
+        'balkenschuh-2': '10',
+        'balkenschuh-3': '10',
+        'balkenschuh-4': '10',
+        'balkenschuh-5': '10b',
+        'injektionsanker': '08',
+        'm16-staebe': '01',
+        'bolzen-m12': '15e',
+        'tellerkopf-sparren': '16',
+        'tellerkopf-pfosten': '15b',
+        'spenglerschrauben': '15c',
+        'csa-schrauben': '14',
+        'pfostenschuh': '09'
+      };
+
+      function deselectAll() {
+        activePos = null;
+        activeId = null;
+        document.querySelectorAll('.plan-pos-badge').forEach(function(b) {
+          b.classList.remove('active-badge');
+        });
+        document.querySelectorAll('.comp-hitbox').forEach(function(h) {
+          h.classList.remove('active');
+        });
+      }
+
+      function highlightPosBadge(pos) {
+        document.querySelectorAll('.plan-pos-badge').forEach(function(b) {
+          b.classList.remove('active-badge');
+        });
+        if (!pos) return;
+        var cleanPos = pos.replace(/^pos\.?\s*/i, '').trim();
+        var matches = document.querySelectorAll('.plan-pos-badge[data-pos="' + cleanPos + '"]');
+        matches.forEach(function(b) {
+          b.classList.add('active-badge');
+        });
+      }
+
+      function selectHitbox(id, pos) {
+        if (!pos && id && COMPONENT_POS_MAP[id]) {
+          pos = COMPONENT_POS_MAP[id];
+        }
+        if (activePos === pos || (id && activeId === id)) {
+          deselectAll();
+          return;
+        }
+        deselectAll();
+        activeId = id;
+        activePos = pos;
+        if (id) {
+          document.querySelectorAll('.comp-hitbox[data-id="' + id + '"]').forEach(function(h) {
+            h.classList.add('active');
+          });
+        }
+        if (pos) {
+          highlightPosBadge(pos);
+        }
+      }
+
+      function setupSvgInteractivity() {
+        document.querySelectorAll('.comp-hitbox').forEach(function(el) {
+          el.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var id = el.getAttribute('data-id');
+            var pos = el.getAttribute('data-pos');
+            selectHitbox(id, pos);
+          });
+        });
+
+        document.querySelectorAll('.plan-pos-badge').forEach(function(badge) {
+          badge.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var pos = badge.getAttribute('data-pos');
+            if (activePos === pos) {
+              deselectAll();
+            } else {
+              selectHitbox(null, pos);
+            }
+          });
+        });
+
+        var svg = document.querySelector('svg');
+        if (svg) {
+          svg.addEventListener('click', function(e) {
+            if (e.target && e.target.closest && e.target.closest('.comp-hitbox, .plan-pos-badge, .draggable-legend, #bauteilmasse-box')) {
+              return;
+            }
+            deselectAll();
+          });
+        }
+      }
+
+      function toggleBauteilmasse() {
+        var box = document.getElementById('bauteilmasse-box');
+        if (!box) return;
+        var isExp = box.classList.toggle('is-expanded');
+        var bg = document.getElementById('bauteilmasse-bg');
+        var hBg = document.getElementById('bauteilmasse-header-bg');
+        var title = box.querySelector('text');
+        var btn = document.getElementById('bauteilmasse-toggle-btn');
+        var btnText = document.getElementById('bauteilmasse-toggle-text');
+        var content = document.getElementById('bauteilmasse-content');
+
+        if (isExp) {
+          if (bg) { bg.setAttribute('y', '675'); bg.setAttribute('height', '180'); }
+          if (hBg) { hBg.setAttribute('y', '675'); }
+          if (title) { title.setAttribute('y', '698'); }
+          if (btn) { btn.setAttribute('transform', 'translate(770, 682)'); }
+          if (btnText) { btnText.textContent = '▴ Details einklappen'; }
+          if (content) { content.style.display = 'block'; }
+        } else {
+          if (bg) { bg.setAttribute('y', '818'); bg.setAttribute('height', '36'); }
+          if (hBg) { hBg.setAttribute('y', '818'); }
+          if (title) { title.setAttribute('y', '841'); }
+          if (btn) { btn.setAttribute('transform', 'translate(770, 826)'); }
+          if (btnText) { btnText.textContent = '▾ Details aufklappen'; }
+          if (content) { content.style.display = 'none'; }
+        }
+      }
+
+      function initDraggableLegend() {
+        var legend = document.getElementById('svg-schrauben-legende');
+        if (!legend) return;
+        var svg = legend.ownerSVGElement || document.querySelector('svg');
+        if (!svg) return;
+
+        var isDragging = false;
+        var startX = 0, startY = 0;
+        var origX = 725, origY = 10;
+        var hasMoved = false;
+
+        function parseTranslate(transform) {
+          if (!transform) return { x: 725, y: 10 };
+          var match = transform.match(/translate\(\s*([-\d.]+)[,\s]+([-\d.]+)\s*\)/);
+          return match ? { x: parseFloat(match[1]), y: parseFloat(match[2]) } : { x: 725, y: 10 };
+        }
+
+        try {
+          var saved = localStorage.getItem('schrauben_legende_pos');
+          if (saved) {
+            var pos = JSON.parse(saved);
+            if (typeof pos.x === 'number' && typeof pos.y === 'number') {
+              legend.setAttribute('transform', 'translate(' + pos.x + ', ' + pos.y + ')');
+            }
+          }
+        } catch (e) {}
+
+        function getSVGCoords(e) {
+          var pt = svg.createSVGPoint();
+          pt.x = e.clientX;
+          pt.y = e.clientY;
+          var ctm = svg.getScreenCTM();
+          if (ctm) {
+            return pt.matrixTransform(ctm.inverse());
+          }
+          var rect = svg.getBoundingClientRect();
+          var vb = svg.viewBox.baseVal;
+          return {
+            x: vb.x + (e.clientX - rect.left) * (vb.width / rect.width),
+            y: vb.y + (e.clientY - rect.top) * (vb.height / rect.height)
+          };
+        }
+
+        legend.addEventListener('pointerdown', function(e) {
+          if (e.button !== 0) return;
+          if (e.target && e.target.closest && e.target.closest('.comp-hitbox')) {
+            return;
+          }
+          isDragging = true;
+          hasMoved = false;
+          var current = parseTranslate(legend.getAttribute('transform'));
+          origX = current.x;
+          origY = current.y;
+          var pt = getSVGCoords(e);
+          startX = pt.x;
+          startY = pt.y;
+          try {
+            legend.setPointerCapture(e.pointerId);
+          } catch (err) {}
+          legend.style.cursor = 'grabbing';
+          e.stopPropagation();
+        });
+
+        legend.addEventListener('pointermove', function(e) {
+          if (!isDragging) return;
+          var pt = getSVGCoords(e);
+          var dx = pt.x - startX;
+          var dy = pt.y - startY;
+          if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
+            hasMoved = true;
+          }
+          if (hasMoved) {
+            var newX = Math.round(origX + dx);
+            var newY = Math.round(origY + dy);
+            legend.setAttribute('transform', 'translate(' + newX + ', ' + newY + ')');
+          }
+          e.stopPropagation();
+        });
+
+        function endDrag(e) {
+          if (!isDragging) return;
+          isDragging = false;
+          legend.style.cursor = 'grab';
+          try {
+            legend.releasePointerCapture(e.pointerId);
+          } catch (err) {}
+
+          if (hasMoved) {
+            var current = parseTranslate(legend.getAttribute('transform'));
+            try {
+              localStorage.setItem('schrauben_legende_pos', JSON.stringify(current));
+            } catch (err) {}
+          }
+          e.stopPropagation();
+        }
+
+        legend.addEventListener('pointerup', endDrag);
+        legend.addEventListener('pointercancel', endDrag);
+
+        legend.addEventListener('dblclick', function(e) {
+          legend.setAttribute('transform', 'translate(725, 10)');
+          try {
+            localStorage.removeItem('schrauben_legende_pos');
+          } catch (err) {}
+          e.stopPropagation();
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          initDraggableLegend();
+          setupSvgInteractivity();
+        });
+      } else {
+        initDraggableLegend();
+        setupSvgInteractivity();
+      }
+    ]]>
+  </script>
 </svg>
